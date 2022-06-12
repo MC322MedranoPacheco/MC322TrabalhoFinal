@@ -1,8 +1,12 @@
-package control.montador;
+package src.control.montador;
 
-import model.nivel.IBuildNivel;
-import model.nivel.Nivel;
-import model.nivel.Sala;
+import src.model.autor.Actor;
+import src.model.autor.Personagem;
+import src.model.nivel.IBuildNivel;
+import src.model.nivel.Nivel;
+import src.model.nivel.Sala;
+import src.model.nivel.Terra;
+import src.model.nivel.Terreno;
 
 public class Montador implements IMontador{
 	IBuildNivel buildnivel;
@@ -21,26 +25,46 @@ public class Montador implements IMontador{
 			System.out.println("");
 		}
 		int numSalas = Integer.parseInt(modelo[0][0]);
+		Sala[] salas = new Sala[numSalas];
+		
 		for(int i = 0; i < numSalas; i++) {
 			linha++;
 			int tamanhoX = Integer.parseInt(modelo[linha][0]);
 			int tamanhoY = Integer.parseInt(modelo[linha][1]);
+			salas[i] = new Sala(tamanhoX, tamanhoY);
+			linha++;
+			
 			for (int k = 0; k < tamanhoY; k++) {
 				for (int j = 0; j < tamanhoX; j++) {
-				// Criamos o terreno		
+					switch (modelo[linha][j]) {
+					case "T":
+						Terreno terreno = new Terra();
+						salas[i].adicionaTerreno(j, k, terreno);
+					default:
+						// Se nn passar, dar erro
+					}	
 				}
 				linha++;
 			}
-			linha++;
 			int numActors = Integer.parseInt(modelo[linha][0]);
+			linha++;
 			for (int k = 0; k < numActors; k++) {
-				//Cria o actor
+				int posX = Integer.parseInt(modelo[linha][0]);
+				int posY = Integer.parseInt(modelo[linha][1]);
+				switch (modelo[linha][2]) {
+				case "P":
+					System.out.println("Passou aqui");
+					Actor ator = new Personagem();
+					salas[i].adicionaActor(posX - 1, posY - 1, ator); // Assumindo que a posicao 1,1 seja a posicao da matriz 0,0
+				default:
+					// Se nn passar, dar erro
+				}	
 				linha++;
 			}
 		}
 		
 		
-		return null;
+		return salas;
 	}
 
 }
