@@ -18,7 +18,7 @@ public class Sala {
 
 
 	public void adicionaTerreno(int x, int y, Terreno terreno) {
-		layout[y][x].setTerreno(terreno);
+		layout[y][x] = new Celula(terreno);
 	}
 
 

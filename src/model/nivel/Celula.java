@@ -7,12 +7,12 @@ public class Celula {
 	private Terreno terreno;
 	private Actor autor = null;
 	
-	public void setActor(Actor actor) {
-		this.autor = actor;
+	public Celula(Terreno terreno){
+		this.terreno = terreno;
 	}
 	
-	public void setTerreno(Terreno terreno) {
-		this.terreno = terreno;
+	public void setActor(Actor actor) {
+		this.autor = actor;
 	}
 	
 	public Actor getActor() {
