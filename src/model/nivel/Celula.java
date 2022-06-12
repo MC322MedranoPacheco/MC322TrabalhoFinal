@@ -1,6 +1,7 @@
 package model.nivel;
 
 import model.autor.Actor;
+import model.terreno.Terreno;
 
 public class Celula {
 	private Terreno terreno;

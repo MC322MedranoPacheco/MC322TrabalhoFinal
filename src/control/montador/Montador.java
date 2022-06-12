@@ -1,12 +1,11 @@
-package src.control.montador;
+package control.montador;
 
-import src.model.autor.Actor;
-import src.model.autor.Personagem;
-import src.model.nivel.IBuildNivel;
-import src.model.nivel.Nivel;
-import src.model.nivel.Sala;
-import src.model.nivel.Terra;
-import src.model.nivel.Terreno;
+import model.autor.Actor;
+import model.autor.Personagem;
+import model.nivel.IBuildNivel;
+import model.nivel.Sala;
+import model.terreno.Terra;
+import model.terreno.Terreno;
 
 public class Montador implements IMontador{
 	IBuildNivel buildnivel;
@@ -61,6 +60,8 @@ public class Montador implements IMontador{
 				}	
 				linha++;
 			}
+			
+			// falta adicionar objetos n atores: chaves , itens etc
 		}
 		
 		
