@@ -53,7 +53,7 @@ public class Montador implements IMontador{
 				switch (modelo[linha][2]) {
 				case "P":
 					System.out.println("Passou aqui");
-					Actor ator = new Personagem();
+					Actor ator = new Personagem(posY -1 , posX -1);
 					salas[i].adicionaActor(posX - 1, posY - 1, ator); // Assumindo que a posicao 1,1 seja a posicao da matriz 0,0
 				default:
 					// Se nn passar, dar erro
