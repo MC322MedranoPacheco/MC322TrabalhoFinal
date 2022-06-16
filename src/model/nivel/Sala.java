@@ -2,6 +2,7 @@ package model.nivel;
 
 import model.autor.Actor;
 import model.terreno.Terreno;
+import utilidades.Posicao;
 
 public class Sala {
 	private Celula layout[][];
@@ -11,9 +12,9 @@ public class Sala {
 	}
 	
 
-	public void mover(int xOri, int yOri, int xDest, int yDest, String actor) {
-		Actor autor = layout[yOri][xOri].remover(actor);
-		layout[yDest][xDest].setActor(autor);
+	public void mover(Posicao posicaoOrigem, Posicao posicaoFinal, String actor) {
+		Actor autor = layout[posicaoOrigem.getY()][posicaoOrigem.getY()].remover(actor);
+		layout[posicaoFinal.getY()][posicaoFinal.getX()].setActor(autor);
 	}
 
 

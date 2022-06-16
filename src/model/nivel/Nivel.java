@@ -1,10 +1,32 @@
 package model.nivel;
 
-public class Nivel implements INivel{
-	private Sala salas[];
+import utilidades.Observer;
+import utilidades.Posicao;
+import utilidades.Subject;
 
-	public void mover(int sala, int xOri, int yOri, int xDest, int yDest, String actor) {
-		salas[sala].mover(xOri, yOri, xDest, yDest, actor);
+public class Nivel implements INivel, Observer{
+	private Sala salas[];
+	private Subject topico;
+
+	public void mover(int sala, Posicao posicaoOrigem, Posicao posicaoFinal, String actor) { //que coisa feia
+		salas[sala].mover(posicaoOrigem, posicaoFinal);
 	}
+
+	@Override
+	public void update() {
+		 Posicao[] movimentos = (Posicao[]) topico.getUpdate(this); 
+		 // implementaremos aqui as consequencias de se mover para aqui
+		
+	}
+
+	@Override
+	public void setSubejct(Subject sub) {
+		this.topico = sub;
+		
+	}
+	
+	
+	
+	
 	
 }
