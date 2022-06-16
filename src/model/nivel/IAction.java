@@ -1,5 +1,7 @@
 package model.nivel;
 
+import utilidades.Posicao;
+
 public interface IAction {
-	public void mover(int sala, int xOri, int yOri, int xDest, int yDest, String actor);
+	public void mover(int sala,Posicao origem, Posicao destino, String actor);
 }

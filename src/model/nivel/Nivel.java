@@ -9,7 +9,7 @@ public class Nivel implements INivel, Observer{
 	private Subject topico;
 
 	public void mover(int sala, Posicao posicaoOrigem, Posicao posicaoFinal, String actor) { //que coisa feia
-		salas[sala].mover(posicaoOrigem, posicaoFinal);
+		salas[sala].mover(posicaoOrigem, posicaoFinal, actor);
 	}
 
 	@Override
@@ -24,6 +24,7 @@ public class Nivel implements INivel, Observer{
 		this.topico = sub;
 		
 	}
+
 	
 	
 	
