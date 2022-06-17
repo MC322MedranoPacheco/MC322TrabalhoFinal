@@ -1,5 +1,5 @@
 package control.gameControl;
 
-public interface IPress {
-
+public interface IPress{
+	
 }

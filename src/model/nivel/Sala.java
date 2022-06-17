@@ -13,6 +13,9 @@ public class Sala {
 	
 
 	public void mover(Posicao posicaoOrigem, Posicao posicaoFinal, String actor) {
+		
+		
+		
 		Actor autor = layout[posicaoOrigem.getY()][posicaoOrigem.getY()].remover(actor);
 		layout[posicaoFinal.getY()][posicaoFinal.getX()].setActor(autor);
 	}
@@ -25,5 +28,16 @@ public class Sala {
 
 	public void adicionaActor(int x, int y, Actor ator) {
 		layout[y][x].setActor(ator);
+	}
+
+
+	public int verificar(Posicao posicaoOrigem, Posicao posicaoFinal, String actor) {
+		return 0;
+		
+	}
+
+
+	public Celula getCelula(Posicao posicao) {
+		return layout[posicao.getY()][posicao.getX()];
 	}
 }

@@ -1,4 +1,7 @@
 package model.nivel;
 
-public interface INivel extends INivelProperties, IBuildNivel, IAction, IRNivelShow{
+import control.leitor.IRPress;
+
+public interface INivel extends INivelProperties, IBuildNivel, IAction, IRNivelShow, IRSolicitarMovimento{
+	
 }

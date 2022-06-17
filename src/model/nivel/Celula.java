@@ -1,11 +1,13 @@
 package model.nivel;
 
 import model.autor.Actor;
+import model.autor.IActor;
+import model.terreno.ITerreno;
 import model.terreno.Terreno;
 
 public class Celula {
-	private Terreno terreno;
-	private Actor autor = null;
+	private ITerreno terreno;
+	private IActor autor = null; // aqui tem que ser um Iactor
 	
 	public Celula(Terreno terreno){
 		this.terreno = terreno;
@@ -15,16 +17,20 @@ public class Celula {
 		this.autor = actor;
 	}
 	
-	public Actor getActor() {
+	public void setActor(IActor actor) {
+		this.autor = actor;
+	}
+	
+	public IActor getActor() {
 		return autor; 
 	}
 	
-	public Terreno getTerreno() {
+	public ITerreno getTerreno() {
 		return terreno;
 	}
 	
-	public Actor remover(String actor) {
-		Actor autor = null;
+	public IActor remover(String actor) {
+		IActor autor = null;
 		if(this.autor.toString().equals(actor))
 			autor = this.autor; 
 		return autor;

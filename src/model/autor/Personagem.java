@@ -15,9 +15,32 @@ public class Personagem extends Actor implements Subject{
 		super(x, y);
 		this.observers = new ArrayList<>();
 	}
-
-	public void acao() {
+	
+		//	comecando a implementar acoes de personagem
+	
+	
+	public void acao(/*aqui precisa ter uma string */) {
+		String comando = "w"; // essa string vai entrar como parametro
+		
+		switch(comando) {   //interpretar qual acao ele quer fazer;    
+			case "w":
+				iaction.mover(sala, posicaoAtual, posicaoAnterior, this.toString());
+		}
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public String toString() {
 		return "P";
