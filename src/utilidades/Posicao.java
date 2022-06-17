@@ -35,5 +35,21 @@ public class Posicao {
 		return "Posicao: " + x + " " + y;
 	}
 	
+	public static Posicao direcao(Posicao anterior, Posicao proxima) {
+		Posicao resultado;
+		if(anterior.getX() < proxima.getX()) 
+			resultado = new Posicao(proxima.getX()+1, proxima.getY());
+		else if(anterior.getX() > proxima.getY()) 
+			resultado = new Posicao(proxima.getX() - 1, proxima.getY());
+		else if(anterior.getY() < proxima.getY())
+			resultado = new Posicao(proxima.getX(), proxima.getY() + 1);
+		else if(anterior.getY() > proxima.getY())
+			resultado = new Posicao(proxima.getX(), proxima.getY() - 1);
+		else {
+			resultado = null; // nao pode entrar aqui eh erro que deve ser tratado
+		}
+		return resultado;
+	}
+	
 	
 }

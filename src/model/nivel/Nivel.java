@@ -12,11 +12,11 @@ public class Nivel implements INivel{
 
 	public boolean mover(int sala, Posicao posicaoOrigem, Posicao posicaoFinal, String actor) {
 		switch(salas[sala].verificar(posicaoOrigem, posicaoFinal,actor)) {
-			case 0:
-				boolean resposta = true; // recebe resultado do outro movimento que vai ser pedido pelo controle
-				if(conexion.acao(salas[sala].getCelula(posicaoFinal).getActor().toString(), posicao)) //temos que implementar metodo de saber para onde esta indo
+			case 0:														 // recebe resultado do outro movimento que vai ser pedido pelo controle
+				if(conexion.acao(salas[sala].getCelula(posicaoFinal).getActor(), Posicao.direcao(posicaoOrigem, posicaoFinal))) { //temos que implementar metodo de saber para onde esta indo
 						salas[sala].mover(posicaoOrigem, posicaoFinal, actor);
 						return true;
+				}
 				return false;
 			case 1:
 				return false; // aqui nao pode mover
