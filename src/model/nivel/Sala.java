@@ -1,6 +1,7 @@
 package model.nivel;
 
 import model.autor.Actor;
+import model.autor.IActor;
 import model.terreno.Terreno;
 import utilidades.Posicao;
 
@@ -16,7 +17,7 @@ public class Sala {
 		
 		
 		
-		Actor autor = layout[posicaoOrigem.getY()][posicaoOrigem.getY()].remover(actor);
+		IActor autor = layout[posicaoOrigem.getY()][posicaoOrigem.getY()].remover(actor);
 		layout[posicaoFinal.getY()][posicaoFinal.getX()].setActor(autor);
 	}
 
