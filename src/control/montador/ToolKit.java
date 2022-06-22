@@ -9,7 +9,7 @@ import java.util.Vector;
 
 public class ToolKit {
    public static String DIRETORIO = System.getProperty("user.dir") +
-		                            "/pt/src/control/montador/";
+		                            "/src/control/montador/";
    
    private static ToolKit tk;
    

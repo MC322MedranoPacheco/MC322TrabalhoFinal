@@ -39,8 +39,8 @@ public class Posicao {
 		Posicao resultado;
 		if(anterior.getX() < proxima.getX()) 
 			resultado = new Posicao(proxima.getX()+1, proxima.getY());
-		else if(anterior.getX() > proxima.getY()) 
-			resultado = new Posicao(proxima.getX() - 1, proxima.getY());
+		else if(anterior.getX() > proxima.getX()) 
+			resultado = new Posicao(proxima.getX()-1, proxima.getY());
 		else if(anterior.getY() < proxima.getY())
 			resultado = new Posicao(proxima.getX(), proxima.getY() + 1);
 		else if(anterior.getY() > proxima.getY())

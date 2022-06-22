@@ -2,6 +2,8 @@ package control.montador;
 
 import model.autor.Actor;
 import model.autor.Personagem;
+import model.autor.interactiveObjects.Caixa;
+import model.autor.personagens.Garoto;
 import model.nivel.IBuildNivel;
 import model.nivel.Sala;
 import model.terreno.Terra;
@@ -50,13 +52,20 @@ public class Montador implements IMontador{
 			for (int k = 0; k < numActors; k++) {
 				int posX = Integer.parseInt(modelo[linha][0]);
 				int posY = Integer.parseInt(modelo[linha][1]);
-				switch (modelo[linha][2]) {
-				case "P":
-					System.out.println("Passou aqui");
-					Actor ator = new Personagem(posY -1 , posX -1);
-					salas[i].adicionaActor(posX - 1, posY - 1, ator); // Assumindo que a posicao 1,1 seja a posicao da matriz 0,0
-				default:
-					// Se nn passar, dar erro
+				String stringAtor = modelo[linha][2];
+				switch (stringAtor) {
+					case "P":
+						System.out.println("Criou garoto");
+						Actor ator = new Garoto(posX -1 , posY -1);
+						salas[i].adicionaActor(posX - 1, posY - 1, ator); // Assumindo que a posicao 1,1 seja a posicao da matriz 0,0
+						break;
+					case "C":
+						System.out.println("Criou caixa");
+						Actor ator1 = new Caixa(posX -1 , posY -1);
+						salas[i].adicionaActor(posX - 1, posY - 1, ator1);
+						break;
+					default:
+						// Se nn passar, dar erro
 				}	
 				linha++;
 			}

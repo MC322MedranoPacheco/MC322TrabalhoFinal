@@ -30,9 +30,10 @@ public class Celula {
 	}
 	
 	public IActor remover(String actor) {
-		IActor autor = null;
+		IActor autorMovendo = null;
 		if(this.autor.toString().equals(actor))
-			autor = this.autor; 
-		return autor;
+			autorMovendo = this.autor;
+			this.autor = null;
+		return autorMovendo;
 	}
 }

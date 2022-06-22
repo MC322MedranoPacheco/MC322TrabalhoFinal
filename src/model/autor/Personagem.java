@@ -6,7 +6,7 @@ import utilidades.Observer;
 import utilidades.Posicao;
 import utilidades.Subject;
 
-public class Personagem extends Actor implements Subject{
+public abstract class Personagem extends Actor implements Subject{
 	private ArrayList<Observer> observers;
 	private boolean changed;
 	private final Object MUTEX= new Object();
@@ -19,13 +19,50 @@ public class Personagem extends Actor implements Subject{
 		//	comecando a implementar acoes de personagem
 	
 	
-	public void acao(/*aqui precisa ter uma string */) {
-		String comando = "w"; // essa string vai entrar como parametro
+	public boolean acao(String comando){ 
 		
-		switch(comando) {   //interpretar qual acao ele quer fazer;    
-			case "w":
-				iaction.mover(sala, posicaoAtual, posicaoAnterior, this.toString());
+		if(comando == "w" || comando == "a" || comando == "s" || comando== "d") {
+			Posicao destino;
+			switch(comando) {   //interpretar qual acao ele quer fazer;    
+				case "w":
+					destino = new Posicao(posicaoAtual.getX(), posicaoAtual.getY()-1);
+					if(iaction.mover(sala, posicaoAtual, destino, this.toString(),this.getForca())) {
+						posicaoAnterior = posicaoAtual.clone();
+						posicaoAtual.setY(posicaoAtual.getY()-1);
+						System.out.println("moveu pra cima");
+						return true;
+					}
+					return false;
+				case "s":
+					destino = new Posicao(posicaoAtual.getX(), posicaoAtual.getY()+1);
+					if(iaction.mover(sala, posicaoAtual, destino, this.toString(),this.getForca())) {
+						posicaoAnterior = posicaoAtual.clone();
+						posicaoAtual.setY(posicaoAtual.getY()+1);
+						System.out.println("moveu pra baixo");
+						return true;
+					}
+					return false;
+				case "a":
+					destino = new Posicao(posicaoAtual.getX()-1, posicaoAtual.getY());
+					if(iaction.mover(sala, posicaoAtual, destino, this.toString(),this.getForca())) {
+						posicaoAnterior = posicaoAtual.clone();
+						posicaoAtual.setX(posicaoAtual.getX()-1);
+						System.out.println("moveu pro lado");
+						return true;
+					}
+					return false;
+				case "d":
+					destino = new Posicao(posicaoAtual.getX()+1, posicaoAtual.getY());
+					if(iaction.mover(sala, posicaoAtual, destino, this.toString(),this.getForca())) {
+						posicaoAnterior = posicaoAtual.clone();
+						posicaoAtual.setX(posicaoAtual.getX()+1);
+						System.out.println("moveu pro lado");
+						return true;
+					}
+					return false;
+			}
 		}
+		return false;
 		
 	}
 	
@@ -107,5 +144,13 @@ public class Personagem extends Actor implements Subject{
 		
 	}
 	// ate aqui
+
+
+
+	@Override
+	public boolean acao(Posicao destino) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

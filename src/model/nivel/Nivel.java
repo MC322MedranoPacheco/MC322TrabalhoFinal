@@ -1,19 +1,23 @@
 package model.nivel;
 
 import control.gameControl.ISolicitarMovimento;
+import model.autor.IActor;
 import utilidades.Observer;
 import utilidades.Posicao;
 import utilidades.Subject;
 
 public class Nivel implements INivel{
-	private Sala salas[];
+	public Sala salas[];
 	private ISolicitarMovimento conexion;
+	
+	
 
 
-	public boolean mover(int sala, Posicao posicaoOrigem, Posicao posicaoFinal, String actor) {
-		switch(salas[sala].verificar(posicaoOrigem, posicaoFinal,actor)) {
-			case 0:														 // recebe resultado do outro movimento que vai ser pedido pelo controle
-				if(conexion.acao(salas[sala].getCelula(posicaoFinal).getActor(), Posicao.direcao(posicaoOrigem, posicaoFinal))) { //temos que implementar metodo de saber para onde esta indo
+	public boolean mover(int sala, Posicao posicaoOrigem, Posicao posicaoFinal, String actor, int forca) {
+		switch(salas[sala].verificar(posicaoFinal)) {
+			case 0:	// recebe resultado do outro movimento que vai ser pedido pelo controle
+				if(conexion.acao(salas[sala].getCelula(posicaoFinal).getActor(), Posicao.direcao(posicaoOrigem, posicaoFinal), forca)) {
+						
 						salas[sala].mover(posicaoOrigem, posicaoFinal, actor);
 						return true;
 				}
@@ -32,6 +36,8 @@ public class Nivel implements INivel{
 		this.conexion = conexion;
 		
 	}
+
+
 
 
 	

@@ -1,7 +1,9 @@
 package model.nivel;
 
+import model.autor.IActor;
 import utilidades.Posicao;
 
 public interface IAction {
-	public boolean mover(int sala,Posicao origem, Posicao destino, String actor);
+
+	public boolean mover(int sala, Posicao posicaoAtual, Posicao destino, String string, int forca);
 }

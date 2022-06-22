@@ -13,6 +13,8 @@ public abstract class Actor implements IActor, Observer{
 	protected IVisualActor ivisualactor;
 	private Subject topico;
 	protected int sala;
+	protected int forca;
+	protected int resistencia;
 	
 	private String msg; // isso provavelmente nao vai ser uma String
 	
@@ -20,11 +22,28 @@ public abstract class Actor implements IActor, Observer{
 	protected Posicao posicaoAtual;
 	protected Posicao posicaoAnterior = null; //talvez isso era pra estar so no personagem??
 	
-	
+	public abstract String toString();
 	
 	public Actor(int x, int y) {
 		posicaoAtual = new Posicao(x, y);
 	}
+	
+	public int getResistencia() {
+		return resistencia;
+	}
+	
+	public int getForca() {
+		return forca;
+	}
+	
+	public void setForca(int forca) {
+		this.forca = forca;
+	}
+	
+	public void setResistencia(int resistencia) {
+		this.resistencia = resistencia;
+	}
+	
 	
 	public int getSala() {
 		return sala;
@@ -55,8 +74,7 @@ public abstract class Actor implements IActor, Observer{
 		
 	}
 
-	
-	
+
 	
 	
 	

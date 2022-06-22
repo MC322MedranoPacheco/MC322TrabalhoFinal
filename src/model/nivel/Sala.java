@@ -14,10 +14,7 @@ public class Sala {
 	
 
 	public void mover(Posicao posicaoOrigem, Posicao posicaoFinal, String actor) {
-		
-		
-		
-		IActor autor = layout[posicaoOrigem.getY()][posicaoOrigem.getY()].remover(actor);
+		IActor autor = this.getCelula(posicaoOrigem).remover(actor);
 		layout[posicaoFinal.getY()][posicaoFinal.getX()].setActor(autor);
 	}
 
@@ -32,9 +29,24 @@ public class Sala {
 	}
 
 
-	public int verificar(Posicao posicaoOrigem, Posicao posicaoFinal, String actor) {
-		return 0;
-		
+	public int verificar(Posicao posicaoFinal) {
+		if(!posicaoValida(posicaoFinal)) {
+			return 1;
+		}
+		else if(layout[posicaoFinal.getY()][posicaoFinal.getX()].getActor() != null) {
+			return 0;
+		}
+		return 2; // cai no default
+	}
+	
+	public boolean posicaoValida(Posicao posicao) {
+		if((layout.length <= posicao.getY() || posicao.getY() < 0 || posicao.getX() < 0))
+			return false;
+		else if(layout[posicao.getY()].length <= posicao.getX())
+			return false;
+		else {
+			return true;
+		}
 	}
 
 
