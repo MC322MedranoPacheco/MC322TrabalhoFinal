@@ -5,5 +5,5 @@ import utilidades.Posicao;
 
 public interface IAction {
 
-	public boolean mover(int sala, Posicao posicaoAtual, Posicao destino, String string, int forca);
+	public boolean mover(int sala, Posicao posicaoAtual, Posicao destino, int forca);
 }

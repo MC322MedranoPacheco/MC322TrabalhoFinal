@@ -18,10 +18,7 @@ public class Caixa extends Actor{
 
 	@Override
 	public boolean acao(Posicao destino) {
-		if(iaction.mover(sala, posicaoAtual, destino, this.toString(),this.getForca())) {
-			posicaoAnterior = posicaoAtual.clone();
-			posicaoAtual.setX(destino.getX());
-			posicaoAtual.setY(destino.getY());
+		if(iaction.mover(sala, posicaoAtual, destino,this.getForca())) {
 			System.out.println("moveu caixa");
 			return true;
 		}

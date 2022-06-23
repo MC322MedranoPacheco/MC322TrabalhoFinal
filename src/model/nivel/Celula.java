@@ -6,7 +6,7 @@ import model.terreno.ITerreno;
 import model.terreno.Terreno;
 
 public class Celula {
-	private ITerreno terreno;
+	private Terreno terreno;
 	private IActor autor = null; // aqui tem que ser um Iactor
 	
 	public Celula(Terreno terreno){
@@ -25,15 +25,14 @@ public class Celula {
 		return autor; 
 	}
 	
-	public ITerreno getTerreno() {
+	public Terreno getTerreno() {
 		return terreno;
 	}
 	
-	public IActor remover(String actor) {
+	public IActor remover() {
 		IActor autorMovendo = null;
-		if(this.autor.toString().equals(actor))
-			autorMovendo = this.autor;
-			this.autor = null;
+		autorMovendo = this.autor;
+		this.autor = null;
 		return autorMovendo;
 	}
 }

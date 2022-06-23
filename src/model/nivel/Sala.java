@@ -13,9 +13,10 @@ public class Sala {
 	}
 	
 
-	public void mover(Posicao posicaoOrigem, Posicao posicaoFinal, String actor) {
-		IActor autor = this.getCelula(posicaoOrigem).remover(actor);
+	public void mover(Posicao posicaoOrigem, Posicao posicaoFinal) {
+		IActor autor = this.getCelula(posicaoOrigem).remover();
 		layout[posicaoFinal.getY()][posicaoFinal.getX()].setActor(autor);
+		autor.setPosicao(posicaoFinal);
 	}
 
 

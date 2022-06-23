@@ -11,8 +11,7 @@ public class teste {
 
 	public static void main(String[] args) {
 		Montador montador = new Montador();
-		Nivel nivel = new Nivel();
-		nivel.salas =   montador.constroiNivel(null, "NivelTeste");
+		Nivel nivel = montador.constroiNivel(null, "NivelTeste");
 		GameControl teste = GameControl.getInstance();
 		teste.connect(nivel.salas[0].getCelula(new Posicao(0,0)).getActor());
 		nivel.connect(teste);

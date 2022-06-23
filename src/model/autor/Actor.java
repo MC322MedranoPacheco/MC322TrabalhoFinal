@@ -24,8 +24,15 @@ public abstract class Actor implements IActor, Observer{
 	
 	public abstract String toString();
 	
+	
+	
 	public Actor(int x, int y) {
 		posicaoAtual = new Posicao(x, y);
+	}
+	
+	public void setPosicao(Posicao posicao) {
+		this.posicaoAnterior = this.posicaoAtual.clone();
+		this.posicaoAtual = posicao;
 	}
 	
 	public int getResistencia() {

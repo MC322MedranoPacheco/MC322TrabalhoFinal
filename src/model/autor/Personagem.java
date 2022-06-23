@@ -26,36 +26,28 @@ public abstract class Personagem extends Actor implements Subject{
 			switch(comando) {   //interpretar qual acao ele quer fazer;    
 				case "w":
 					destino = new Posicao(posicaoAtual.getX(), posicaoAtual.getY()-1);
-					if(iaction.mover(sala, posicaoAtual, destino, this.toString(),this.getForca())) {
-						posicaoAnterior = posicaoAtual.clone();
-						posicaoAtual.setY(posicaoAtual.getY()-1);
+					if(iaction.mover(sala, posicaoAtual, destino,this.getForca())) {
 						System.out.println("moveu pra cima");
 						return true;
 					}
 					return false;
 				case "s":
 					destino = new Posicao(posicaoAtual.getX(), posicaoAtual.getY()+1);
-					if(iaction.mover(sala, posicaoAtual, destino, this.toString(),this.getForca())) {
-						posicaoAnterior = posicaoAtual.clone();
-						posicaoAtual.setY(posicaoAtual.getY()+1);
+					if(iaction.mover(sala, posicaoAtual, destino,this.getForca())) {
 						System.out.println("moveu pra baixo");
 						return true;
 					}
 					return false;
 				case "a":
 					destino = new Posicao(posicaoAtual.getX()-1, posicaoAtual.getY());
-					if(iaction.mover(sala, posicaoAtual, destino, this.toString(),this.getForca())) {
-						posicaoAnterior = posicaoAtual.clone();
-						posicaoAtual.setX(posicaoAtual.getX()-1);
+					if(iaction.mover(sala, posicaoAtual, destino,this.getForca())) {
 						System.out.println("moveu pro lado");
 						return true;
 					}
 					return false;
 				case "d":
 					destino = new Posicao(posicaoAtual.getX()+1, posicaoAtual.getY());
-					if(iaction.mover(sala, posicaoAtual, destino, this.toString(),this.getForca())) {
-						posicaoAnterior = posicaoAtual.clone();
-						posicaoAtual.setX(posicaoAtual.getX()+1);
+					if(iaction.mover(sala, posicaoAtual, destino,this.getForca())) {
 						System.out.println("moveu pro lado");
 						return true;
 					}
