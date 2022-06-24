@@ -119,25 +119,6 @@ public abstract class Personagem extends Actor implements Subject{
 		notificarObservadores();
 	}
 	
-	
-	
-	
-	//nao serao usados para personagem !!!! :
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setSubejct(Subject sub) {
-		// TODO Auto-generated method stub
-		
-	}
-	// ate aqui
-
-
 
 	@Override
 	public boolean acao(Posicao destino) {

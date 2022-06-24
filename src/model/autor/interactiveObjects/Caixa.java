@@ -8,7 +8,7 @@ public class Caixa extends Actor{
 	public Caixa(int x, int y) {
 		super(x, y);
 		int resistencia = 5;
-		int forca = 0;
+		int forca = 1;
 	}
 
 	@Override
