@@ -31,7 +31,7 @@ public class AppJogo {
 		nivel.connect(teste);
 		teste.acao("d");
 		teste.acao("s");
-		teste.acao("a");
+		teste.acao("d");
 		teste.acao("a");
 		teste.acao("a");
 		teste.acao("a");

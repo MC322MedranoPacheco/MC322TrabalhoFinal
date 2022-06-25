@@ -35,7 +35,6 @@ public abstract class Actor implements IActor{
 	
 	public void setPosicao(Posicao posicao) {
 		
-		System.out.println(Posicao.direcaoChar(posicaoAtual, posicao));
 		changedView = true;
 		notificarObservadoresView(Posicao.direcaoChar(posicaoAtual, posicao));
 		this.posicaoAnterior = this.posicaoAtual.clone();
@@ -80,7 +79,6 @@ public abstract class Actor implements IActor{
 	}
 	
 	public void registrarView(ObserverActor obj) {
-		System.out.println("wtf");
 		if(obj == null) throw new NullPointerException("Null Observer");
 		synchronized (MUTEX) {
 		if(!observersActor.contains(obj)) {

@@ -92,6 +92,7 @@ public class Montador implements IMontador{
 					case "L":
 						Actor ator3 = new LaserMaquina(posX - 1, posY - 1, Integer.parseInt(modelo[linha][3]), nivel);
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator3);
+						break;
 					default:
 						// Se nn passar, dar erro
 				}
