@@ -1,12 +1,15 @@
 package control.montador;
 
 import model.autor.Actor;
+import model.autor.ActorSubjectView;
+import model.autor.Personagem;
 import model.autor.interactiveObjects.Caixa;
 import model.autor.personagens.Garoto;
 import model.nivel.IBuildNivel;
 import model.nivel.Nivel;
 import model.nivel.Sala;
 import model.terreno.Gelo;
+import model.terreno.Pedra;
 import model.terreno.Terra;
 import model.terreno.Terreno;
 
@@ -49,6 +52,12 @@ public class Montador implements IMontador{
 						break;
 					case "G":
 						terreno = new Gelo(j,k);
+						terreno.setSala(i);
+						nivel.salas[i].adicionaTerreno(j, k, terreno);
+						terreno.connect(nivel);
+						break;
+					case "p":
+						terreno = new Pedra(j, k);
 						terreno.setSala(i);
 						nivel.salas[i].adicionaTerreno(j, k, terreno);
 						terreno.connect(nivel);

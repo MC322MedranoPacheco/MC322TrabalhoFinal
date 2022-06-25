@@ -16,5 +16,9 @@ public class Gelo extends Terreno{
 		}
 		return false;
 	}
+	
+	public String toString() {
+		return Gelo.class.getResource(".").getPath() + "crate_44.png";
+	}
 
 }

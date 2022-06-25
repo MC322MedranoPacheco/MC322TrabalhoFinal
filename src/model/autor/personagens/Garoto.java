@@ -1,6 +1,7 @@
 package model.autor.personagens;
 
 import model.autor.Personagem;
+import view.nivelView.ObserverActor;
 
 public class Garoto extends Personagem{
 
@@ -12,6 +13,7 @@ public class Garoto extends Personagem{
 	
 	
 	public String toString() {
-		return "G";
+		return Personagem.class.getResource(".").getPath() + "player_23.png";
 	}
+
 }

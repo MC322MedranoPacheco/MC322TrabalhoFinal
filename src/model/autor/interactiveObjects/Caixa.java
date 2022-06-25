@@ -8,7 +8,7 @@ public class Caixa extends Actor{
 	public Caixa(int x, int y) {
 		super(x, y);
 		int resistencia = 5;
-		int forca = 1;
+		int forca = 0;
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class Caixa extends Actor{
 	
 	
 	public String toString() {
-		return "C";
+		return Caixa.class.getResource(".").getPath() + "crate_42.png";
 	}
 
 }

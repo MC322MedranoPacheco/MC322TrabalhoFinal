@@ -51,5 +51,20 @@ public class Posicao {
 		return resultado;
 	}
 	
+	public static String direcaoChar(Posicao anterior, Posicao proxima) {
+		String resultado;
+		if(anterior.getX() < proxima.getX()) 
+			resultado = "d";
+		else if(anterior.getX() > proxima.getX()) 
+			resultado = "a";
+		else if(anterior.getY() < proxima.getY())
+			resultado = "s";
+		else if(anterior.getY() > proxima.getY())
+			resultado = "w";
+		else {
+			resultado = null; // nao pode entrar aqui eh erro que deve ser tratado
+		}
+		return resultado;
+	}
 	
 }

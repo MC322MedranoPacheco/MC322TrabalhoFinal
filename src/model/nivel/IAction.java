@@ -6,8 +6,4 @@ import utilidades.Posicao;
 public interface IAction {
 
 	public boolean mover(int sala, Posicao posicaoAtual, Posicao destino, int forca);
-
-	public Celula getCelula(Posicao posicao, int sala);
-	
-	
 }

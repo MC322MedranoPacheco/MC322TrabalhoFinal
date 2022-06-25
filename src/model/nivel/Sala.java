@@ -1,6 +1,7 @@
 package model.nivel;
 
 import model.autor.Actor;
+import model.autor.ActorSubjectView;
 import model.autor.IActor;
 import model.terreno.Terreno;
 import utilidades.Posicao;
@@ -27,6 +28,10 @@ public class Sala {
 
 	public void adicionaActor(int x, int y, Actor ator) {
 		layout[y][x].setActor(ator);
+	}
+	
+	public void adicionaSubject(int x, int y, ActorSubjectView sub) {
+		layout[y][x].setSubjectView(sub);
 	}
 
 

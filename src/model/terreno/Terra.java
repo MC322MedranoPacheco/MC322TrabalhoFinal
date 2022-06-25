@@ -11,6 +11,9 @@ public class Terra extends Terreno{
 	public boolean acao(Posicao destino) {
 		return false;
 	}
-
+	
+	public String toString() {
+		return Terra.class.getResource(".").getPath() + "ground_05.png";
+	}
 
 }
