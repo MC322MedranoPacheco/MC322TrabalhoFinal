@@ -2,6 +2,7 @@ package model.autor;
 
 import java.util.ArrayList;
 
+import model.nivel.IAction;
 import utilidades.Observer;
 import utilidades.Posicao;
 import utilidades.Subject;
@@ -10,16 +11,17 @@ public abstract class Personagem extends Actor implements Subject{
 	private ArrayList<Observer> observers;
 	private boolean changed;
 	private final Object MUTEX= new Object();
+	private boolean vivo;
 
-	public Personagem(int x, int y) {
-		super(x, y);
+	public Personagem(int x, int y, IAction iaction) {
+		super(x, y, iaction);
 		this.observers = new ArrayList<>();
 	}
 	
 		//	comecando a implementar acoes de personagem
 	
 	
-	public boolean acao(String comando){ 
+	public boolean acao(String comando, IVivo vivo){ 
 		
 		if(comando == "w" || comando == "a" || comando == "s" || comando== "d") {
 			Posicao destino;
@@ -61,8 +63,18 @@ public abstract class Personagem extends Actor implements Subject{
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public String toString() {
-		return Personagem.class.getResource(".").getPath() + "player_24.png";
+		return "P";
 	}
 	
 	
@@ -109,30 +121,18 @@ public abstract class Personagem extends Actor implements Subject{
 		notificarObservadores();
 	}
 	
-	
-	
-	
-	//nao serao usados para personagem !!!! :
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setSubejct(Subject sub) {
-		// TODO Auto-generated method stub
-		
-	}
-	// ate aqui
-
-
-
-	@Override
-	public boolean acao(Posicao destino) {
-		// TODO Auto-generated method stub
+	public boolean acao(Posicao destino, IVivo vivo) { // no teleporte vai usar
 		return false;
+	}
+	
+	public boolean getVivo() {
+		return vivo;
+	}
+	
+	public void setVivo(boolean vivo) {
+		this.vivo = vivo;
 	}
 	
 }

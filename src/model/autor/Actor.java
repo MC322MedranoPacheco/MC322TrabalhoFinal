@@ -9,30 +9,32 @@ import utilidades.Subject;
 import view.autorView.IVisualActor;
 import view.nivelView.ObserverActor;
 
-public abstract class Actor implements IActor, Observer{
+public abstract class Actor implements IActor{
 	protected IAction iaction;
 	protected IVisualActor ivisualactor;
-	private Subject topico;
 	protected int sala;
 	protected int forca;
 	protected int resistencia;
-	
-	private String msg; // isso provavelmente nao vai ser uma String
 	private final Object MUTEX= new Object();
 	private boolean changedView;
+	private ArrayList<ObserverActor> observersActor = new ArrayList<>();
+
+	
+	private String msg; // isso provavelmente nao vai ser uma String
+	
 	
 	protected Posicao posicaoAtual;
 	protected Posicao posicaoAnterior = null; //talvez isso era pra estar so no personagem??
 	
 	public abstract String toString();
 	
-	private ArrayList<ObserverActor> observersActor = new ArrayList<>();
-	
-	public Actor(int x, int y) {
+	public Actor(int x, int y, IAction iaction) {
 		posicaoAtual = new Posicao(x, y);
+		this.connect(iaction);
 	}
 	
 	public void setPosicao(Posicao posicao) {
+		
 		System.out.println(Posicao.direcaoChar(posicaoAtual, posicao));
 		changedView = true;
 		notificarObservadoresView(Posicao.direcaoChar(posicaoAtual, posicao));
@@ -76,20 +78,7 @@ public abstract class Actor implements IActor, Observer{
 	public void connect(IVisualActor ivisualactor) {
 		this.ivisualactor = ivisualactor;
 	}
-
-	@Override
-	public void update() {
-		 Posicao[] movimentos = (Posicao[]) topico.getUpdate(this); 
-		 // implementaremos aqui as consequencias de se mover para aqui
-		
-	}
-
-	@Override
-	public void setSubejct(Subject sub) {
-		this.topico = sub;
-		
-	}
-
+	
 	public void registrarView(ObserverActor obj) {
 		System.out.println("wtf");
 		if(obj == null) throw new NullPointerException("Null Observer");
@@ -117,5 +106,4 @@ public abstract class Actor implements IActor, Observer{
 			obj.update(string);
 		}
 	}
-	
 }

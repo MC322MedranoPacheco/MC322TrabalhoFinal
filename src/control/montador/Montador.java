@@ -4,6 +4,7 @@ import model.autor.Actor;
 import model.autor.ActorSubjectView;
 import model.autor.Personagem;
 import model.autor.interactiveObjects.Caixa;
+import model.autor.interactiveObjects.LaserMaquina;
 import model.autor.interactiveObjects.Parede;
 import model.autor.personagens.Garoto;
 import model.nivel.IBuildNivel;
@@ -46,19 +47,19 @@ public class Montador implements IMontador{
 					Terreno terreno;
 					switch (modelo[linha][j]) {
 					case "T":
-						terreno = new Terra(j, k);
+						terreno = new Terra(j, k, nivel);
 						terreno.setSala(i);
 						nivel.salas[i].adicionaTerreno(j, k, terreno);
 						terreno.connect(nivel);
 						break;
 					case "G":
-						terreno = new Gelo(j,k);
+						terreno = new Gelo(j,k, nivel);
 						terreno.setSala(i);
 						nivel.salas[i].adicionaTerreno(j, k, terreno);
 						terreno.connect(nivel);
 						break;
 					case "p":
-						terreno = new Pedra(j, k);
+						terreno = new Pedra(j, k, nivel);
 						terreno.setSala(i);
 						nivel.salas[i].adicionaTerreno(j, k, terreno);
 						terreno.connect(nivel);
@@ -77,20 +78,23 @@ public class Montador implements IMontador{
 				String stringAtor = modelo[linha][2];
 				switch (stringAtor) {
 					case "P":
-						Actor ator = new Garoto(posX -1 , posY -1);
+						Actor ator = new Garoto(posX -1 , posY -1, nivel);
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator); // Assumindo que a posicao 1,1 seja a posicao da matriz 0,0
 						break;
 					case "C":
-						Actor ator1 = new Caixa(posX -1 , posY -1);
+						Actor ator1 = new Caixa(posX -1 , posY -1, nivel);
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator1);
 						break;
 					case "p":
-						Actor ator2 = new Parede(posX - 1, posY - 1);
+						Actor ator2 = new Parede(posX - 1, posY - 1, nivel);
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator2);
 						break;
+					case "L":
+						Actor ator3 = new LaserMaquina(posX - 1, posY - 1, Integer.parseInt(modelo[linha][3]), nivel);
+						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator3);
 					default:
 						// Se nn passar, dar erro
-				}	
+				}
 				linha++;
 			}
 			

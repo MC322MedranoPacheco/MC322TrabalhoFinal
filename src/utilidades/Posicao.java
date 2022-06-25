@@ -51,13 +51,14 @@ public class Posicao {
 		return resultado;
 	}
 	
+	
 	public static String direcaoChar(Posicao anterior, Posicao proxima) {
 		String resultado;
 		if(anterior.getX() < proxima.getX()) 
 			resultado = "d";
 		else if(anterior.getX() > proxima.getX()) 
 			resultado = "a";
-		else if(anterior.getY() < proxima.getY())
+		else if(anterior.getY() < proxima.getY())													// repeticao de codigo
 			resultado = "s";
 		else if(anterior.getY() > proxima.getY())
 			resultado = "w";
@@ -66,5 +67,6 @@ public class Posicao {
 		}
 		return resultado;
 	}
+	
 	
 }

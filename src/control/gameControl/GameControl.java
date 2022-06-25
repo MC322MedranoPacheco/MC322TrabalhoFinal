@@ -24,14 +24,14 @@ public class GameControl implements IGameControl{
 	@Override
 	public boolean acao(ICommand actor, Posicao direcao, int forca) {
 		if(forca > actor.getResistencia()) {
-			return actor.acao(direcao);
+			return actor.acao(direcao, actor);
 		}
 		return false;
 	}
 
 	@Override
 	public boolean acao(String comando) {
-		return iCommand.acao(comando);
+		return iCommand.acao(comando, iCommand);
 	}
 	
 	

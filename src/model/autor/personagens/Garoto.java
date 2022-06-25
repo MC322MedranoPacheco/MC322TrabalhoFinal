@@ -1,19 +1,21 @@
 package model.autor.personagens;
 
 import model.autor.Personagem;
-import view.nivelView.ObserverActor;
+import model.nivel.IAction;
 
 public class Garoto extends Personagem{
 
-	public Garoto(int x, int y) {
-		super(x, y);
+	public Garoto(int x, int y, IAction iaction) {
+		super(x, y, iaction);
 		this.forca = 10;
 		this.resistencia = 20;
 	}
 	
 	
 	public String toString() {
-		return Personagem.class.getResource(".").getPath() + "player_23.png";
+		return Garoto.class.getResource(".").getPath() + "player_23.png";
 	}
+
+
 
 }

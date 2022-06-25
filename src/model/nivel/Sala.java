@@ -29,10 +29,6 @@ public class Sala {
 	public void adicionaActor(int x, int y, Actor ator) {
 		layout[y][x].setActor(ator);
 	}
-	
-	public void adicionaSubject(int x, int y, ActorSubjectView sub) {
-		layout[y][x].setSubjectView(sub);
-	}
 
 
 	public int verificar(Posicao posicaoFinal) {
@@ -59,4 +55,13 @@ public class Sala {
 	public Celula getCelula(Posicao posicao) {
 		return layout[posicao.getY()][posicao.getX()];
 	}
+	
+	
+	public void adicionaSubject(int x, int y, ActorSubjectView sub) {
+		layout[y][x].setSubjectView(sub);
+	}
+	
+	
+	
+	
 }

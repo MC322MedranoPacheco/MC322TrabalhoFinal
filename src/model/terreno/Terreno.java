@@ -1,5 +1,6 @@
 package model.terreno;
 
+import model.autor.IVivo;
 import model.nivel.IAction;
 import utilidades.Posicao;
 import view.terrenoView.ITerrenoShow;
@@ -19,8 +20,9 @@ public abstract class Terreno implements ITerreno{
 		this.sala = sala;
 	}
 	
-	public Terreno(int x, int y) {
+	public Terreno(int x, int y, IAction iAction) {
 		posicao = new Posicao(x,y);
+		this.connect(iAction);
 	}
 
 	public void connect(IAction iAction) {
@@ -31,7 +33,7 @@ public abstract class Terreno implements ITerreno{
 		this.iTerrenoShow = iTerrenoShow;
 	}
 	
-	public abstract boolean acao(Posicao acao);
+	public abstract boolean acao(Posicao acao, IVivo vivo);
 
 
 

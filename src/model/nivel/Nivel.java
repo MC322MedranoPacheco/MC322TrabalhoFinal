@@ -42,9 +42,20 @@ public class Nivel implements INivel{
 		
 	}
 
+
+	@Override
+	public Celula getCelula(Posicao posicao, int sala) {
+		if(salas[sala].posicaoValida(posicao)){
+			return salas[sala].getCelula(posicao);
+		}
+		else {
+			return null;
+		}
+	}
+	
 	public Sala getSala(int i) {
 		return salas[i];
-	}	
-
+	}
+	
 	
 }
