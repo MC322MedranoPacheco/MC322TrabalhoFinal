@@ -54,7 +54,12 @@ public class NivelView implements INivelView{
 				Dimension sizeT = matrizJLabel[i][k].getPreferredSize();
 				matrizJLabel[i][k].setBounds(espacamento + k*66 , espacamento + i*66, sizeT.width, sizeT.height);
 				janelaJogo.add(matrizJLabel[i][k]);
+				contentPane.setComponentZOrder(matrizJLabel[i][k], 0);
 			}
+		}
+		for (int i = 0; i < vetorJLabelAnima.length; i++) {
+			if(vetorJLabelAnima[i] != null)
+				contentPane.setComponentZOrder(vetorJLabelAnima[i], 0);
 		}
 		janelaJogo.setVisible(true);
 	}

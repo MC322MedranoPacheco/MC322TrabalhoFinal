@@ -1,6 +1,6 @@
 1,,,,,,,,,,,,,,,
 14,14,,,,,,,,,,,,,,
-T,G,T,T,T,T,T,T,T,T,T,T,T,T,T,T
+T,G,G,G,G,G,T,T,T,T,T,T,T,T,T,T
 T,p,T,T,T,T,T,T,T,T,T,T,T,T,T,T
 T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T
 T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T
@@ -14,6 +14,7 @@ T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T
 T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T
 T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T
 T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T
-2,,,,,,,,,,,,,,,
+3,,,,,,,,,,,,,,,
 1,1,P,,,,,,,,,,,,,
 3,2,C,,,,,,,,,,,,,
+7,1,p,,,,,,,,,,,,,

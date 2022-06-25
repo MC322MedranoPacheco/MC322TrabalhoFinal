@@ -4,6 +4,7 @@ import model.autor.Actor;
 import model.autor.ActorSubjectView;
 import model.autor.Personagem;
 import model.autor.interactiveObjects.Caixa;
+import model.autor.interactiveObjects.Parede;
 import model.autor.personagens.Garoto;
 import model.nivel.IBuildNivel;
 import model.nivel.Nivel;
@@ -76,14 +77,16 @@ public class Montador implements IMontador{
 				String stringAtor = modelo[linha][2];
 				switch (stringAtor) {
 					case "P":
-						System.out.println("Criou garoto");
 						Actor ator = new Garoto(posX -1 , posY -1);
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator); // Assumindo que a posicao 1,1 seja a posicao da matriz 0,0
 						break;
 					case "C":
-						System.out.println("Criou caixa");
 						Actor ator1 = new Caixa(posX -1 , posY -1);
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator1);
+						break;
+					case "p":
+						Actor ator2 = new Parede(posX - 1, posY - 1);
+						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator2);
 						break;
 					default:
 						// Se nn passar, dar erro
