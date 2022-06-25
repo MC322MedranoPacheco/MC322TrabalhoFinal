@@ -19,11 +19,16 @@ public class LaserFeixo extends Actor implements Observer{
 		super(x,y, iaction);
 		this.direcao = direcao;
 		this.sala = sala;
-		gerarFeixo(direcao);
 		Subject[] subs = new Subject[4];
-		subs[0] = iaction.getCelula(getPosAnterior(posicaoAtual, direcao), sala); // e se for o primeiro ?
+		subs[0] = iaction.getCelula(getPosAnterior(posicaoAtual, direcao), sala);// e se for o primeiro ?
 		subs[1] = iaction.getCelula(getPosAnterior(posicaoAtual, direcao), sala);
+		if(iaction.getCelula(getPosProxima(posicaoAtual, direcao), this.sala)!= null)
+			iaction.getCelula(getPosProxima(posicaoAtual, direcao), this.sala).registrar(this);
+		iaction.getCelula(getPosAnterior(posicaoAtual, direcao), this.sala).registrar(this);
 		setSubejects(subs);
+		forca = 0;
+		resistencia =0;
+		gerarFeixo(direcao);
 		
 		
 	}
@@ -59,6 +64,8 @@ public class LaserFeixo extends Actor implements Observer{
 			gerarFeixo(direcao);
 		}
 	}
+	
+	
 	
 	public Posicao getPosAnterior(Posicao posAtual, int direcao) {
 		switch(direcao) {
@@ -123,17 +130,17 @@ public class LaserFeixo extends Actor implements Observer{
 	
 			IActor feixoDuplo =  new LaserFeixoDuplo(pos.getX(), pos.getY(), direcao,
 				((LaserFeixo) iaction.getCelula(pos, this.sala).getActor()).getDirecao(), this.sala, this.iaction);
-			iaction.getCelula(pos, sala).remover();
+			iaction.getCelula(pos, sala).remover(true);
 			feixoDuplo.connect(iaction);
 			iaction.getCelula(pos, sala).setActor(feixoDuplo); //falta implementar a conecao com o observer
 			
 		}	
 	}
 
-	protected void autodestruir(int direcao) {
+	public void autodestruir(int direcao) {
 		anterior.excluirRegistro(this);
 		proximo.excluirRegistro(this);
-		iaction.getCelula(posicaoAtual, sala).remover();
+		iaction.getCelula(posicaoAtual, sala).remover(true);
 	}
 
 	@Override

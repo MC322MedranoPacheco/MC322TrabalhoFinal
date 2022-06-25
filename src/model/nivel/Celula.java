@@ -18,16 +18,15 @@ public class Celula implements Subject{
 	private final Object MUTEX = new Object();
 	private ActorSubjectView subjectView = null;
 	
-	public Celula(Terreno terreno){
-		this.terreno = terreno;
+	public Celula(){
 		observers = new ArrayList<>();
 	}
 	
 	public boolean getOcupado() {
-		if(autor == null || autor.toString().charAt(0) == 'L') {
-			return false;
+		if(autor == null || autor.getForca() == 0) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 	public void setActor(Actor actor) {
@@ -36,7 +35,10 @@ public class Celula implements Subject{
 	
 	public void setActor(IActor actor) {
 		this.autor = actor;
-		notificarObservadores();
+		if(actor.getForca() !=0 ) {
+			changed = true;
+			notificarObservadores();
+		}
 	}
 	
 	public IActor getActor() {
@@ -47,13 +49,25 @@ public class Celula implements Subject{
 		return terreno;
 	}
 	
-	public IActor remover() {
+	public void setTerreno(Terreno terreno) {
+		this.terreno = terreno;
+	}
+	
+	public IActor remover(boolean tirar) {
 		IActor autorMovendo = null;
 		autorMovendo = this.autor;
+		if(autor.getForca() != 0) {
+			changed = true;
+			notificarObservadores();
+		}
 		this.autor = null;
-		notificarObservadores();
+		autorMovendo.setChanged(tirar);
+		autorMovendo.notificarObservadoresView("r");
 		return autorMovendo;
 	}
+	
+	
+	
 
 	@Override
 	public void registrar(Observer obj) {
@@ -79,8 +93,10 @@ public class Celula implements Subject{
 			observersLocal = new ArrayList<>(this.observers);
 			this.changed = false;
 		}
-		for(Observer obj : this.observers) {
+		
+		for(Observer obj : observersLocal) {
 			obj.update();
+			System.out.println("chegou aqui");
 		}
 	}
 

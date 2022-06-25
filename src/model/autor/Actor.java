@@ -33,8 +33,11 @@ public abstract class Actor implements IActor{
 		this.connect(iaction);
 	}
 	
+	public void setChanged(boolean changed) {
+		this.changedView = changed;
+	}
+	
 	public void setPosicao(Posicao posicao) {
-		
 		changedView = true;
 		notificarObservadoresView(Posicao.direcaoChar(posicaoAtual, posicao));
 		this.posicaoAnterior = this.posicaoAtual.clone();
@@ -95,6 +98,7 @@ public abstract class Actor implements IActor{
 	
 	public void notificarObservadoresView(String string) {
 
+		
 		synchronized (MUTEX) {
 			if (!changedView)
 				return;

@@ -18,7 +18,7 @@ public class LaserFeixoDuplo extends LaserFeixo{
 	}
 	
 	@Override
-	protected void autodestruir(int direcao) {
+	public void autodestruir(int direcao) {
 		if(direcao == this.direcao) {
 			super.autodestruir(direcao);
 			gerarFeixo(this.segundaDirecao);

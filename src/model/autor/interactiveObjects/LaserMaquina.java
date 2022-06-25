@@ -23,11 +23,11 @@ public class LaserMaquina extends Actor implements Subject, Observer{
 		this.observers = new ArrayList<>();
 		this.forca = 1;
 		this.resistencia = 10000;
-		gerarFeixo(direcao);
 		Subject[] sub = new Subject[1];
 		sub[0] = iaction.getCelula(posicaoAtual, sala);
 		setSubejects(sub);
 		iaction.getCelula(posicaoAtual, sala).registrar(this);
+		gerarFeixo(direcao);
 	}
 	
 	
@@ -125,7 +125,7 @@ public class LaserMaquina extends Actor implements Subject, Observer{
 		else if(iaction.getCelula(pos, this.sala)!=null && iaction.getCelula(pos, this.sala).getActor().getResistencia() == 0) {
 			LaserFeixoDuplo feixoDuplo =  new LaserFeixoDuplo(pos.getX(), pos.getY(), this.direcao,
 				((LaserFeixo)iaction.getCelula(pos, this.sala).getActor()).getDirecao(), this.sala, this.iaction);
-			iaction.getCelula(pos, sala).remover();
+			iaction.getCelula(pos, sala).remover(true);
 			feixoDuplo.connect(iaction);
 			iaction.getCelula(pos, sala).setActor(feixoDuplo);
 			registrar(feixoDuplo);

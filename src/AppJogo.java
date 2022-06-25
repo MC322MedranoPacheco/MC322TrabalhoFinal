@@ -29,11 +29,17 @@ public class AppJogo {
 		GameControl teste = GameControl.getInstance();
 		teste.connect(nivel.salas[0].getCelula(new Posicao(0,0)).getActor());
 		nivel.connect(teste);
-		teste.acao("d");
+		teste.acao("s");
+		teste.acao("s");
 		teste.acao("s");
 		teste.acao("d");
-		teste.acao("a");
-		teste.acao("a");
-		teste.acao("a");
+		teste.acao("d");
+		teste.acao("d");
+		teste.acao("d");
+		teste.acao("d");
+		teste.acao("d");
+		
+		nivel.salas[0].getCelula(new Posicao(6,3));
+		
 	}
 }

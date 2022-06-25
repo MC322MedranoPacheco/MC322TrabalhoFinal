@@ -7,6 +7,7 @@ import model.autor.interactiveObjects.Caixa;
 import model.autor.interactiveObjects.LaserMaquina;
 import model.autor.interactiveObjects.Parede;
 import model.autor.personagens.Garoto;
+import model.nivel.Celula;
 import model.nivel.IBuildNivel;
 import model.nivel.Nivel;
 import model.nivel.Sala;
@@ -14,6 +15,7 @@ import model.terreno.Gelo;
 import model.terreno.Pedra;
 import model.terreno.Terra;
 import model.terreno.Terreno;
+import utilidades.Posicao;
 
 public class Montador implements IMontador{
 	IBuildNivel buildnivel;

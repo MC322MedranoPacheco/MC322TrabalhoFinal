@@ -6,4 +6,5 @@ public interface ActorSubjectView {
 	public void registrarView(ObserverActor obj);
 	public void excluirRegistroView(ObserverActor obj);
 	public void notificarObservadoresView(String string);
+	public void setChanged(boolean changed);
 }

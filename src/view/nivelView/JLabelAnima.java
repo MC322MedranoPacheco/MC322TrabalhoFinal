@@ -55,6 +55,11 @@ public class JLabelAnima extends JLabel implements ActionListener, ObserverActor
 			this.shiftX = 1;
 			this.shiftY = 0;
 			break;
+		case "r":
+			ImageIcon imagemInexistente = new ImageIcon("essa imagem nao existe");
+            setIcon(imagemInexistente);
+            System.out.println("Imagente setada");
+            return;
 		}
 		anima();
 	}
