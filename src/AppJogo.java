@@ -35,6 +35,7 @@ public class AppJogo {
 		teste.acao("d");
 		teste.acao("p");
 		teste.acao("d");
+		teste.acao("d");
 		teste.acao("s");
 		teste.acao("s");
 		teste.acao("s");

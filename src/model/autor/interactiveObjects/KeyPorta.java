@@ -22,8 +22,9 @@ public class KeyPorta extends Porta{
 	@Override
 	public boolean acao(Posicao destino, ICommand vivo, ICommand receiver) {
 		if(!getLocked(receiver.getInventario())) {
+			Posicao segundoDestino = Posicao.direcao(receiver.getPosicao(), destino);
 			iaction.mover(sala, receiver.getPosicao(), destino, receiver.getForca());
-			iaction.mover(sala, receiver.getPosicao(), Posicao.direcao(receiver.getPosicao(), destino), receiver.getForca());
+			iaction.mover(sala, receiver.getPosicao(), segundoDestino, receiver.getForca());
 			
 		}
 		return false;
