@@ -3,6 +3,7 @@ package view.nivelView;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -22,7 +23,7 @@ public class NivelView implements INivelView{
 		return (1000 - 69*x)/2;
 	}
 	
-	public NivelView(int x, int y, Sala sala) {
+	public NivelView(int x, int y, Sala sala, KeyListener key) {
 		String diretorio = NivelView.class.getResource(".").getPath();
 		JFrame janelaJogo = new JFrame();
 		janelaJogo.setSize(999,999);
@@ -32,6 +33,7 @@ public class NivelView implements INivelView{
 		Container contentPane = janelaJogo.getContentPane();
 		contentPane.setLayout(null);
 		int espacamento = CalculaEspacamento(x);
+		janelaJogo.addKeyListener(key);
 		
 		matrizJLabel = new JLabel[y][x];
 		
@@ -40,7 +42,7 @@ public class NivelView implements INivelView{
 				Posicao pos = new Posicao(k, i);
 				if(sala.getCelula(pos).getActor() != null) {
 					ImageIcon imagemPerso = new ImageIcon(sala.getCelula(pos).getActor().toString());
-					JLabelAnima jlabelP = new JLabelAnima(imagemPerso, espacamento + k*66, espacamento + i*66, 1, 0);
+					JLabelAnima jlabelP = new JLabelAnima(imagemPerso, espacamento + k*66, espacamento + i*66, 1, 0, k, i);
 					jlabelP.setBounds(espacamento + k*66 , espacamento + i*66, 64, 64);
 					
 					contentPane.add(jlabelP);
@@ -51,6 +53,7 @@ public class NivelView implements INivelView{
 				//Adiciona os terrenos
 				ImageIcon imagemTerreno = new ImageIcon(sala.getCelula(pos).getTerreno().toString());
 				matrizJLabel[i][k] = new JLabel(imagemTerreno);
+				System.out.println(matrizJLabel[i][k].getIcon().toString());
 				matrizJLabel[i][k].setBounds(espacamento + k*66 , espacamento + i*66, 64, 64);
 				janelaJogo.add(matrizJLabel[i][k]);
 			}
@@ -62,10 +65,19 @@ public class NivelView implements INivelView{
 		}
 		for (int i = 0; i < vetorJLabelAnima.length; i++) {
 			if(vetorJLabelAnima[i] != null) {
-				System.out.println(vetorJLabelAnima[i].getIcon());
 				contentPane.setComponentZOrder(vetorJLabelAnima[i], 0);
 				}
 		}
 		janelaJogo.setVisible(true);
+	}
+	public JLabelAnima getPersonagem() {
+		for(int i = 0; i < vetorJLabelAnima.length; i++) {
+			if(vetorJLabelAnima[i].getIcon().toString() == "/C:/Users/gmedr/Documents/MC322TrabalhoFinal/bin/model/autor/personagens/player_23.png");{
+				System.out.println("AaAa");
+				vetorJLabelAnima[i].setNivelView(this);
+				return vetorJLabelAnima[i];
+			}
+		}
+		return null;
 	}
 }

@@ -1,11 +1,13 @@
 package control.gameControl;
 
-import model.autor.IActor;
+import java.awt.event.KeyListener;
+
 import model.autor.ICommand;
 import utilidades.Posicao;
 
 public class GameControl implements IGameControl{
 	ICommand iCommand;
+	KeyListener key;
 	
 	private static final GameControl instance = new GameControl();
 	
@@ -34,8 +36,8 @@ public class GameControl implements IGameControl{
 		return iCommand.acao(comando, iCommand);
 	}
 	
-	
-	
-	
+	public void addKeyListener(KeyListener key) {
+		this.key = key;
+	}
 	
 }

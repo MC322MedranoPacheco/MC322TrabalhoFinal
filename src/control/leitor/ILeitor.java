@@ -1,5 +1,4 @@
 package control.leitor;
 
-public interface ILeitor {
-
+public interface ILeitor extends IRPress, IRLocked{
 }

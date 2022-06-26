@@ -42,10 +42,7 @@ public abstract class Actor implements IActor{
 		notificarObservadoresView(Posicao.direcaoChar(posicaoAtual, posicao));
 		this.posicaoAnterior = this.posicaoAtual.clone();
 		this.posicaoAtual = posicao;
-		try {
-			Thread.sleep(1100);
-		}
-		catch(Exception e) {}
+
 	}
 	
 	public int getResistencia() {
@@ -97,8 +94,6 @@ public abstract class Actor implements IActor{
 	}
 	
 	public void notificarObservadoresView(String string) {
-
-		
 		synchronized (MUTEX) {
 			if (!changedView)
 				return;
