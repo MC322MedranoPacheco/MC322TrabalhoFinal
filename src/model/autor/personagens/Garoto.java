@@ -1,6 +1,9 @@
 package model.autor.personagens;
 
+import java.util.ArrayList;
+
 import model.autor.Personagem;
+import model.item.Item;
 import model.nivel.IAction;
 
 public class Garoto extends Personagem{
@@ -15,6 +18,8 @@ public class Garoto extends Personagem{
 	public String toString() {
 		return Garoto.class.getResource(".").getPath() + "player_23.png";
 	}
+
+
 
 
 

@@ -1,7 +1,11 @@
 package model.autor.interactiveObjects;
 
+import java.util.ArrayList;
+
 import model.autor.Actor;
+import model.autor.ICommand;
 import model.autor.IVivo;
+import model.item.Item;
 import model.nivel.IAction;
 import utilidades.Posicao;
 
@@ -19,7 +23,7 @@ public class Caixa extends Actor{
 	}
 
 	@Override
-	public boolean acao(Posicao destino, IVivo vivo) {
+	public boolean acao(Posicao destino, ICommand vivo, ICommand receiver) {
 		if(iaction.mover(sala, posicaoAtual, destino,this.getForca())) {
 			System.out.println("moveu caixa");
 			return true;
@@ -42,5 +46,13 @@ public class Caixa extends Actor{
 	public boolean getVivo() {
 		return false;
 	}
+
+	@Override
+	public ArrayList<Item> getInventario() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

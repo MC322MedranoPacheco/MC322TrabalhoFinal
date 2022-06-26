@@ -22,9 +22,9 @@ public class GameControl implements IGameControl{
 	}
 	
 	@Override
-	public boolean acao(ICommand actor, Posicao direcao, int forca) {
-		if(forca > actor.getResistencia()) {
-			return actor.acao(direcao, actor);
+	public boolean acao(ICommand actor, Posicao direcao, ICommand actorMaker) {
+		if(actorMaker.getForca() > actor.getResistencia()) {
+			return actor.acao(direcao, actor, actorMaker);
 		}
 		return false;
 	}

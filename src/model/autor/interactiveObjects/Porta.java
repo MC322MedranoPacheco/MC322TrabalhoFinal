@@ -1,14 +1,20 @@
 package model.autor.interactiveObjects;
 
 import model.autor.Actor;
+import model.autor.ICommand;
 import model.autor.IVivo;
 import model.nivel.IAction;
+import utilidades.Posicao;
 
 public abstract class Porta extends Actor{
+	protected int sentido;
 
-	public Porta(int x, int y, IAction iaction) {
+	public Porta(int x, int y, IAction iaction, int sentido) {
 		super(x, y, iaction);
+		this.sentido = sentido;
 	}
+	
+	
 	
 	@Override
 	public boolean acao(String comando, IVivo vivo) {
@@ -29,5 +35,15 @@ public abstract class Porta extends Actor{
 	public String toString() {
 		return null;
 	}
+	
+	
+
+
+	
+	
+	
+	
+	
+	
 
 }

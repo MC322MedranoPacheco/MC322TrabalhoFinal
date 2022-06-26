@@ -1,8 +1,12 @@
 package model.autor.interactiveObjects;
 
+import java.util.ArrayList;
+
 import model.autor.Actor;
 import model.autor.IActor;
+import model.autor.ICommand;
 import model.autor.IVivo;
+import model.item.Item;
 import model.nivel.IAction;
 import utilidades.Observer;
 import utilidades.Posicao;
@@ -39,7 +43,7 @@ public class LaserFeixo extends Actor implements Observer{
 	}
 
 	@Override
-	public boolean acao(Posicao destino, IVivo vivo) {
+	public boolean acao(Posicao destino, ICommand vivo, ICommand receiver) {
 		vivo.setVivo(false);
 		return true;
 	}
@@ -160,6 +164,12 @@ public class LaserFeixo extends Actor implements Observer{
 	@Override
 	public boolean getVivo() {
 		return false;
+	}
+
+	@Override
+	public ArrayList<Item> getInventario() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

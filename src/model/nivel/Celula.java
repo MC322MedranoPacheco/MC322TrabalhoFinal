@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import model.autor.Actor;
 import model.autor.ActorSubjectView;
 import model.autor.IActor;
+import model.item.Item;
 import model.terreno.ITerreno;
 import model.terreno.Terreno;
 import utilidades.Observer;
@@ -17,9 +18,16 @@ public class Celula implements Subject{
 	private boolean changed;
 	private final Object MUTEX = new Object();
 	private ActorSubjectView subjectView = null;
+	private ArrayList<Item> inventario;
 	
 	public Celula(){
 		observers = new ArrayList<>();
+		inventario = new ArrayList();
+	}
+	
+	
+	public void addItem(Item i) {
+		inventario.add(i);
 	}
 	
 	public boolean getOcupado() {
@@ -113,6 +121,14 @@ public class Celula implements Subject{
 	public ActorSubjectView subjectView() {
 		return autor; 
 	}
+
+	public Item removerItem() {
+		return inventario.remove(0);
+	}
 	
+
+	public ArrayList<Item> getInventario() {
+		return this.inventario;
+	}
 	
 }

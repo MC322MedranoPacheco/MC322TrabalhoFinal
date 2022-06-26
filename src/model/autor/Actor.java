@@ -108,4 +108,13 @@ public abstract class Actor implements IActor{
 			obj.update(string);
 		}
 	}
+	
+	protected void changeView() {
+		this.changedView = true;
+	}
+	
+	public Posicao getPosicao(){
+		return this.posicaoAtual;
+	}
+	
 }

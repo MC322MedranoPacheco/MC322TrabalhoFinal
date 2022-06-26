@@ -1,13 +1,12 @@
 package control.montador;
 
 import model.autor.Actor;
-import model.autor.ActorSubjectView;
-import model.autor.Personagem;
 import model.autor.interactiveObjects.Caixa;
+import model.autor.interactiveObjects.KeyPorta;
 import model.autor.interactiveObjects.LaserMaquina;
 import model.autor.interactiveObjects.Parede;
 import model.autor.personagens.Garoto;
-import model.nivel.Celula;
+import model.item.Item;
 import model.nivel.IBuildNivel;
 import model.nivel.Nivel;
 import model.nivel.Sala;
@@ -95,11 +94,22 @@ public class Montador implements IMontador{
 						Actor ator3 = new LaserMaquina(posX - 1, posY - 1, Integer.parseInt(modelo[linha][3]), nivel);
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator3);
 						break;
+					case "Porta":
+						Actor ator4 = new KeyPorta(posX - 1, posY - 1, nivel, "goldenKey", Integer.parseInt(modelo[linha][3]));
+						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator4);
+						linha++;
+						posX = Integer.parseInt(modelo[linha][0]);
+						posY = Integer.parseInt(modelo[linha][1]);
+						String item = stringAtor = modelo[linha][2];
+						Item Chave = new Item(posX-1,posY-1, item);
+						nivel.salas[i].getCelula(new Posicao(posX-1,posY-1)).addItem(Chave);
+						break;
 					default:
 						// Se nn passar, dar erro
 				}
 				linha++;
 			}
+			
 			
 			// falta adicionar objetos n atores: chaves , itens etc
 		}

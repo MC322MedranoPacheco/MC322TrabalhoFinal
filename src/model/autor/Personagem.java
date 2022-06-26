@@ -2,6 +2,7 @@ package model.autor;
 
 import java.util.ArrayList;
 
+import model.item.Item;
 import model.nivel.IAction;
 import utilidades.Observer;
 import utilidades.Posicao;
@@ -12,10 +13,12 @@ public abstract class Personagem extends Actor implements Subject{
 	private boolean changed;
 	private final Object MUTEX= new Object();
 	private boolean vivo;
+	protected ArrayList<Item> inventario;
 
 	public Personagem(int x, int y, IAction iaction) {
 		super(x, y, iaction);
 		this.observers = new ArrayList<>();
+		this.inventario = new ArrayList<>();
 	}
 	
 		//	comecando a implementar acoes de personagem
@@ -23,7 +26,7 @@ public abstract class Personagem extends Actor implements Subject{
 	
 	public boolean acao(String comando, IVivo vivo){ 
 		
-		if(comando == "w" || comando == "a" || comando == "s" || comando== "d") {
+		if(comando == "w" || comando == "a" || comando == "s" || comando== "d" || comando== "p") {
 			Posicao destino;
 			switch(comando) {   //interpretar qual acao ele quer fazer;    
 				case "w":
@@ -53,23 +56,15 @@ public abstract class Personagem extends Actor implements Subject{
 						System.out.println("moveu pro lado");
 						return true;
 					}
-					return false;
+				case "p":
+					System.out.println("chegou aqui");
+					iaction.pegar(sala, posicaoAtual, inventario);
+					return true;
 			}
 		}
 		return false;
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -123,7 +118,7 @@ public abstract class Personagem extends Actor implements Subject{
 	
 
 	@Override
-	public boolean acao(Posicao destino, IVivo vivo) { // no teleporte vai usar
+	public boolean acao(Posicao destino, ICommand vivo, ICommand receiver) { // no teleporte vai usar
 		return false;
 	}
 	
@@ -133,6 +128,11 @@ public abstract class Personagem extends Actor implements Subject{
 	
 	public void setVivo(boolean vivo) {
 		this.vivo = vivo;
+	}
+	
+	@Override
+	public ArrayList<Item> getInventario() {
+		return this.inventario;
 	}
 	
 }

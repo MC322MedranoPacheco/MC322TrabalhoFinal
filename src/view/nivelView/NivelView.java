@@ -45,6 +45,7 @@ public class NivelView implements INivelView{
 					
 					contentPane.add(jlabelP);
 					sala.getCelula(pos).getActor().registrarView(jlabelP);
+					jlabelP.setSubject(sala.getCelula(pos).getActor());
 					vetorJLabelAnima[k] = jlabelP;
 				}
 				//Adiciona os terrenos
@@ -61,8 +62,9 @@ public class NivelView implements INivelView{
 		}
 		for (int i = 0; i < vetorJLabelAnima.length; i++) {
 			if(vetorJLabelAnima[i] != null) {
+				System.out.println(vetorJLabelAnima[i].getIcon());
 				contentPane.setComponentZOrder(vetorJLabelAnima[i], 0);
-			}
+				}
 		}
 		janelaJogo.setVisible(true);
 	}

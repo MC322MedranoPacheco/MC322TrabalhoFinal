@@ -7,5 +7,5 @@ import utilidades.Posicao;
 
 public interface ISolicitarMovimento{
 
-	public boolean acao(ICommand actor, Posicao direcao, int forca);
+	public boolean acao(ICommand actor, Posicao direcao, ICommand actorMaker);
 }
