@@ -25,7 +25,7 @@ public class NivelView implements INivelView{
 	
 	public NivelView(int x, int y, Sala sala, KeyListener key) {
 		String diretorio = NivelView.class.getResource(".").getPath();
-		JFrame janelaJogo = new JFrame();
+		janelaJogo = new JFrame();
 		janelaJogo.setSize(999,999);
 		janelaJogo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -42,7 +42,7 @@ public class NivelView implements INivelView{
 				Posicao pos = new Posicao(k, i);
 				if(sala.getCelula(pos).getActor() != null) {
 					ImageIcon imagemPerso = new ImageIcon(sala.getCelula(pos).getActor().toString());
-					JLabelAnima jlabelP = new JLabelAnima(imagemPerso, espacamento + k*66, espacamento + i*66, 1, 0, k, i);
+					JLabelAnima jlabelP = new JLabelAnima(imagemPerso, espacamento + k*66, espacamento + i*66, 1, 0);
 					jlabelP.setBounds(espacamento + k*66 , espacamento + i*66, 64, 64);
 					
 					contentPane.add(jlabelP);
@@ -53,7 +53,6 @@ public class NivelView implements INivelView{
 				//Adiciona os terrenos
 				ImageIcon imagemTerreno = new ImageIcon(sala.getCelula(pos).getTerreno().toString());
 				matrizJLabel[i][k] = new JLabel(imagemTerreno);
-				System.out.println(matrizJLabel[i][k].getIcon().toString());
 				matrizJLabel[i][k].setBounds(espacamento + k*66 , espacamento + i*66, 64, 64);
 				janelaJogo.add(matrizJLabel[i][k]);
 			}
@@ -68,7 +67,7 @@ public class NivelView implements INivelView{
 				contentPane.setComponentZOrder(vetorJLabelAnima[i], 0);
 				}
 		}
-		janelaJogo.setVisible(true);
+
 	}
 	public JLabelAnima getPersonagem() {
 		for(int i = 0; i < vetorJLabelAnima.length; i++) {
@@ -79,5 +78,13 @@ public class NivelView implements INivelView{
 			}
 		}
 		return null;
+	}
+	
+	public Container getContentPane() {
+		return janelaJogo.getContentPane();
+	}
+	
+	public JFrame getJFrame() {
+		return janelaJogo;
 	}
 }

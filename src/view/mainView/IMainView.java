@@ -1,5 +1,8 @@
 package view.mainView;
 
-public interface IMainView {
+import java.awt.Container;
+import java.awt.event.KeyListener;
 
+public interface IMainView {
+	public void setContentPane(Container contentPane, KeyListener key);
 }

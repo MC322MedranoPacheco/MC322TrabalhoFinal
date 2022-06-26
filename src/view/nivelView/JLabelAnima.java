@@ -18,7 +18,7 @@ public class JLabelAnima extends JLabel implements ActionListener, ObserverActor
 	boolean locked = false;
 	NivelView nivelView;
 	
-	public JLabelAnima(ImageIcon imagem, int x, int y, int shiftX, int shiftY, int posXMatriz, int posYMatriz) {
+	public JLabelAnima(ImageIcon imagem, int x, int y, int shiftX, int shiftY) {
 		super(imagem);
 		this.x = x;
 		this.y = y;

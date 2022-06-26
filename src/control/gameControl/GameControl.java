@@ -8,6 +8,7 @@ import utilidades.Posicao;
 public class GameControl implements IGameControl{
 	ICommand iCommand;
 	KeyListener key;
+	int nivelAtual;
 	
 	private static final GameControl instance = new GameControl();
 	
