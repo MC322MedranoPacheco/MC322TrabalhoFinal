@@ -10,7 +10,6 @@ import model.nivel.IAction;
 import utilidades.Posicao;
 
 public class KeyPorta extends Porta{
-	private boolean chave;
 	private String keycode;
 
 	public KeyPorta(int x, int y,IAction iaction, String keycode, int sentido) {
@@ -21,11 +20,9 @@ public class KeyPorta extends Porta{
 
 	@Override
 	public boolean acao(Posicao destino, ICommand vivo, ICommand receiver) {
+		
 		if(!getLocked(receiver.getInventario())) {
-			Posicao segundoDestino = Posicao.direcao(receiver.getPosicao(), destino);
-			iaction.mover(sala, receiver.getPosicao(), destino, receiver.getForca());
-			iaction.mover(sala, receiver.getPosicao(), segundoDestino, receiver.getForca());
-			
+			super.acao(destino, vivo, receiver);
 		}
 		return false;
 	}
@@ -51,26 +48,6 @@ public class KeyPorta extends Porta{
 		}
 		return locked;
 	}
-
-	@Override
-	public String toString() {
-		String retorno;
-		if(!chave) {
-			if(sentido == 0)
-				retorno = "portaFechada";
-			else
-				retorno = "portaFechadaVertical";
-			}
-		else {
-			if(sentido == 0)
-				retorno = "portaAberta";
-			else
-				retorno = "portaAbertaVertical";
-		}
-		return (KeyPorta.class.getResource(".").getPath() + retorno + ".png");
-	}
-	
-	
 
 
 	@Override

@@ -26,7 +26,7 @@ public class AppJogo {
 
 	public static void main(String[] args) {
 		Montador montador = new Montador();
-		Nivel nivel = montador.constroiNivel(null, "NivelTeste");
+		Nivel nivel = montador.constroiNivel(null, "Nivel0");
 		Leitor leitor = new Leitor();
 		
 		MenuView menuV = new MenuView();
@@ -40,8 +40,9 @@ public class AppJogo {
 		mainV.setContentPane(menuV.getContentPane(), null);
 		mainV.connect(teste);
 		menuV.connect(teste);
+		teste.connect(montador);
 		
-		try {Thread.sleep(10000);}catch(Exception exc) {}
+		try {Thread.sleep(100);}catch(Exception exc) {}
 		
 		mainV.setContentPane(nivelV.getContentPane(), nivelV.getJFrame().getKeyListeners()[0]);
 		

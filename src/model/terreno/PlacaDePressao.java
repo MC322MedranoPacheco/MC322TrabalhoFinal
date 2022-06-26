@@ -22,6 +22,10 @@ public class PlacaDePressao extends Terreno implements Subject, Observer{
 		Subject[] sub = new Subject[1];
 		sub[0] = celula;
 		setSubejects(sub);
+		celula.registrar(this);
+		observers = new ArrayList<>();
+		observavel = true;
+		
 	}
 
 	@Override
@@ -33,10 +37,12 @@ public class PlacaDePressao extends Terreno implements Subject, Observer{
 	public void update() {
 		if((boolean )celula.getUpdate(this)) {
 			pressionada = true;
+			changed = true;
 			notificarObservadores();
 		}
 		else {
 			pressionada = false;
+			changed = true;
 			notificarObservadores();
 		}
 	}
@@ -65,12 +71,13 @@ public class PlacaDePressao extends Terreno implements Subject, Observer{
 	public void notificarObservadores() {
 		ArrayList<Observer> observersLocal = null;
 		synchronized(MUTEX) {
-			if(!changed)
+			if(!changed) {
 				return;
+			}
 			observersLocal = new ArrayList<>(this.observers);
 			this.changed = false;
 		}
-		for(Observer obj : this.observers) {
+		for(Observer obj : observersLocal) {
 			obj.update();
 		}
 	}
@@ -79,7 +86,11 @@ public class PlacaDePressao extends Terreno implements Subject, Observer{
 	public Object getUpdate(Observer obj) {
 		return pressionada;
 	}
-
-
+	
+	@Override
+	public String toString() {
+		System.out.println("criou placa de pressao");
+		return PlacaDePressao.class.getResource(".").getPath() + "PlacaDePressao.png";
+	}
 
 }

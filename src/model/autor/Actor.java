@@ -94,6 +94,8 @@ public abstract class Actor implements IActor{
 	}
 	
 	public void notificarObservadoresView(String string) {
+
+		
 		synchronized (MUTEX) {
 			if (!changedView)
 				return;

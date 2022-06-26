@@ -30,11 +30,17 @@ public class Celula implements Subject{
 		inventario.add(i);
 	}
 	
+	public void setChanged() {
+		changed = true;
+	}
+	
+	
+	
 	public boolean getOcupado() {
 		if(autor == null || autor.getForca() == 0) {
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
 	
 	public void setActor(Actor actor) {
@@ -43,10 +49,9 @@ public class Celula implements Subject{
 	
 	public void setActor(IActor actor) {
 		this.autor = actor;
-		if(actor.getForca() !=0 ) {
-			changed = true;
-			notificarObservadores();
-		}
+		changed = true;
+		notificarObservadores();
+		
 	}
 	
 	public IActor getActor() {
@@ -64,11 +69,9 @@ public class Celula implements Subject{
 	public IActor remover(boolean tirar) {
 		IActor autorMovendo = null;
 		autorMovendo = this.autor;
-		if(autor.getForca() != 0) {
-			changed = true;
-			notificarObservadores();
-		}
 		this.autor = null;
+		changed = true;
+		notificarObservadores();
 		autorMovendo.setChanged(tirar);
 		autorMovendo.notificarObservadoresView("r");
 		return autorMovendo;
@@ -96,15 +99,15 @@ public class Celula implements Subject{
 	public void notificarObservadores() {
 		ArrayList<Observer> observersLocal = null;
 		synchronized(MUTEX) {
-			if(!changed)
+			if(!changed) {
 				return;
+			}
 			observersLocal = new ArrayList<>(this.observers);
 			this.changed = false;
 		}
 		
 		for(Observer obj : observersLocal) {
 			obj.update();
-			System.out.println("chegou aqui");
 		}
 	}
 

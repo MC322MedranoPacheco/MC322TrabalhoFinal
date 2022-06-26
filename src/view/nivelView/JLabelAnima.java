@@ -48,19 +48,19 @@ public class JLabelAnima extends JLabel implements ActionListener, ObserverActor
 		switch (direcao) {
 		case "w":
 			this.shiftX = 0;
-			this.shiftY = -1;
+			this.shiftY = -2;
 			break;
 		case "a":
-			this.shiftX = -1;
+			this.shiftX = -2;
 			this.shiftY = 0;
 			break;
 		case "s":
 			this.shiftX = 0;
-			this.shiftY = 1;
+			this.shiftY = 2;
 
 			break;
 		case "d":
-			this.shiftX = 1;
+			this.shiftX = 2;
 			this.shiftY = 0;
 
 			break;
@@ -85,7 +85,7 @@ public class JLabelAnima extends JLabel implements ActionListener, ObserverActor
 	}
 	
 	public void anima() {
-		Metronomo metro = new Metronomo(6, 66);
+		Metronomo metro = new Metronomo(2, 33);
 		metro.addActionListener(this);
 		metro.start();
 

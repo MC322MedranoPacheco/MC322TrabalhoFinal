@@ -11,6 +11,7 @@ public abstract class Terreno implements ITerreno{
 	protected ITerrenoShow iTerrenoShow;
 	protected Posicao posicao;
 	protected int sala;
+	protected boolean observavel = false;
 	
 	public int getSala() {
 		return sala;
@@ -34,6 +35,10 @@ public abstract class Terreno implements ITerreno{
 	}
 	
 	public abstract boolean acao(Posicao acao, IVivo vivo);
+
+	public boolean getObservavel() {
+		return observavel;
+	}
 
 
 

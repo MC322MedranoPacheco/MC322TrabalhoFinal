@@ -1,5 +1,7 @@
 package control.gameControl;
 
-public interface IRFazerNivel {
+import control.montador.IFazerNivel;
 
+public interface IRFazerNivel {
+	public void connect(IFazerNivel iFazerNivel);
 }

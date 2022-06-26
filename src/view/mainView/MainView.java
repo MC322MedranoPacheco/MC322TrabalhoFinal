@@ -7,11 +7,13 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import control.gameControl.IStart;
+import view.nivelView.INivelShow;
 
 public class MainView implements IMainView {
 
 	JFrame jFrameJogo;
 	private IStart iStart;
+	private INivelShow iNivelShow;
 	
 	public MainView() {
 		jFrameJogo = new JFrame();
@@ -31,6 +33,11 @@ public class MainView implements IMainView {
 	
 	public void connect(IStart iStart) {
 		this.iStart = iStart;
+	}
+	
+	public void connect(INivelShow iNivelShow) {
+		this.iNivelShow = iNivelShow;
+		
 	}	
 
 }
