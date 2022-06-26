@@ -9,8 +9,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import control.gameControl.IStart;
+
 public class MenuView implements IMenuView, ActionListener{
 	private JFrame janelaMenu;
+	private IStart iStart;
 	
 	public MenuView() {
 		String diretorio = MenuView.class.getResource(".").getPath();
@@ -40,12 +43,16 @@ public class MenuView implements IMenuView, ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("??????????");
 		String command = e.getActionCommand();
         if (command.equals("Teste")) {
-            System.out.println("aAaAaAa");
+            iStart.start();
 			
         }
+	}
+	@Override
+	public void connect(IStart iStart) {
+		this.iStart = iStart;
+		
 	}	
 }
 

@@ -40,5 +40,10 @@ public class GameControl implements IGameControl{
 	public void addKeyListener(KeyListener key) {
 		this.key = key;
 	}
+
+	public void start() {
+		System.out.println("KKKKKKKKKKKK omegalul");
+		
+	}
 	
 }

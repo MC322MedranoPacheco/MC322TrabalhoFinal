@@ -6,9 +6,12 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
+import control.gameControl.IStart;
+
 public class MainView implements IMainView {
 
 	JFrame jFrameJogo;
+	private IStart iStart;
 	
 	public MainView() {
 		jFrameJogo = new JFrame();
@@ -25,5 +28,9 @@ public class MainView implements IMainView {
 		jFrameJogo.setState(Frame.NORMAL);
 		jFrameJogo.setState(Frame.NORMAL);
 	}
+	
+	public void connect(IStart iStart) {
+		this.iStart = iStart;
+	}	
 
 }

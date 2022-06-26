@@ -1,5 +1,7 @@
 package view.menuView;
 
-public interface IMenuView {
+import view.mainView.IRStart;
+
+public interface IMenuView extends IRStart{
 
 }

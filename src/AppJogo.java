@@ -34,19 +34,22 @@ public class AppJogo {
 		MainView mainV = new MainView();
 		System.out.println(nivelV.getJFrame().getKeyListeners().length);
 		
-		mainV.setContentPane(menuV.getContentPane(), null);
-		try {Thread.sleep(100);}catch(Exception exc) {}
-		
-		mainV.setContentPane(nivelV.getContentPane(), nivelV.getJFrame().getKeyListeners()[0]);
-
-		
 		GameControl teste = GameControl.getInstance();
 		teste.connect(nivel.salas[0].getCelula(new Posicao(0,0)).getActor());
+		
+		mainV.setContentPane(menuV.getContentPane(), null);
+		mainV.connect(teste);
+		menuV.connect(teste);
+		
+		try {Thread.sleep(10000);}catch(Exception exc) {}
+		
+		mainV.setContentPane(nivelV.getContentPane(), nivelV.getJFrame().getKeyListeners()[0]);
+		
 		nivel.connect(teste);
 		leitor.connect(teste);
 		teste.addKeyListener(leitor);
 		leitor.connect(nivelV.getPersonagem());
-	
+		
 		nivel.salas[0].getCelula(new Posicao(6,3));
 				
 	}
