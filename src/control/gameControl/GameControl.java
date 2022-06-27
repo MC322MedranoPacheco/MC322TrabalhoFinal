@@ -11,6 +11,7 @@ import utilidades.Observer;
 import utilidades.Posicao;
 import utilidades.Subject;
 import view.mainView.IMainView;
+import view.menuView.IMenuView;
 import view.nivelView.ILocked;
 import view.nivelView.INivelView;
 
@@ -22,6 +23,7 @@ public class GameControl implements IGameControl{
 	IFazerNivel iFazerNivel;
 	INivelView iNivelView;
 	IMainView iMainView;
+	IMenuView iMenuView;
 	IRLocked iRLocked;
 	String objetivo = "goldenKey";
 	
@@ -51,12 +53,15 @@ public class GameControl implements IGameControl{
 	@Override
 	public boolean acao(String comando) {
 		System.out.println(iCommand.getInventario());
-		
+		if(iCommand.getVivo()) {
+			iMainView.setContentPane(iMenuView.getJFramePerdeu().getContentPane(), null);
+		}
+			
 		for(int i = 0; i < iCommand.getInventario().size(); i++) {
 			System.out.println(iCommand.getInventario().get(i).getItemCode());
 			if(iCommand.getInventario().get(i).getItemCode().equals(objetivo)) {
 				nivelAtual++;
-				start();
+				iMainView.setContentPane(iMenuView.getJFrameNextLevel().getContentPane(), null);
 				return false;
 			}
 		}
@@ -82,9 +87,15 @@ public class GameControl implements IGameControl{
 		}
 		this.connect(niveis[nivelAtual].salas[salaAtual].getCelula(new Posicao(0,0)).getActor()); // Mudar isso depois
 		niveis[nivelAtual].connect(this);
-		iNivelView.geraJFrame(niveis[nivelAtual].salas[salaAtual].getTamanho(), niveis[nivelAtual].salas[salaAtual].getTamanho(), niveis[nivelAtual].salas[salaAtual], key);
+		if(nivelAtual == 0) {
+			iNivelView.geraJFrame(niveis[nivelAtual].salas[salaAtual].getTamanho(), niveis[nivelAtual].salas[salaAtual].getTamanho(), niveis[nivelAtual].salas[salaAtual], key);
+			iMainView.setContentPane(iNivelView.getContentPane(), iNivelView.getJFrame().getKeyListeners()[0]);
+		}
+		else { //Para evitar duplo clicks
+			iNivelView.geraJFrame(niveis[nivelAtual].salas[salaAtual].getTamanho(), niveis[nivelAtual].salas[salaAtual].getTamanho(), niveis[nivelAtual].salas[salaAtual], null);
+			iMainView.setContentPane(iNivelView.getContentPane(), null);
+		}
 		iRLocked.connect(iNivelView.getPersonagem());
-		iMainView.setContentPane(iNivelView.getContentPane(), iNivelView.getJFrame().getKeyListeners()[0]);
 		}
 
 
@@ -103,6 +114,10 @@ public class GameControl implements IGameControl{
 	
 	public void connect(IRLocked iRLocked) {
 		this.iRLocked = iRLocked;
+	}
+	
+	public void connect(IMenuView iMenuView) {
+		this.iMenuView = iMenuView;
 	}
 
 }

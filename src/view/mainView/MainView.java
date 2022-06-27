@@ -26,6 +26,7 @@ public class MainView implements IMainView {
 		jFrameJogo.addKeyListener(key);
 		jFrameJogo.setBounds(0, 0, 1000, 1000);
 		jFrameJogo.setState(Frame.ICONIFIED);
+		try{Thread.sleep(100);}catch(Exception exc) {}
 		jFrameJogo.setState(Frame.NORMAL);
 	}
 	

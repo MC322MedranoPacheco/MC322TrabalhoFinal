@@ -58,6 +58,32 @@ public class MenuView implements IMenuView, ActionListener{
 	public void connect(IStart iStart) {
 		this.iStart = iStart;
 		
-	}	
+	}
+	
+	public JFrame getJFrameNextLevel() {
+	
+		String diretorio = MenuView.class.getResource(".").getPath();
+		janelaMenu = new JFrame();
+		janelaMenu.setSize(999,999);
+		janelaMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		Container contentPane = janelaMenu.getContentPane();
+		contentPane.setBackground(new Color(200, 255, 200));
+		contentPane.setLayout(null);
+		ImageIcon imagemBotaoComecar = new ImageIcon(diretorio + "proximaFase.png");
+		JButton botaoComecar = new JButton(imagemBotaoComecar);
+		botaoComecar.setActionCommand("Jogar");
+		botaoComecar.addActionListener(this);
+		botaoComecar.setBounds(400, 666, 200, 100);
+		janelaMenu.add(botaoComecar);
+		
+		return janelaMenu;
+	}
+	
+	public JFrame getJFramePerdeu() {
+		JFrame retorno = getJFrameNextLevel();
+		retorno.getContentPane().setBackground(new Color(255, 200,200));
+		return retorno;
+	}
 }
 

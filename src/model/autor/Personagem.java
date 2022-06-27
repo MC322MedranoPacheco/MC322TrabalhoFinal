@@ -12,7 +12,7 @@ public abstract class Personagem extends Actor implements Subject{
 	private ArrayList<Observer> observers;
 	private boolean changed;
 	private final Object MUTEX= new Object();
-	private boolean vivo;
+	private boolean vivo = true;
 	protected ArrayList<Item> inventario = new ArrayList<Item>();
 
 	public Personagem(int x, int y, IAction iaction) {

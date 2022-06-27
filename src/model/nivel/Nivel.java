@@ -11,7 +11,7 @@ import utilidades.Observer;
 import utilidades.Posicao;
 import utilidades.Subject;
 
-public class Nivel implements INivel, Subject{
+public class Nivel implements INivel{
 	public Sala salas[];
 	public ISolicitarMovimento conexion;
 	private boolean finished = false;
@@ -100,28 +100,4 @@ public class Nivel implements INivel, Subject{
 		return finished;
 	}
 
-
-	@Override
-	public void registrar(Observer obj) {
-		this.obs = obj;
-		
-	}
-
-
-	@Override
-	public void excluirRegistro(Observer obj) {
-			this.obs = null;
-	}
-
-
-	@Override
-	public void notificarObservadores() {
-		obs.update();
-	}
-
-
-	@Override
-	public Object getUpdate(Observer obj) {
-		return null;
-	}
 }

@@ -30,7 +30,7 @@ public class NivelView implements INivelView{
 		janelaJogo.setSize(999,999);
 		janelaJogo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		matrizJLabelAnima = new JLabelAnima[y][x]; //TEM QUE MUDAR ISSO
+		matrizJLabelAnima = new JLabelAnima[y][x];
 		Container contentPane = janelaJogo.getContentPane();
 		contentPane.setLayout(null);
 		int espacamento = CalculaEspacamento(x);

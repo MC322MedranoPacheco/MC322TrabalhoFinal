@@ -35,6 +35,7 @@ public class Leitor implements ILeitor, KeyListener{
 					iLocked.setLocked(true);
 			}
 			else if (tecla == KeyEvent.VK_D) {
+				System.out.println(tecla);
 				if(iPress.acao("d"))
 					iLocked.setLocked(true);
 			}
