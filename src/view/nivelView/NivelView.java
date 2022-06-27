@@ -125,7 +125,9 @@ public class NivelView implements INivelView{
 	}
 	
 	public void removeItem(Sala sala, Posicao pos) {
-		janelaJogo.getContentPane().remove(matrizItens[pos.getY()][pos.getX()]);
-		janelaJogo.getContentPane().repaint();
+		if(matrizItens[pos.getY()][pos.getX()] != null) {
+			janelaJogo.getContentPane().remove(matrizItens[pos.getY()][pos.getX()]);
+			janelaJogo.getContentPane().repaint();
+		}
 	}
 }

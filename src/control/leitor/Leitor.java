@@ -30,19 +30,19 @@ public class Leitor implements ILeitor, KeyListener{
 				if(iPress.acao("w"))
 					iLocked.setLocked(true);
 			}
-			if (tecla == KeyEvent.VK_S) {	
+			else if (tecla == KeyEvent.VK_S) {	
 				if(iPress.acao("s"))
 					iLocked.setLocked(true);
 			}
-			if (tecla == KeyEvent.VK_D) {
+			else if (tecla == KeyEvent.VK_D) {
 				if(iPress.acao("d"))
 					iLocked.setLocked(true);
 			}
-			if (tecla == KeyEvent.VK_A) {
+			else if (tecla == KeyEvent.VK_A) {
 				if(iPress.acao("a"))
 					iLocked.setLocked(true);
 			}
-			if(tecla == KeyEvent.VK_P)
+			else if(tecla == KeyEvent.VK_P)
 				iPress.acao("p");
 		}
 	}
