@@ -59,6 +59,7 @@ public abstract class Personagem extends Actor implements Subject{
 				case "p":
 					System.out.println("chegou aqui");
 					iaction.pegar(sala, posicaoAtual, inventario);
+					iaction.removerItem(sala, posicaoAtual);
 					return true;
 			}
 		}

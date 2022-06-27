@@ -14,6 +14,8 @@ public abstract class Porta extends Actor{
 		super(x, y, iaction);
 		this.sentido = sentido;
 		chave = false;
+		forca = 1;
+		resistencia = 1;
 	}
 	
 	

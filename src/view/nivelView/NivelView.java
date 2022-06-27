@@ -17,7 +17,7 @@ public class NivelView implements INivelView{
 	
 	JLabel[][] matrizJLabel;
 	JLabel[][] matrizItens;
-	JLabelAnima[] vetorJLabelAnima;
+	JLabelAnima[][] matrizJLabelAnima;
 	JFrame janelaJogo;
 	
 	private int CalculaEspacamento(int x) {
@@ -30,12 +30,13 @@ public class NivelView implements INivelView{
 		janelaJogo.setSize(999,999);
 		janelaJogo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		vetorJLabelAnima = new JLabelAnima[x]; //TEM QUE MUDAR ISSO
+		matrizJLabelAnima = new JLabelAnima[y][x]; //TEM QUE MUDAR ISSO
 		Container contentPane = janelaJogo.getContentPane();
 		contentPane.setLayout(null);
 		int espacamento = CalculaEspacamento(x);
 		janelaJogo.addKeyListener(key);
 		
+		sala.setNivelView(this);
 		matrizJLabel = new JLabel[y][x];
 		matrizItens = new JLabel[y][x];
 		
@@ -50,7 +51,7 @@ public class NivelView implements INivelView{
 					contentPane.add(jlabelP);
 					sala.getCelula(pos).getActor().registrarView(jlabelP);
 					jlabelP.setSubject(sala.getCelula(pos).getActor());
-					vetorJLabelAnima[k] = jlabelP;
+					matrizJLabelAnima[i][k] = jlabelP;
 				}
 				
 				if(sala.getCelula(pos).getInventario().size() != 0) {
@@ -72,22 +73,23 @@ public class NivelView implements INivelView{
 		for(int i = 0; i < y; i++) {
 			for(int k = 0; k < x; k++) {
 				contentPane.setComponentZOrder(matrizJLabel[i][k], x*y);
+				if(matrizJLabelAnima[i][k] != null) {
+					contentPane.setComponentZOrder(matrizJLabelAnima[i][k], 0);
+					}
 			}
 		}
-		for (int i = 0; i < vetorJLabelAnima.length; i++) {
-			if(vetorJLabelAnima[i] != null) {
-				contentPane.setComponentZOrder(vetorJLabelAnima[i], 0);
-				}
-		}
+		
 		return janelaJogo;
 
 	}
 	public JLabelAnima getPersonagem() {
-		for(int i = 0; i < vetorJLabelAnima.length; i++) {
-			if(vetorJLabelAnima[i].getIcon().toString() == "/C:/Users/gmedr/Documents/MC322TrabalhoFinal/bin/model/autor/personagens/player_23.png");{
-				System.out.println("AaAa");
-				vetorJLabelAnima[i].setNivelView(this);
-				return vetorJLabelAnima[i];
+		for(int i = 0; i < matrizJLabelAnima.length; i++) {
+			for(int k = 0; k < matrizJLabelAnima[0].length; k++) {
+			if(matrizJLabelAnima[i][k].getIcon().toString() == "/C:/Users/gmedr/Documents/MC322TrabalhoFinal/bin/model/autor/personagens/player_23.png");{
+				
+				matrizJLabelAnima[i][k].setNivelView(this);
+				return matrizJLabelAnima[i][k];
+				}
 			}
 		}
 		return null;
@@ -99,5 +101,31 @@ public class NivelView implements INivelView{
 	
 	public JFrame getJFrame() {
 		return janelaJogo;
+	}
+	
+	public void addImage(Sala sala, Posicao pos) {
+		int espacamento = CalculaEspacamento(sala.getTamanho());
+		ImageIcon imagemPerso = new ImageIcon(sala.getCelula(pos).getActor().toString());
+		JLabelAnima jlabelP = new JLabelAnima(imagemPerso, espacamento + pos.getX()*66, espacamento + pos.getY()*66, 1, 0);
+		jlabelP.setBounds(espacamento + pos.getX()*66 , espacamento + pos.getY()*66, 64, 64);
+		janelaJogo.getContentPane().add(jlabelP);
+		sala.getCelula(pos).getActor().registrarView(jlabelP);
+		jlabelP.setSubject(sala.getCelula(pos).getActor());
+		matrizJLabelAnima[pos.getY()][pos.getX()] = jlabelP;
+		
+		for (int i = 0; i < matrizJLabelAnima.length; i++) {
+			for(int k = 0; k < matrizJLabelAnima[0].length; k++) {
+				if(matrizJLabelAnima[i][k] != null) {
+					janelaJogo.getContentPane().setComponentZOrder(matrizJLabelAnima[i][k], 0);
+					}
+			}
+		
+		}
+		janelaJogo.getContentPane().repaint();
+	}
+	
+	public void removeItem(Sala sala, Posicao pos) {
+		janelaJogo.getContentPane().remove(matrizItens[pos.getY()][pos.getX()]);
+		janelaJogo.getContentPane().repaint();
 	}
 }

@@ -5,11 +5,13 @@ import model.autor.ActorSubjectView;
 import model.autor.IActor;
 import model.autor.interactiveObjects.LaserFeixo;
 import model.terreno.Terreno;
+import view.nivelView.INivelView;
 import utilidades.Posicao;
+import view.nivelView.NivelView;
 
 public class Sala {
 	private Celula layout[][];
-	private int tamanhoX, tamanhoY;
+	private INivelView nivelView;
 	
 	public Sala(int tamanhoX, int tamanhoY) {
 		layout = new Celula[tamanhoY][tamanhoX];
@@ -18,15 +20,22 @@ public class Sala {
 				layout[i][j] =  new Celula();
 			}
 		}
-		this.tamanhoX = tamanhoX;
-		this.tamanhoY = tamanhoY;
 	}
 	
-
+	public  void setNivelView(INivelView nivelView) {
+		this.nivelView = nivelView;
+	}
+	
+	public INivelView getNivelView() {
+		return nivelView;
+	}
+	
+	public int getTamanho() {
+		return layout.length;
+	}
+	
 	public void mover(Posicao posicaoOrigem, Posicao posicaoFinal) {
 		IActor autor = this.getCelula(posicaoOrigem).remover(false);
-		if(this.getCelula(posicaoFinal).getActor() != null)
-			((LaserFeixo) (this.getCelula(posicaoFinal).getActor())).autodestruir(((LaserFeixo) (this.getCelula(posicaoFinal).getActor())).getDirecao());
 		layout[posicaoFinal.getY()][posicaoFinal.getX()].setActor(autor);
 		autor.setPosicao(posicaoFinal);
 	}
@@ -70,16 +79,6 @@ public class Sala {
 	
 	public void adicionaSubject(int x, int y, ActorSubjectView sub) {
 		layout[y][x].setSubjectView(sub);
-	}
-	
-	public int getTamanhoX() {
-		return tamanhoX;
-	}
-	
-	public int getTamanhoY() {
-		return tamanhoY;
-	}
-	
-	
+	}	
 	
 }

@@ -1,16 +1,8 @@
 package model.item;
 
-import java.util.ArrayList;
-
-import model.autor.IActor;
-import model.autor.ICommand;
-import model.autor.IVivo;
-import model.nivel.IAction;
 import utilidades.Posicao;
-import view.autorView.IVisualActor;
-import view.nivelView.ObserverActor;
 
-public  class Item{
+public  class Item {
 	Posicao pos;
 	String itemCode;
 	
@@ -31,6 +23,6 @@ public  class Item{
 			resultado = false;
 		return resultado;
 	}
-
+	
 	
 }

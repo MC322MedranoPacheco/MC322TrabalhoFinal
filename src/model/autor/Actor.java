@@ -42,7 +42,6 @@ public abstract class Actor implements IActor{
 		notificarObservadoresView(Posicao.direcaoChar(posicaoAtual, posicao));
 		this.posicaoAnterior = this.posicaoAtual.clone();
 		this.posicaoAtual = posicao;
-
 	}
 	
 	public int getResistencia() {

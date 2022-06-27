@@ -13,7 +13,7 @@ public class Parede extends Actor{
 
 	public Parede(int x, int y, IAction iaction) {
 		super(x, y, iaction);
-		int forca = 0;
+		int forca = 1;
 		int resistencia = 10000; //resistencia maxima
 	}
 

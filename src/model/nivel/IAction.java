@@ -14,5 +14,8 @@ public interface IAction {
 
 	public void pegar(int sala, Posicao posicaoAtual, ArrayList<Item> inventario);
 	
+	void addImage(int sala, Posicao pos);
+	
+	void removerItem(int sala, Posicao pos);
 	
 }

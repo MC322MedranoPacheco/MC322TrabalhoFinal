@@ -16,6 +16,10 @@ public class Nivel implements INivel{
 	private ISolicitarMovimento conexion;
 	
 	
+	@Override
+	public void addImage(int i, Posicao pos) {
+		salas[i].getNivelView().addImage(salas[i], pos);
+	}
 
 
 	public boolean mover(int sala, Posicao posicaoOrigem, Posicao posicaoFinal, int forca) {
@@ -37,11 +41,12 @@ public class Nivel implements INivel{
 				return true;
 		}
 	}
+	
+	
 
 
 	@Override
 	public void connect(ISolicitarMovimento conexion) {
-		System.out.println(conexion);
 		this.conexion = conexion;
 		
 	}
@@ -71,6 +76,11 @@ public class Nivel implements INivel{
 			inventario.add(pego);
 			System.out.println("item adicionado");
 	}
-	
-	
+
+
+	@Override
+	public void removerItem(int sala, Posicao pos) {
+		salas[sala].getNivelView().removeItem(salas[sala], pos);
+		
+	}		
 }

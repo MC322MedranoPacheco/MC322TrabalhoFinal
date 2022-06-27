@@ -49,9 +49,10 @@ public class Celula implements Subject{
 	
 	public void setActor(IActor actor) {
 		this.autor = actor;
-		changed = true;
-		notificarObservadores();
-		
+		if(actor.getForca() != 0) {
+			changed = true;
+			notificarObservadores();
+		}
 	}
 	
 	public IActor getActor() {
@@ -70,8 +71,10 @@ public class Celula implements Subject{
 		IActor autorMovendo = null;
 		autorMovendo = this.autor;
 		this.autor = null;
-		changed = true;
-		notificarObservadores();
+		if(autorMovendo.getForca() != 0) {
+			changed = true;
+			notificarObservadores();
+		}
 		autorMovendo.setChanged(tirar);
 		autorMovendo.notificarObservadoresView("r");
 		return autorMovendo;
@@ -126,7 +129,6 @@ public class Celula implements Subject{
 	}
 
 	public Item removerItem() {
-		
 		return inventario.remove(0);
 	}
 	

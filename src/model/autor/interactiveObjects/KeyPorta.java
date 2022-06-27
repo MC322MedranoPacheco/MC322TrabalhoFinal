@@ -20,8 +20,7 @@ public class KeyPorta extends Porta{
 
 	@Override
 	public boolean acao(Posicao destino, ICommand vivo, ICommand receiver) {
-		
-		if(!getLocked(receiver.getInventario())) {
+		if(!getLocked(receiver.getInventario()) || chave) {
 			super.acao(destino, vivo, receiver);
 		}
 		return false;
@@ -33,7 +32,6 @@ public class KeyPorta extends Porta{
 		for(Item i : inventario) {
 			System.out.println(i.getItemCode() + " " + keycode);
 			if(i.getItemCode().equals(keycode)) {
-				System.out.println("passou do if");
 				locked = false;
 				achou = i;
 				break;
@@ -44,7 +42,6 @@ public class KeyPorta extends Porta{
 			inventario.remove(achou);
 			this.setChanged(true);
 			this.notificarObservadoresView("atualizar");
-			System.out.println("passa aqui");
 		}
 		return locked;
 	}
