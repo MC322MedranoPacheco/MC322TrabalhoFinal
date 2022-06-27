@@ -44,12 +44,13 @@ public abstract class Porta extends Actor{
 	}
 	
 	@Override
-	public boolean acao(Posicao destino, ICommand vivo, ICommand receiver) {
-		Posicao segundoDestino = Posicao.direcao(receiver.getPosicao(), destino);
-		iaction.mover(sala, receiver.getPosicao(), destino, receiver.getForca());
-		iaction.mover(sala, receiver.getPosicao(), segundoDestino, receiver.getForca());
-		return false;
-	}
+    public boolean acao(Posicao destino, ICommand vivo, ICommand receiver) {
+        Posicao segundoDestino = Posicao.direcao(receiver.getPosicao(), vivo.getPosicao());
+        iaction.mover(sala, receiver.getPosicao(), segundoDestino, receiver.getForca());
+        iaction.getCelula(segundoDestino, sala).getActor().setChanged(true);
+        iaction.getCelula(segundoDestino, sala).getActor().notificarObservadoresView(Posicao.direcaoChar(vivo.getPosicao(), segundoDestino));
+        return false;
+    }
 	
 	
 	@Override

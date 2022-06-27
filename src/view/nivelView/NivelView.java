@@ -56,7 +56,7 @@ public class NivelView implements INivelView{
 				
 				if(sala.getCelula(pos).getInventario().size() != 0) {
 					for(int j = 0; j < sala.getCelula(pos).getInventario().size(); j++) {
-						ImageIcon imagemItem = new ImageIcon(sala.getCelula(pos).getInventario().get(i).toString());
+						ImageIcon imagemItem = new ImageIcon(sala.getCelula(pos).getInventario().get(j).toString());
 						matrizItens[i][k] = new JLabel(imagemItem);
 						System.out.println(imagemItem);
 						matrizItens[i][k].setBounds(espacamento + k*66 , espacamento + i*66, 64, 64);

@@ -13,7 +13,7 @@ public abstract class Personagem extends Actor implements Subject{
 	private boolean changed;
 	private final Object MUTEX= new Object();
 	private boolean vivo;
-	protected ArrayList<Item> inventario;
+	protected ArrayList<Item> inventario = new ArrayList<Item>();
 
 	public Personagem(int x, int y, IAction iaction) {
 		super(x, y, iaction);
@@ -61,7 +61,6 @@ public abstract class Personagem extends Actor implements Subject{
 					}
 					return false;
 				case "p":
-					System.out.println("chegou aqui");
 					iaction.pegar(sala, posicaoAtual, inventario);
 					iaction.removerItem(sala, posicaoAtual);
 					return true;
