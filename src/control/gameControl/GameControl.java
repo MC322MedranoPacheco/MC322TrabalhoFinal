@@ -66,7 +66,7 @@ public class GameControl implements IGameControl{
 			}
 		}
 		
-		return iCommand.acao(comando, iCommand);
+		boolean retorno = iCommand.acao(comando, iCommand);
 	}
 	
 	public void addKeyListener(KeyListener key) {
