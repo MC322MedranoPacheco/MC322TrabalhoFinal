@@ -11,11 +11,12 @@ import utilidades.Observer;
 import utilidades.Posicao;
 import utilidades.Subject;
 
-public class Nivel implements INivel{
+public class Nivel implements INivel, Subject{
 	public Sala salas[];
 	public ISolicitarMovimento conexion;
 	private boolean finished = false;
-	
+	String objetivo;
+	Observer obs;
 	@Override
 	public void addImage(int i, Posicao pos) {
 		salas[i].getNivelView().addImage(salas[i], pos);
@@ -45,10 +46,6 @@ public class Nivel implements INivel{
 				retorno = true;
 				break;
 		}
-		/*
-		if(Condicao finished)
-			finished = true;
-		*/
 		return retorno;
 	}
 	
@@ -81,10 +78,15 @@ public class Nivel implements INivel{
 	public void pegar(int sala, Posicao posicaoAtual, ArrayList<Item> inventario) {
 		Item pego = null;
 		System.out.println("ichegou aqui");
-		if(!salas[sala].getCelula(posicaoAtual).getInventario().isEmpty())
+		if(!salas[sala].getCelula(posicaoAtual).getInventario().isEmpty()) {
 			pego = salas[sala].getCelula(posicaoAtual).removerItem();
 			inventario.add(pego);
 			System.out.println("item adicionado");
+			if(pego.getItemCode() == "goldenKey") {
+				System.out.println("Mudou pra true");
+				finished = true;
+			}
+		}
 	}
 
 
@@ -96,5 +98,30 @@ public class Nivel implements INivel{
 	
 	public boolean getFinished() {
 		return finished;
+	}
+
+
+	@Override
+	public void registrar(Observer obj) {
+		this.obs = obj;
+		
+	}
+
+
+	@Override
+	public void excluirRegistro(Observer obj) {
+			this.obs = null;
+	}
+
+
+	@Override
+	public void notificarObservadores() {
+		obs.update();
+	}
+
+
+	@Override
+	public Object getUpdate(Observer obj) {
+		return null;
 	}
 }

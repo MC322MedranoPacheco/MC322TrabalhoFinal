@@ -7,7 +7,9 @@ import control.leitor.IRLocked;
 import control.montador.IFazerNivel;
 import model.autor.ICommand;
 import model.nivel.Nivel;
+import utilidades.Observer;
 import utilidades.Posicao;
+import utilidades.Subject;
 import view.mainView.IMainView;
 import view.nivelView.ILocked;
 import view.nivelView.INivelView;
@@ -15,11 +17,13 @@ import view.nivelView.INivelView;
 public class GameControl implements IGameControl{
 	ICommand iCommand;
 	KeyListener key;
-	int nivelAtual, salaAtual;
+	int nivelAtual = 0, salaAtual = 0;
 	Nivel[] niveis = new Nivel[4];
 	IFazerNivel iFazerNivel;
 	INivelView iNivelView;
 	IMainView iMainView;
+	IRLocked iRLocked;
+	String objetivo = "goldenKey";
 	
 	private static final GameControl instance = new GameControl();
 	
@@ -37,6 +41,7 @@ public class GameControl implements IGameControl{
 	
 	@Override
 	public boolean acao(ICommand actor, Posicao direcao, ICommand actorMaker) {
+		
 		if(actorMaker.getForca() > actor.getResistencia()) {
 			return actor.acao(direcao, actor, actorMaker);
 		}
@@ -45,6 +50,17 @@ public class GameControl implements IGameControl{
 
 	@Override
 	public boolean acao(String comando) {
+		System.out.println(iCommand.getInventario());
+		
+		for(int i = 0; i < iCommand.getInventario().size(); i++) {
+			System.out.println(iCommand.getInventario().get(i).getItemCode());
+			if(iCommand.getInventario().get(i).getItemCode().equals(objetivo)) {
+				nivelAtual++;
+				start();
+				return false;
+			}
+		}
+		
 		return iCommand.acao(comando, iCommand);
 	}
 	
@@ -53,28 +69,24 @@ public class GameControl implements IGameControl{
 	}
 
 	public void montarNiveis() {
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 2; i++) {
 			niveis[i] = iFazerNivel.constroiNivel(null, "Nivel" + i); // Dar o path depois
-			System.out.println(niveis[i]);
 			niveis[i].connect(this);
 		}
 	}
 	
-	public void rodarNivel(Nivel nivel) {
-		while (nivel.getFinished()) {
-			// Get update 
-			// wait
-		}
-	}
-	
+
 	public void start() {
-		montarNiveis();
-		for (int i = 0; i < 1; i++) {
-			//Montar o view
-			rodarNivel(niveis[i]);
-			//Montar uma telinha de ganhou
+		if(nivelAtual == 0) {
+			montarNiveis();
 		}
-	}
+		this.connect(niveis[nivelAtual].salas[salaAtual].getCelula(new Posicao(0,0)).getActor()); // Mudar isso depois
+		niveis[nivelAtual].connect(this);
+		iNivelView.geraJFrame(niveis[nivelAtual].salas[salaAtual].getTamanho(), niveis[nivelAtual].salas[salaAtual].getTamanho(), niveis[nivelAtual].salas[salaAtual], key);
+		iRLocked.connect(iNivelView.getPersonagem());
+		iMainView.setContentPane(iNivelView.getContentPane(), iNivelView.getJFrame().getKeyListeners()[0]);
+		}
+
 
 	@Override
 	public void connect(IFazerNivel iFazerNivel) {
@@ -87,6 +99,10 @@ public class GameControl implements IGameControl{
 	
 	public void connect(IMainView iMainView) {
 		this.iMainView = iMainView;
+	}
+	
+	public void connect(IRLocked iRLocked) {
+		this.iRLocked = iRLocked;
 	}
 
 }

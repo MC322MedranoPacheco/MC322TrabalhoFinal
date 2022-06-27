@@ -14,4 +14,5 @@ public interface INivelView {
 	public JFrame geraJFrame(int x, int y, Sala sala, KeyListener key);
 	public void addImage(Sala sala, Posicao pos);
 	public void removeItem(Sala sala, Posicao pos);
+	public JLabelAnima getPersonagem();
 }
