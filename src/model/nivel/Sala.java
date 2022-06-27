@@ -79,15 +79,6 @@ public class Sala {
 	
 	public void adicionaSubject(int x, int y, ActorSubjectView sub) {
 		layout[y][x].setSubjectView(sub);
-	}
-	
-	public Posicao getPosPersonagem() {
-		for(int i = 0; i < layout.length; i++) 
-			for(int k = 0; k < layout[0].length; k++) {
-				if(layout[i][k].getActor().toString() == "nomePersonagem")
-					return new Posicao(k, i);
-			}
-		return null;
-	}
+	}	
 	
 }
