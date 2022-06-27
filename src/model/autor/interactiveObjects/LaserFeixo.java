@@ -33,7 +33,7 @@ public class LaserFeixo extends Actor{
 
 	@Override
 	public boolean acao(Posicao destino, ICommand vivo, ICommand receiver) {
-		vivo.setVivo(false);
+		receiver.setVivo(false);
 		iaction.getCelula(posicaoAtual, sala).remover(true);
 		return true;
 	}

@@ -32,9 +32,7 @@ public class LaserMaquina extends Actor implements Observer{
 		this.direcao = direcao;
 		boolean achou = false;
 		Posicao agora = posicaoAtual;
-		while(!achou && iaction.getCelula(proximoLaser(agora), sala) != null) {
-			System.out.println(proximoLaser(agora));
-			agora = proximoLaser(agora);
+		while(!achou && iaction.getCelula(agora, sala) != null) {
 			if(iaction.getCelula(agora, sala).getActor() == null) {
 				System.out.println("Tcharammm");
 				LaserFeixo laser = new LaserFeixo(agora.getX(), agora.getY(), sala, iaction);
@@ -43,24 +41,16 @@ public class LaserMaquina extends Actor implements Observer{
 				subjectsCells.add(iaction.getCelula(agora, sala));
 				lasersPositions.add(agora.clone());
 				iaction.getCelula(agora, sala).registrar(this);
-				
-				
-				
-				
-				
-				
-				
-				
 			}
-			else if(iaction.getCelula(agora, sala).getActor().getForca() == 0) {
+			//else if(iaction.getCelula(agora, sala).getActor().getForca() == 0) {
 				//LaserFeixoDuplo laser = new LaserFeixoDuplo(posicaoAtual.getX(), posicaoAtual.getY(), sala, iaction);
 				//subjects.add(iaction.getCelula(agora, sala));
 				//iaction.getCelula(agora, sala).registrar(this);
-			}
+			//}
 			else {
 				achou = true;
 			}
-			
+			agora = proximoLaser(agora);
 		}
 	}
 	@Override
@@ -87,7 +77,7 @@ public class LaserMaquina extends Actor implements Observer{
 	
 	@Override
 	public void update() {
-		System.out.println("Entrou no update");
+		System.out.println("Entroudakhgdhadvjadjakvdkavd");
 		boolean interseccao = true;
 		for(Subject sub : subjectsNonCells) {
 			if((boolean) sub.getUpdate(this)) {
@@ -95,18 +85,9 @@ public class LaserMaquina extends Actor implements Observer{
 			}
 		}
 		if(estadoDeLigacao) {
-			for(Subject sub : subjectsCells) {
-				if(!(boolean) sub.getUpdate(this)) {
-					interseccao = false;
-				}
-			}
-			if(!interseccao) {
-				desligar();
-				ligar();
-			}
-			else {
-				ligar();
-			}
+			desligar();
+			ligar();
+			
 		}
 		else {
 			desligar();
@@ -138,11 +119,13 @@ public class LaserMaquina extends Actor implements Observer{
 	private void ligar() {
 		boolean achou = false;
 		Posicao agora = posicaoAtual;
+		
 		while(!achou && iaction.getCelula(proximoLaser(agora), sala) != null) {
-			System.out.println(proximoLaser(agora));
 			agora = proximoLaser(agora);
-			if(iaction.getCelula(agora, sala).getActor() == null) {
+			if(iaction.getCelula((agora), sala).getActor() == null) {
+				
 				System.out.println("Tcharammm");
+				System.out.println(agora);
 				LaserFeixo laser = new LaserFeixo(agora.getX(), agora.getY(), sala, iaction);
 				Actor ator = laser;
 				iaction.getCelula(agora, sala).setActor(ator);
@@ -151,30 +134,31 @@ public class LaserMaquina extends Actor implements Observer{
 				iaction.getCelula(agora, sala).registrar(this);
 				iaction.addImage(sala, agora);
 			}
-			else if(iaction.getCelula(agora, sala).getActor().getForca() == 0) {
-				//LaserFeixoDuplo laser = new LaserFeixoDuplo(posicaoAtual.getX(), posicaoAtual.getY(), sala, iaction);
-				//subjects.add(iaction.getCelula(agora, sala));
-				//iaction.getCelula(agora, sala).registrar(this);
+			else if(iaction.getCelula((agora), sala).getActor().getForca() == 0) {
+				System.out.println("ENtoru onde n devia");
 			}
 			else {
 				System.out.println(iaction.getCelula(agora, sala).getActor());
 				achou = true;
 			}
-			
 		}
 	}
 	
 	
 	private void desligar() {
+		
 		System.out.println("Desligou");
 		for(Posicao pos : lasersPositions) {
 			if(!iaction.getCelula(pos, sala).getOcupado() && iaction.getCelula(pos, sala).getActor() != null) {
+				System.out.println("tirou" + pos);
 				iaction.getCelula(pos, sala).remover(true);
 				iaction.getCelula(pos,sala).excluirRegistro(this);
-				subjectsCells.remove(iaction.getCelula(pos, sala));
 			}
 		}
+		subjectsCells.clear();
 		lasersPositions.clear();
+		
+		
 	}
 	
 	

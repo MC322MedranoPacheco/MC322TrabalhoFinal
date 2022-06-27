@@ -102,9 +102,9 @@ public class Montador implements IMontador{
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator2);
 						break;
 					case "L":
-						Actor ator3 = new LaserMaquina(posX - 1, posY - 1, Integer.parseInt(modelo[linha][3]), nivel);
-						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator3);
-						break;
+                        Actor ator3 = new LaserMaquina(posX - 1, posY - 1, Integer.parseInt(modelo[linha][3]), nivel);
+                        nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator3);
+                        break;
 					case "Porta":
 						Actor ator4 = new KeyPorta(posX - 1, posY - 1, nivel, modelo[linha][4], Integer.parseInt(modelo[linha][3]));
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator4);

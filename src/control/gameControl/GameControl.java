@@ -52,13 +52,14 @@ public class GameControl implements IGameControl{
 
 	@Override
 	public boolean acao(String comando) {
-		System.out.println(iCommand.getInventario());
-		if(iCommand.getVivo()) {
+
+		boolean retorno = iCommand.acao(comando, iCommand);
+		if(!iCommand.getVivo()) {
 			iMainView.setContentPane(iMenuView.getJFramePerdeu().getContentPane(), null);
+			return false;
 		}
 			
 		for(int i = 0; i < iCommand.getInventario().size(); i++) {
-			System.out.println(iCommand.getInventario().get(i).getItemCode());
 			if(iCommand.getInventario().get(i).getItemCode().equals(objetivo)) {
 				nivelAtual++;
 				iMainView.setContentPane(iMenuView.getJFrameNextLevel().getContentPane(), null);
@@ -66,7 +67,7 @@ public class GameControl implements IGameControl{
 			}
 		}
 		
-		boolean retorno = iCommand.acao(comando, iCommand);
+		return retorno;
 	}
 	
 	public void addKeyListener(KeyListener key) {
@@ -75,6 +76,7 @@ public class GameControl implements IGameControl{
 
 	public void montarNiveis() {
 		for (int i = 0; i < 2; i++) {
+			System.out.println("aaaAAAaaa");
 			niveis[i] = iFazerNivel.constroiNivel(null, "Nivel" + i); // Dar o path depois
 			niveis[i].connect(this);
 		}

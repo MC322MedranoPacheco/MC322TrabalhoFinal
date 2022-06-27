@@ -48,12 +48,16 @@ public class Celula implements Subject{
 	}
 	
 	public void setActor(IActor actor) {
-		this.autor = actor;
-		if(actor.getForca() != 0) {
-			changed = true;
-			notificarObservadores();
-		}
-	}
+        if(this.autor != null && this.autor.getForca() == 0) {
+            this.autor.setChanged(true);
+            this.autor.notificarObservadoresView("r");
+        }
+        this.autor = actor;
+        if(actor.getForca() != 0) {
+            changed = true;
+            notificarObservadores();
+        }
+    }
 	
 	public IActor getActor() {
 		return autor; 
@@ -68,17 +72,22 @@ public class Celula implements Subject{
 	}
 	
 	public IActor remover(boolean tirar) {
-		IActor autorMovendo = null;
-		autorMovendo = this.autor;
-		this.autor = null;
-		if(autorMovendo.getForca() != 0) {
-			changed = true;
-			notificarObservadores();
-		}
-		autorMovendo.setChanged(tirar);
-		autorMovendo.notificarObservadoresView("r");
-		return autorMovendo;
-	}
+        IActor autorMovendo = null;
+        autorMovendo = this.autor;
+        this.autor = null;
+        if(autorMovendo.getForca() != 0) {
+            changed = true;
+            notificarObservadores();
+        }
+        if(autorMovendo.getForca() == 0) {
+            autorMovendo.setChanged(true);
+            autorMovendo.notificarObservadoresView("r");
+            return autorMovendo;
+        }
+        autorMovendo.setChanged(tirar);
+        autorMovendo.notificarObservadoresView("r");
+        return autorMovendo;
+    }
 	
 	
 	
