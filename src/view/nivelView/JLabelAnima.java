@@ -15,7 +15,7 @@ public class JLabelAnima extends JLabel implements ActionListener, ObserverActor
 	
 	ActorSubjectView sub;
 	int x, y, shiftX, shiftY, contador = 0;
-	boolean locked = false;
+	private static boolean locked = false;
 	NivelView nivelView;
 	
 	public JLabelAnima(ImageIcon imagem, int x, int y, int shiftX, int shiftY) {
@@ -30,6 +30,7 @@ public class JLabelAnima extends JLabel implements ActionListener, ObserverActor
 	public void mover() { 
 		x += shiftX;
 		y += shiftY;
+		locked = true;
 		contador += Math.abs(shiftX) + Math.abs(shiftY);
 		setLocation(x, y);
 		if(contador == 66) {
@@ -44,38 +45,38 @@ public class JLabelAnima extends JLabel implements ActionListener, ObserverActor
 
 	@Override
 	public void update(String direcao) {
-
-		switch (direcao) {
-		case "w":
-			this.shiftX = 0;
-			this.shiftY = -2;
-			break;
-		case "a":
-			this.shiftX = -2;
-			this.shiftY = 0;
-			break;
-		case "s":
-			this.shiftX = 0;
-			this.shiftY = 2;
-
-			break;
-		case "d":
-			this.shiftX = 2;
-			this.shiftY = 0;
-
-			break;
-		case "r":
-			ImageIcon imagemInexistente = new ImageIcon("essa imagem nao existe");
-            setIcon(imagemInexistente);
-            return;
-		case "atualizar":
-			ImageIcon atualizada = new ImageIcon(sub.toString());
-			setIcon(atualizada);
-			locked = false;
-			return;
+		if(!locked) {
+			switch (direcao) {
+			case "w":
+				this.shiftX = 0;
+				this.shiftY = -2;
+				break;
+			case "a":
+				this.shiftX = -2;
+				this.shiftY = 0;
+				break;
+			case "s":
+				this.shiftX = 0;
+				this.shiftY = 2;
+	
+				break;
+			case "d":
+				this.shiftX = 2;
+				this.shiftY = 0;
+	
+				break;
+			case "r":
+				ImageIcon imagemInexistente = new ImageIcon("essa imagem nao existe");
+	            setIcon(imagemInexistente);
+	            return;
+			case "atualizar":
+				ImageIcon atualizada = new ImageIcon(sub.toString());
+				setIcon(atualizada);
+				locked = false;
+				return;
+			}
+				anima();
 		}
-			anima();
-			
 }
 
 	@Override
@@ -85,7 +86,7 @@ public class JLabelAnima extends JLabel implements ActionListener, ObserverActor
 	}
 	
 	public void anima() {
-		Metronomo metro = new Metronomo(2, 33);
+		Metronomo metro = new Metronomo(10, 33);
 		metro.addActionListener(this);
 		metro.start();
 
