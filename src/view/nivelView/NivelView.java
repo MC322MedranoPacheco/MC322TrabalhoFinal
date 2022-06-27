@@ -16,6 +16,7 @@ import utilidades.Posicao;
 public class NivelView implements INivelView{
 	
 	JLabel[][] matrizJLabel;
+	JLabel[][] matrizItens;
 	JLabelAnima[] vetorJLabelAnima;
 	JFrame janelaJogo;
 	
@@ -23,7 +24,7 @@ public class NivelView implements INivelView{
 		return (1000 - 69*x)/2;
 	}
 	
-	public NivelView(int x, int y, Sala sala, KeyListener key) {
+	public JFrame geraJFrame(int x, int y, Sala sala, KeyListener key) {
 		String diretorio = NivelView.class.getResource(".").getPath();
 		janelaJogo = new JFrame();
 		janelaJogo.setSize(999,999);
@@ -36,6 +37,7 @@ public class NivelView implements INivelView{
 		janelaJogo.addKeyListener(key);
 		
 		matrizJLabel = new JLabel[y][x];
+		matrizItens = new JLabel[y][x];
 		
 		for(int i = 0; i < y; i++) {
 			for(int k = 0; k < x; k++) {
@@ -49,6 +51,16 @@ public class NivelView implements INivelView{
 					sala.getCelula(pos).getActor().registrarView(jlabelP);
 					jlabelP.setSubject(sala.getCelula(pos).getActor());
 					vetorJLabelAnima[k] = jlabelP;
+				}
+				
+				if(sala.getCelula(pos).getInventario().size() != 0) {
+					for(int j = 0; j < sala.getCelula(pos).getInventario().size(); j++) {
+						ImageIcon imagemItem = new ImageIcon(sala.getCelula(pos).getInventario().get(i).toString());
+						matrizItens[i][k] = new JLabel(imagemItem);
+						System.out.println(imagemItem);
+						matrizItens[i][k].setBounds(espacamento + k*66 , espacamento + i*66, 64, 64);
+						janelaJogo.add(matrizItens[i][k]);
+					}
 				}
 				//Adiciona os terrenos
 				ImageIcon imagemTerreno = new ImageIcon(sala.getCelula(pos).getTerreno().toString());
@@ -67,6 +79,7 @@ public class NivelView implements INivelView{
 				contentPane.setComponentZOrder(vetorJLabelAnima[i], 0);
 				}
 		}
+		return janelaJogo;
 
 	}
 	public JLabelAnima getPersonagem() {

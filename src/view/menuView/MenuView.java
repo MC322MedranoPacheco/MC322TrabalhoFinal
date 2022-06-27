@@ -26,16 +26,18 @@ public class MenuView implements IMenuView, ActionListener{
 		contentPane.setLayout(null);
 		ImageIcon imagemBotaoComecar = new ImageIcon(diretorio + "botaoComecar.png");
 		JButton botaoComecar = new JButton(imagemBotaoComecar);
-		botaoComecar.setActionCommand("Teste");
+		botaoComecar.setActionCommand("Jogar");
 		botaoComecar.addActionListener(this);
 		botaoComecar.setBounds(150, 666, 200, 100);
 		janelaMenu.add(botaoComecar);
 		
-		ImageIcon imagemBotaoCarregar = new ImageIcon(diretorio + "botaoCarregar.png"); // Sei la se vai dar pra implementar isso
-		JButton botaoCarregar = new JButton(imagemBotaoCarregar);
-		botaoCarregar.setBounds(650, 666, 200, 100);
+		ImageIcon imagemFechar = new ImageIcon(diretorio + "botaoFechar.png"); // Sei la se vai dar pra implementar isso
+		JButton botaoFechar = new JButton(imagemFechar);
+		botaoFechar.setBounds(650, 666, 200, 100);
 		contentPane.setBackground(new Color(200, 240, 255));
-		janelaMenu.add(botaoCarregar);
+		botaoFechar.setActionCommand("Fechar");
+		botaoFechar.addActionListener(this);
+		janelaMenu.add(botaoFechar);
 		
 	}
 	public Container getContentPane() {
@@ -44,10 +46,13 @@ public class MenuView implements IMenuView, ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
-        if (command.equals("Teste")) {
-            iStart.start();
-			
+        if (command.equals("Jogar")) {
+            iStart.start();	
         }
+        else if(command.equals("Fechar")) {
+        	System.exit(0);
+        }
+        	
 	}
 	@Override
 	public void connect(IStart iStart) {

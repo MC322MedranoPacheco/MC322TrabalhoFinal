@@ -6,14 +6,17 @@ import control.montador.IFazerNivel;
 import model.autor.ICommand;
 import model.nivel.Nivel;
 import utilidades.Posicao;
+import view.mainView.IMainView;
 import view.nivelView.INivelView;
 
 public class GameControl implements IGameControl{
 	ICommand iCommand;
 	KeyListener key;
-	int nivelAtual;
+	int nivelAtual, salaAtual;
 	Nivel[] niveis = new Nivel[4];
 	IFazerNivel iFazerNivel;
+	INivelView iNivelView;
+	IMainView iMainView;
 	
 	private static final GameControl instance = new GameControl();
 	
@@ -46,13 +49,17 @@ public class GameControl implements IGameControl{
 		this.key = key;
 	}
 
-	public void start() {
-		System.out.println("KKKKKKKKKKKK omegalul");
+	public void montarNiveis() {
 		for (int i = 0; i < 1; i++) {
 			niveis[i] = iFazerNivel.constroiNivel(null, "Nivel" + i); // Dar o path depois
+			niveis[i].connect(this);
 		}
-		for(int i = 0; i < 1; i++) {
-			
+	}
+	
+	public void start() {
+		montarNiveis();
+		for (int i = 0; i < 1; i++) {
+
 		}
 	}
 
@@ -61,4 +68,11 @@ public class GameControl implements IGameControl{
 		this.iFazerNivel = iFazerNivel;
 	}
 	
+	public void connect(INivelView iNivelView) {
+		this.iNivelView = iNivelView;
+	}
+	
+	public void connect(IMainView iMainView) {
+		this.iMainView = iMainView;
+	}
 }

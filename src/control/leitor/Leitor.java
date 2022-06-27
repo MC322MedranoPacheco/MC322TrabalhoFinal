@@ -42,6 +42,8 @@ public class Leitor implements ILeitor, KeyListener{
 				if(iPress.acao("a"))
 					iLocked.setLocked(true);
 			}
+			if(tecla == KeyEvent.VK_P)
+				iPress.acao("p");
 		}
 	}
 	

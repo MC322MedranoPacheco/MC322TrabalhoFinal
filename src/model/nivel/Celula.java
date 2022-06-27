@@ -126,6 +126,7 @@ public class Celula implements Subject{
 	}
 
 	public Item removerItem() {
+		
 		return inventario.remove(0);
 	}
 	

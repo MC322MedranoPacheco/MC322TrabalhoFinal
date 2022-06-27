@@ -1,5 +1,7 @@
 package control.montador;
 
+import java.awt.RenderingHints.Key;
+
 import model.autor.Actor;
 import model.autor.interactiveObjects.Caixa;
 import model.autor.interactiveObjects.KeyPorta;
@@ -7,6 +9,7 @@ import model.autor.interactiveObjects.LaserMaquina;
 import model.autor.interactiveObjects.ObserverPorta;
 import model.autor.interactiveObjects.Parede;
 import model.autor.personagens.Garoto;
+import model.item.Chave;
 import model.item.Item;
 import model.nivel.IBuildNivel;
 import model.nivel.Nivel;
@@ -109,7 +112,7 @@ public class Montador implements IMontador{
 						posX = Integer.parseInt(modelo[linha][0]);
 						posY = Integer.parseInt(modelo[linha][1]);
 						String item  = modelo[linha][2];
-						Item Chave = new Item(posX-1,posY-1, item);
+						Item Chave = new Chave(posX-1,posY-1, item);
 						nivel.salas[i].getCelula(new Posicao(posX-1,posY-1)).addItem(Chave);
 						break;
 					case "PortaDePressao":
@@ -133,6 +136,7 @@ public class Montador implements IMontador{
 									//erro
 							}
 						}
+					
 						Actor ator5 = porta;
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator5);
 						linha++;

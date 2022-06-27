@@ -41,6 +41,7 @@ public class Nivel implements INivel{
 
 	@Override
 	public void connect(ISolicitarMovimento conexion) {
+		System.out.println(conexion);
 		this.conexion = conexion;
 		
 	}

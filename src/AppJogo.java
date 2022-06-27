@@ -30,19 +30,23 @@ public class AppJogo {
 		Leitor leitor = new Leitor();
 		
 		MenuView menuV = new MenuView();
-		NivelView nivelV = new NivelView(14, 14, nivel.getSala(0), leitor);
+		NivelView nivelV = new NivelView();
 		MainView mainV = new MainView();
-		System.out.println(nivelV.getJFrame().getKeyListeners().length);
+		nivelV.geraJFrame(14, 14, nivel.salas[0], leitor);
 		
 		GameControl teste = GameControl.getInstance();
 		teste.connect(nivel.salas[0].getCelula(new Posicao(0,0)).getActor());
-		
+		teste.addKeyListener(leitor);
+		teste.connect(mainV);
+		teste.connect(nivelV);
+		leitor.connect(teste);
+		leitor.connect(nivelV.getPersonagem());
 		mainV.setContentPane(menuV.getContentPane(), null);
-		mainV.connect(teste);
+
 		menuV.connect(teste);
 		teste.connect(montador);
 		
-		try {Thread.sleep(100);}catch(Exception exc) {}
+		try {Thread.sleep(10);}catch(Exception exc) {}
 		
 		mainV.setContentPane(nivelV.getContentPane(), nivelV.getJFrame().getKeyListeners()[0]);
 		

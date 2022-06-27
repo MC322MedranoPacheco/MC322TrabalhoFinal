@@ -9,6 +9,7 @@ import utilidades.Posicao;
 
 public class Sala {
 	private Celula layout[][];
+	private int tamanhoX, tamanhoY;
 	
 	public Sala(int tamanhoX, int tamanhoY) {
 		layout = new Celula[tamanhoY][tamanhoX];
@@ -17,6 +18,8 @@ public class Sala {
 				layout[i][j] =  new Celula();
 			}
 		}
+		this.tamanhoX = tamanhoX;
+		this.tamanhoY = tamanhoY;
 	}
 	
 
@@ -69,6 +72,13 @@ public class Sala {
 		layout[y][x].setSubjectView(sub);
 	}
 	
+	public int getTamanhoX() {
+		return tamanhoX;
+	}
+	
+	public int getTamanhoY() {
+		return tamanhoY;
+	}
 	
 	
 	
