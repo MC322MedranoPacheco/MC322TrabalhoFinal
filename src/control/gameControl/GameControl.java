@@ -2,11 +2,14 @@ package control.gameControl;
 
 import java.awt.event.KeyListener;
 
+import control.leitor.ILeitor;
+import control.leitor.IRLocked;
 import control.montador.IFazerNivel;
 import model.autor.ICommand;
 import model.nivel.Nivel;
 import utilidades.Posicao;
 import view.mainView.IMainView;
+import view.nivelView.ILocked;
 import view.nivelView.INivelView;
 
 public class GameControl implements IGameControl{
@@ -52,14 +55,24 @@ public class GameControl implements IGameControl{
 	public void montarNiveis() {
 		for (int i = 0; i < 1; i++) {
 			niveis[i] = iFazerNivel.constroiNivel(null, "Nivel" + i); // Dar o path depois
+			System.out.println(niveis[i]);
 			niveis[i].connect(this);
+		}
+	}
+	
+	public void rodarNivel(Nivel nivel) {
+		while (nivel.getFinished()) {
+			// Get update 
+			// wait
 		}
 	}
 	
 	public void start() {
 		montarNiveis();
 		for (int i = 0; i < 1; i++) {
-
+			//Montar o view
+			rodarNivel(niveis[i]);
+			//Montar uma telinha de ganhou
 		}
 	}
 
@@ -75,4 +88,5 @@ public class GameControl implements IGameControl{
 	public void connect(IMainView iMainView) {
 		this.iMainView = iMainView;
 	}
+
 }

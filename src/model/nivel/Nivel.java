@@ -13,8 +13,8 @@ import utilidades.Subject;
 
 public class Nivel implements INivel{
 	public Sala salas[];
-	private ISolicitarMovimento conexion;
-	
+	public ISolicitarMovimento conexion;
+	private boolean finished = false;
 	
 	@Override
 	public void addImage(int i, Posicao pos) {
@@ -23,23 +23,33 @@ public class Nivel implements INivel{
 
 
 	public boolean mover(int sala, Posicao posicaoOrigem, Posicao posicaoFinal, int forca) {
+		boolean retorno;
 		switch(salas[sala].verificar(posicaoFinal)) {
 			case 0:	// recebe resultado do outro movimento que vai ser pedido pelo controle
 				if(conexion.acao(salas[sala].getCelula(posicaoFinal).getActor(), Posicao.direcao(posicaoOrigem, posicaoFinal), salas[sala].getCelula(posicaoOrigem).getActor())) {
 						salas[sala].mover(posicaoOrigem, posicaoFinal);
 						ICommand acaoTerreno = new TerrenoAdapter(salas[sala].getCelula(posicaoFinal).getTerreno());
 						conexion.acao(acaoTerreno, Posicao.direcao(posicaoOrigem, posicaoFinal), acaoTerreno);
-						return true;
+						retorno = true;
 				}
-				return false;
+				retorno = false;
+				break;
 			case 1:
-				return false; // aqui nao pode mover
+				retorno = false; // aqui nao pode mover
+				break;
 			default:
 				salas[sala].mover(posicaoOrigem, posicaoFinal); // aqui moveu
 				ICommand acaoTerreno = new TerrenoAdapter(salas[sala].getCelula(posicaoFinal).getTerreno());
+				System.out.println(conexion);
 				conexion.acao(acaoTerreno, Posicao.direcao(posicaoOrigem, posicaoFinal), acaoTerreno);
-				return true;
+				retorno = true;
+				break;
 		}
+		/*
+		if(Condicao finished)
+			finished = true;
+		*/
+		return retorno;
 	}
 	
 	
@@ -83,4 +93,8 @@ public class Nivel implements INivel{
 		salas[sala].getNivelView().removeItem(salas[sala], pos);
 		
 	}		
+	
+	public boolean getFinished() {
+		return finished;
+	}
 }
