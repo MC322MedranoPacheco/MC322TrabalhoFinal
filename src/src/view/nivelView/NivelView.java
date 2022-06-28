@@ -56,12 +56,14 @@ public class NivelView implements INivelView{
 				}
 				
 				if(sala.getCelula(pos).getInventario().size() != 0) {
+					System.out.println("entrei aqui");
 					for(int j = 0; j < sala.getCelula(pos).getInventario().size(); j++) {
 						ImageIcon imagemItem = new ImageIcon(sala.getCelula(pos).getInventario().get(j).toString());
 						matrizItens[i][k] = new JLabel(imagemItem);
 						System.out.println(imagemItem);
 						matrizItens[i][k].setBounds(espacamento + k*66 , espacamento + i*66, 64, 64);
 						janelaJogo.add(matrizItens[i][k]);
+						contentPane.setComponentZOrder(matrizItens[i][k], 0);
 					}
 				}
 				//Adiciona os terrenos
@@ -128,6 +130,14 @@ public class NivelView implements INivelView{
 	public void removeItem(Sala sala, Posicao pos) {
 		if(matrizItens[pos.getY()][pos.getX()] != null) {
 			janelaJogo.getContentPane().remove(matrizItens[pos.getY()][pos.getX()]);
+			janelaJogo.getContentPane().repaint();
+		}
+	}
+	
+	public void adicionaItem(Sala sala, Posicao pos) {
+		if(matrizItens[pos.getY()][pos.getX()] == null) {
+			
+			janelaJogo.getContentPane().add(matrizItens[pos.getY()][pos.getX()]);
 			janelaJogo.getContentPane().repaint();
 		}
 	}

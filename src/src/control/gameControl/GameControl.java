@@ -27,7 +27,7 @@ public class GameControl implements IGameControl{
 	private IRLocked iRLocked;
 	private String objetivo = "Gema";
 	private int tentativas =0;
-	private int totalNiveis = 2;
+	private int totalNiveis = 3;
 	
 	private static final GameControl instance = new GameControl();
 	
@@ -88,7 +88,7 @@ public class GameControl implements IGameControl{
 	}
 
 	public void montarNiveis(int inicio) {
-		for (int i = inicio; i < 3; i++) {
+		for (int i = inicio; i < 4; i++) {
 			niveis[i] = iFazerNivel.constroiNivel(null, "Nivel" + i, this); // Dar o path depois
 			niveis[i].connect(this);
 		}
