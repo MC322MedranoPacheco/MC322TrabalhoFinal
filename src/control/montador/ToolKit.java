@@ -13,7 +13,7 @@ public class ToolKit {
    
    private static ToolKit tk;
    
-   private BufferedReader moveStr, caveStr;
+   private BufferedReader moveStr, salaStr;
    private PrintWriter outputStr;
    
    private boolean firstBoard = true;
@@ -23,7 +23,7 @@ public class ToolKit {
       String nivelFile = (nivelPath == null)
             ? DIRETORIO + nomeArquivo  + ".csv": nivelPath;
       try {
-         tk.caveStr = new BufferedReader(
+         tk.salaStr = new BufferedReader(
                new FileReader(nivelFile));
       } catch(IOException erro){
          erro.printStackTrace();
@@ -34,13 +34,13 @@ public class ToolKit {
    public String[][] retrieveNivel() {
       Vector<String[]> v = new Vector<String[]>();
       try {
-         String line = caveStr.readLine();
+         String line = salaStr.readLine();
          while (line != null) {
             String ln[]  = line.split(",");
             v.add(ln);
-            line = caveStr.readLine();
+            line = salaStr.readLine();
          }
-         caveStr.close();
+         salaStr.close();
       } catch (Exception erro) {
          erro.printStackTrace();
       }
@@ -50,7 +50,7 @@ public class ToolKit {
    
    public void stop() {
       try {
-         caveStr.close();
+         salaStr.close();
          outputStr.close();
          moveStr.close();
       } catch(Exception erro){

@@ -14,7 +14,7 @@ public class Caixa extends Actor{
 	public Caixa(int x, int y, IAction iaction) {
 		super(x, y, iaction);
 		resistencia = 5;
-		forca = 1;
+		forca = 2;
 	}
 
 	@Override
@@ -25,7 +25,6 @@ public class Caixa extends Actor{
 	@Override
 	public boolean acao(Posicao destino, ICommand vivo, ICommand receiver) {
 		if(iaction.mover(sala, posicaoAtual, destino,this.getForca())) {
-			System.out.println("moveu caixa");
 			return true;
 		}
 		return false;
@@ -51,6 +50,17 @@ public class Caixa extends Actor{
 	public ArrayList<Item> getInventario() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Posicao getPosicaoAnterior() {
+		return posicaoAnterior;
+	}
+
+	@Override
+	public boolean interact(ArrayList<Item> inventario) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

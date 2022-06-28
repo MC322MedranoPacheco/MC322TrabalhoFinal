@@ -1,8 +1,8 @@
 package model.autor.interactiveObjects;
 
-import java.awt.Container;
 import java.util.ArrayList;
 
+import exceptions.InvalidParameterException;
 import model.autor.Actor;
 import model.autor.ICommand;
 import model.autor.IVivo;
@@ -32,23 +32,31 @@ public class LaserMaquina extends Actor implements Observer{
 		this.direcao = direcao;
 		boolean achou = false;
 		Posicao agora = posicaoAtual;
-		while(!achou && iaction.getCelula(agora, sala) != null) {
+		while(!achou && iaction.getCelula(agora, sala) != null ) {
 			if(iaction.getCelula(agora, sala).getActor() == null) {
 				System.out.println("Tcharammm");
-				LaserFeixo laser = new LaserFeixo(agora.getX(), agora.getY(), sala, iaction);
+				LaserFeixo laser = new LaserFeixo(agora.getX(), agora.getY(), sala, iaction, direcao);
 				Actor ator = laser;
 				iaction.getCelula(agora, sala).setActor(ator);
 				subjectsCells.add(iaction.getCelula(agora, sala));
 				lasersPositions.add(agora.clone());
 				iaction.getCelula(agora, sala).registrar(this);
 			}
-			//else if(iaction.getCelula(agora, sala).getActor().getForca() == 0) {
-				//LaserFeixoDuplo laser = new LaserFeixoDuplo(posicaoAtual.getX(), posicaoAtual.getY(), sala, iaction);
-				//subjects.add(iaction.getCelula(agora, sala));
-				//iaction.getCelula(agora, sala).registrar(this);
-			//}
+			else if(iaction.getCelula((agora), sala).getActor().getForca() == 0) {
+				int segundaDirecao = ((LaserFeixo)iaction.getCelula((agora), sala).remover(true)).getDirecao();
+				LaserFeixoDuplo laser = new LaserFeixoDuplo(agora.getX(), agora.getY(), sala, iaction, direcao, segundaDirecao);
+				Actor ator = laser;
+				iaction.getCelula(agora, sala).setActor(ator);
+				subjectsCells.add(iaction.getCelula(agora, sala));
+				lasersPositions.add(agora.clone());
+				iaction.getCelula(agora, sala).registrar(this);
+
+			}
 			else {
 				achou = true;
+				subjectsCells.add(iaction.getCelula(agora, sala));
+				lasersPositions.add(agora.clone());
+				iaction.getCelula(agora, sala).registrar(this);
 			}
 			agora = proximoLaser(agora);
 		}
@@ -77,8 +85,6 @@ public class LaserMaquina extends Actor implements Observer{
 	
 	@Override
 	public void update() {
-		System.out.println("Entroudakhgdhadvjadjakvdkavd");
-		boolean interseccao = true;
 		for(Subject sub : subjectsNonCells) {
 			if((boolean) sub.getUpdate(this)) {
 				estadoDeLigacao = false;
@@ -120,13 +126,11 @@ public class LaserMaquina extends Actor implements Observer{
 		boolean achou = false;
 		Posicao agora = posicaoAtual;
 		
-		while(!achou && iaction.getCelula(proximoLaser(agora), sala) != null) {
+		while(!achou && (iaction.getCelula(proximoLaser(agora), sala) != null )) {
 			agora = proximoLaser(agora);
 			if(iaction.getCelula((agora), sala).getActor() == null) {
-				
-				System.out.println("Tcharammm");
 				System.out.println(agora);
-				LaserFeixo laser = new LaserFeixo(agora.getX(), agora.getY(), sala, iaction);
+				LaserFeixo laser = new LaserFeixo(agora.getX(), agora.getY(), sala, iaction, direcao);
 				Actor ator = laser;
 				iaction.getCelula(agora, sala).setActor(ator);
 				subjectsCells.add(iaction.getCelula(agora, sala));
@@ -135,10 +139,17 @@ public class LaserMaquina extends Actor implements Observer{
 				iaction.addImage(sala, agora);
 			}
 			else if(iaction.getCelula((agora), sala).getActor().getForca() == 0) {
-				System.out.println("ENtoru onde n devia");
+				int segundaDirecao = ((LaserFeixo)iaction.getCelula((agora), sala).remover(true)).getDirecao();
+				LaserFeixoDuplo laser = new LaserFeixoDuplo(agora.getX(), agora.getY(), sala, iaction, direcao, segundaDirecao);
+				Actor ator = laser;
+				iaction.getCelula(agora, sala).setActor(ator);
+				subjectsCells.add(iaction.getCelula(agora, sala));
+				lasersPositions.add(agora.clone());
+				iaction.getCelula(agora, sala).registrar(this);
+				iaction.addImage(sala, agora);
+				
 			}
 			else {
-				System.out.println(iaction.getCelula(agora, sala).getActor());
 				achou = true;
 			}
 		}
@@ -150,9 +161,28 @@ public class LaserMaquina extends Actor implements Observer{
 		System.out.println("Desligou");
 		for(Posicao pos : lasersPositions) {
 			if(!iaction.getCelula(pos, sala).getOcupado() && iaction.getCelula(pos, sala).getActor() != null) {
-				System.out.println("tirou" + pos);
-				iaction.getCelula(pos, sala).remover(true);
 				iaction.getCelula(pos,sala).excluirRegistro(this);
+				LaserFeixoDuplo laser;
+				LaserFeixo feixo;
+				if(iaction.getCelula(pos, sala).getActor().getResistencia() == 1) {
+					 laser = (LaserFeixoDuplo) iaction.getCelula(pos, sala).remover(true);
+					 if(laser.getDirecao() == direcao) {
+						 feixo = new LaserFeixo(pos.getX(), pos.getY(),sala, iaction, laser.getSegundaDirecao());
+						 iaction.getCelula(pos, sala).setActor(feixo);
+						 iaction.addImage(sala, pos);
+					 }
+					 else {
+						 feixo = new LaserFeixo(pos.getX(), pos.getY(),sala, iaction, laser.getDirecao());
+						 iaction.getCelula(pos, sala).setActor(feixo);
+						 iaction.addImage(sala, pos);
+					 }
+				}
+				else {
+					iaction.getCelula(pos, sala).remover(true);
+				}
+			}
+			else if(iaction.getCelula(pos, sala).getOcupado()) {
+				iaction.getCelula(pos, sala).getActor().setVivo(false);
 			}
 		}
 		subjectsCells.clear();
@@ -179,13 +209,39 @@ public class LaserMaquina extends Actor implements Observer{
 		return false;
 	}
 	
-	
-	
-
-	
 	@Override
 	public String toString() {
-		return LaserMaquina.class.getResource(".").getPath() + "laserMaquina.png";
+		try {
+		switch(direcao) {
+		case 0:
+			return LaserMaquina.class.getResource(".").getPath() + "laserUp.png";
+		case 1:
+			return LaserMaquina.class.getResource(".").getPath() + "laserDown.png";
+		
+		case 2:
+			return LaserMaquina.class.getResource(".").getPath() + "laserLeft.png";
+		case 3:
+			return LaserMaquina.class.getResource(".").getPath() + "laserRight.png";
+		
+		default:
+			throw new InvalidParameterException("direcao invalida");
+		}
+		}
+		catch(InvalidParameterException e) {
+			e.getMessage();
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public Posicao getPosicaoAnterior() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean interact(ArrayList<Item> inventario) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	

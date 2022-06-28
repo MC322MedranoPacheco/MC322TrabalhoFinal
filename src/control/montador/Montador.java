@@ -1,6 +1,7 @@
 package control.montador;
 
 import control.gameControl.SalaChanger;
+import exceptions.MontadorException;
 import model.autor.Actor;
 import model.autor.interactiveObjects.Caixa;
 import model.autor.interactiveObjects.ConnectionKeyPorta;
@@ -27,18 +28,14 @@ public class Montador implements IMontador{
 	public void connect(IBuildNivel connect) {
 		this.buildnivel = connect;
 	}
-	
+
 	public Nivel constroiNivel(String path, String arquivo, SalaChanger changer) {
 		Nivel nivel = new Nivel();
 		ToolKit tk = ToolKit.start(path,arquivo);
 		String modelo[][] = tk.retrieveNivel();
 		
+		
 		int linha = 0; // Conta em que linha estamos
-		for (int i = 0; i < modelo.length; i++) {
-			for (int k = 0; k < modelo[i].length; k++)
-				System.out.print(modelo[i][k]);
-			System.out.println("");
-		}
 		int numSalas = Integer.parseInt(modelo[0][0]);
 		nivel.salas = new Sala[numSalas];
 		
@@ -49,6 +46,7 @@ public class Montador implements IMontador{
 			nivel.salas[i] = new Sala(tamanhoX, tamanhoY);
 			linha++;
 			
+			try {
 			for (int k = 0; k < tamanhoY; k++) {
 				for (int j = 0; j < tamanhoX; j++) {
 					Terreno terreno;
@@ -77,10 +75,14 @@ public class Montador implements IMontador{
 						terreno.connect(nivel);
 						break;
 					default:
-						// Se nn passar, dar erro
+						throw new MontadorException("Terreno Invalido:");
 					}	
 				}
 				linha++;
+			}
+			}
+			catch(MontadorException erro) {
+				System.out.println(erro.getMessage());
 			}
 			int numActors = Integer.parseInt(modelo[linha][0]);
 			linha++;
@@ -125,6 +127,8 @@ public class Montador implements IMontador{
 							int posOY = Integer.parseInt(modelo[linha][coluna]);
 							 System.out.println(posOY);
 							 coluna++;
+							 
+							try { 
 							if(nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).getTerreno().getObservavel()) {	
 									 porta.getSubjects().add((Subject)nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).getTerreno());
 									 ((Subject)nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).getTerreno()).registrar(porta);
@@ -133,9 +137,11 @@ public class Montador implements IMontador{
 									 nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).notificarObservadores();
 								}
 							else {
-									//erro
+								throw new MontadorException(" terreno nao observavel");
 							}
-						
+							}catch(MontadorException e) {
+								e.getMessage();
+							}
 						
 						}
 					
@@ -143,8 +149,6 @@ public class Montador implements IMontador{
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator5);
 						linha++;
 						break;
-						
-						
 					case "PortaChaveSaida":
 						ConnectionKeyPorta ator6 = new ConnectionKeyPorta(posX - 1, posY - 1, nivel, modelo[linha][4],
 								Integer.parseInt(modelo[linha][3]),Integer.parseInt(modelo[linha][5]) , Integer.parseInt(modelo[linha][6]), changer);
@@ -158,16 +162,11 @@ public class Montador implements IMontador{
 						break;
 						
 					default:
-						// Se nn passar, dar erro
+						// adiciona item
 				}
 				linha++;
 			}
-			
-			
-			// falta adicionar objetos n atores: chaves , itens etc
 		}
-		
-		
 		return nivel;
 	}
 

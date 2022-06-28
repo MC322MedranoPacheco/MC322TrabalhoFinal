@@ -17,6 +17,7 @@ public class Nivel implements INivel{
 	private boolean finished = false;
 	String objetivo;
 	Observer obs;
+	
 	@Override
 	public void addImage(int i, Posicao pos) {
 		salas[i].getNivelView().addImage(salas[i], pos);
@@ -41,7 +42,6 @@ public class Nivel implements INivel{
 			default:
 				salas[sala].mover(posicaoOrigem, posicaoFinal); // aqui moveu
 				ICommand acaoTerreno = new TerrenoAdapter(salas[sala].getCelula(posicaoFinal).getTerreno());
-				System.out.println(conexion);
 				conexion.acao(acaoTerreno, Posicao.direcao(posicaoOrigem, posicaoFinal), acaoTerreno);
 				retorno = true;
 				break;
@@ -98,6 +98,22 @@ public class Nivel implements INivel{
 	
 	public boolean getFinished() {
 		return finished;
+	}
+
+
+	@Override
+	public boolean interact(int sala, Posicao posicaoAtual, ArrayList<Item> inventario) {
+		Posicao[] adjacentes = new Posicao[4];
+		adjacentes[0] = new Posicao(posicaoAtual.getX(), posicaoAtual.getY()+1);
+		adjacentes[1] = new Posicao(posicaoAtual.getX(), posicaoAtual.getY()-1);
+		adjacentes[2]= new Posicao(posicaoAtual.getX()+1, posicaoAtual.getY());
+		adjacentes[3]= new Posicao(posicaoAtual.getX()-1, posicaoAtual.getY());
+		for(int i = 0; i < 4; i++) {
+			if(salas[sala].getCelula(adjacentes[i]) != null && salas[sala].getCelula(adjacentes[i]).getActor() != null) {
+				salas[sala].getCelula(adjacentes[i]).getActor().interact(inventario);
+			}
+		}
+		return false;
 	}
 
 }

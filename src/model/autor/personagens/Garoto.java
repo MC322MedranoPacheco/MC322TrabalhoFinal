@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import model.autor.Personagem;
 import model.item.Item;
 import model.nivel.IAction;
+import utilidades.Posicao;
 
 public class Garoto extends Personagem{
 
@@ -18,6 +19,15 @@ public class Garoto extends Personagem{
 	public String toString() {
 		return Garoto.class.getResource(".").getPath() + "player_23.png";
 	}
+
+
+	@Override
+	public Posicao getPosicaoAnterior() {
+		return posicaoAnterior;
+	}
+
+
+	
 
 
 

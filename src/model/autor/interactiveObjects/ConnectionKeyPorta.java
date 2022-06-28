@@ -17,31 +17,19 @@ public class ConnectionKeyPorta extends KeyPorta implements SalaConector{
 		this.changer = changer;
 	}
 	
-	
-	
-	
 	@Override
 	public boolean acao(Posicao destino, ICommand vivo, ICommand receiver) {
 		boolean passou;
 		super.acao(destino, vivo, receiver);
 		if(chave) {
-			makeConection(receiver);
-			System.out.println("troca por favor");
+			makeConection();
 		}
-		return chave;
+		return false;
 	}
 
-
-
-
 	@Override
-	public void makeConection(ICommand jogador) {
-		IActor player;
-		player = iaction.getCelula(jogador.getPosicao(), sala).remover(false);
-		System.out.println(inicial);
-		iaction.getCelula(inicial, ++sala).setActor(player);
-		iaction.getCelula(inicial, sala).getActor().setPosicao(inicial);
+	public void makeConection() {
+		this.sala++;
 		changer.trocarSala(sala);
-		
 	}
 }

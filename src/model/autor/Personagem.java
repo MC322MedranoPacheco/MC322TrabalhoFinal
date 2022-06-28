@@ -26,7 +26,7 @@ public abstract class Personagem extends Actor implements Subject{
 	
 	public boolean acao(String comando, IVivo vivo){ 
 		
-		if(comando == "w" || comando == "a" || comando == "s" || comando== "d" || comando== "p") {
+		if(comando == "w" || comando == "a" || comando == "s" || comando== "d" || comando== "p" || comando == "k") {
 			Posicao destino;
 			switch(comando) {   //interpretar qual acao ele quer fazer;    
 				case "w":
@@ -64,13 +64,20 @@ public abstract class Personagem extends Actor implements Subject{
 					iaction.pegar(sala, posicaoAtual, inventario);
 					iaction.removerItem(sala, posicaoAtual);
 					return true;
+				case "i":
+					interact(inventario);
+					return true;
 			}
 		}
 		return false;
 		
 	}
 	
-	
+	@Override
+	public boolean interact(ArrayList<Item> inventario) {
+		iaction.interact(sala,posicaoAtual, inventario);
+		return false;
+	}
 	
 	public String toString() {
 		return "P";

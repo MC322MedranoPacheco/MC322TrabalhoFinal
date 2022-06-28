@@ -51,6 +51,18 @@ public class KeyPorta extends Porta{
 	public ArrayList<Item> getInventario() {
 		return null;
 	}
+
+	@Override
+	public Posicao getPosicaoAnterior() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean interact(ArrayList<Item> inventario) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 	

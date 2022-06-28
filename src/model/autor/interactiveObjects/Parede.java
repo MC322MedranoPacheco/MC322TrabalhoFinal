@@ -48,4 +48,16 @@ public class Parede extends Actor{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Posicao getPosicaoAnterior() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean interact(ArrayList<Item> inventario) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

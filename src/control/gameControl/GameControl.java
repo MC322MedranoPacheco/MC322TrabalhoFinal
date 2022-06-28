@@ -36,21 +36,24 @@ public class GameControl implements IGameControl{
 		return instance;
 	}
 
+	
+	//conecta com ator
 	@Override
 	public void connect(ICommand iCommand) {
 		this.iCommand = iCommand;
 		
 	}
 	
+	//responde solicitacao de acao
 	@Override
 	public boolean acao(ICommand actor, Posicao direcao, ICommand actorMaker) {
-		
 		if(actorMaker.getForca() > actor.getResistencia()) {
 			return actor.acao(direcao, actor, actorMaker);
 		}
 		return false;
 	}
 
+	//manda comando ao ator
 	@Override
 	public boolean acao(String comando) {
 
@@ -71,6 +74,7 @@ public class GameControl implements IGameControl{
 		
 		return retorno;
 	}
+	
 	
 	public void addKeyListener(KeyListener key) {
 		this.key = key;

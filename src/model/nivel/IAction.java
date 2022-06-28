@@ -17,5 +17,7 @@ public interface IAction {
 	void addImage(int sala, Posicao pos);
 	
 	void removerItem(int sala, Posicao pos);
+
+	public boolean interact(int sala, Posicao posicaoAtual, ArrayList<Item> inventario);
 	
 }

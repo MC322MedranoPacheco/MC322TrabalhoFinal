@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import model.autor.ActorSubjectView;
+import model.autor.personagens.Garoto;
 import model.nivel.Sala;
 import utilidades.Posicao;
 
@@ -85,7 +86,7 @@ public class NivelView implements INivelView{
 	public JLabelAnima getPersonagem() {
 		for(int i = 0; i < matrizJLabelAnima.length; i++) {
 			for(int k = 0; k < matrizJLabelAnima[0].length; k++) {
-			if(matrizJLabelAnima[i][k].getIcon().toString() == "/C:/Users/gmedr/Documents/MC322TrabalhoFinal/bin/model/autor/personagens/player_23.png");{
+			if(matrizJLabelAnima[i][k] != null && matrizJLabelAnima[i][k].getIcon().toString().equals(Garoto.class.getResource(".").getPath() + "player_23.png")){
 				
 				matrizJLabelAnima[i][k].setNivelView(this);
 				return matrizJLabelAnima[i][k];

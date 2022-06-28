@@ -13,4 +13,6 @@ public interface ICommand extends IVivo{
 	public int getResistencia();
 	public ArrayList<Item> getInventario();
 	public Posicao getPosicao();
+	public Posicao getPosicaoAnterior();
+	boolean interact(ArrayList<Item> inventario);
 }

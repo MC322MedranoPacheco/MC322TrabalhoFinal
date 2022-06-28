@@ -64,6 +64,22 @@ public class TerrenoAdapter implements ICommand {
 	}
 
 
+
+	@Override
+	public Posicao getPosicaoAnterior() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public boolean interact(ArrayList<Item> inventario) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 	
 
 }
