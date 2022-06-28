@@ -32,4 +32,7 @@ public class ConnectionKeyPorta extends KeyPorta implements SalaConector{
 		this.sala++;
 		changer.trocarSala(sala);
 	}
+	public int getForca() {
+		return 2;
+	}
 }

@@ -16,17 +16,18 @@ import view.nivelView.ILocked;
 import view.nivelView.INivelView;
 
 public class GameControl implements IGameControl{
-	ICommand iCommand;
-	KeyListener key;
-	int nivelAtual = 0, salaAtual = 0;
-	Nivel[] niveis = new Nivel[4];
-	IFazerNivel iFazerNivel;
-	INivelView iNivelView;
-	IMainView iMainView;
-	IMenuView iMenuView;
-	IRLocked iRLocked;
-	String objetivo = "goldenKey";
+	private ICommand iCommand;
+	private KeyListener key;
+	private int nivelAtual = 0, salaAtual = 0;
+	private Nivel[] niveis = new Nivel[4];
+	private IFazerNivel iFazerNivel;
+	private INivelView iNivelView;
+	private IMainView iMainView;
+	private IMenuView iMenuView;
+	private IRLocked iRLocked;
+	private String objetivo = "Gema";
 	private int tentativas =0;
+	private int totalNiveis = 2;
 	
 	private static final GameControl instance = new GameControl();
 	
@@ -56,7 +57,7 @@ public class GameControl implements IGameControl{
 	//manda comando ao ator
 	@Override
 	public boolean acao(String comando) {
-
+		
 		boolean retorno = iCommand.acao(comando, iCommand);
 		if(!iCommand.getVivo()) {
 			tentativas++;
@@ -66,10 +67,16 @@ public class GameControl implements IGameControl{
 			
 		for(int i = 0; i < iCommand.getInventario().size(); i++) {
 			if(iCommand.getInventario().get(i).getItemCode().equals(objetivo)) {
-				nivelAtual++;
-				iMainView.setContentPane(iMenuView.getJFrameNextLevel().getContentPane(), null);
-				return false;
+				if(nivelAtual == totalNiveis) {
+					iMainView.setContentPane(iMenuView.getJFrameFimDeJogo().getContentPane(), null);
+				}
+				else {
+					nivelAtual++;
+					iMainView.setContentPane(iMenuView.getJFrameNextLevel("botaoProximaFase.jpg").getContentPane(), null);
+					return false;
+				}
 			}
+	
 		}
 		
 		return retorno;
@@ -81,8 +88,7 @@ public class GameControl implements IGameControl{
 	}
 
 	public void montarNiveis(int inicio) {
-		for (int i = inicio; i < 2; i++) {
-			System.out.println("aaaAAAaaa");
+		for (int i = inicio; i < 3; i++) {
 			niveis[i] = iFazerNivel.constroiNivel(null, "Nivel" + i, this); // Dar o path depois
 			niveis[i].connect(this);
 		}
@@ -92,7 +98,7 @@ public class GameControl implements IGameControl{
 	public void start() {
 		
 		montarNiveis(nivelAtual);
-		
+		//Cria a GUI e junta ela com o personagem
 		this.connect(niveis[nivelAtual].salas[salaAtual].getCelula(niveis[nivelAtual].salas[salaAtual].getPosPersonagem()).getActor()); // Mudar isso depois
 		niveis[nivelAtual].connect(this);
 		if(nivelAtual == 0 && salaAtual == 0 && tentativas == 0) {

@@ -60,7 +60,7 @@ public class MenuView implements IMenuView, ActionListener{
 		
 	}
 	
-	public JFrame getJFrameNextLevel() {
+	public JFrame getJFrameNextLevel(String imagem) {
 	
 		String diretorio = MenuView.class.getResource(".").getPath();
 		janelaMenu = new JFrame();
@@ -70,7 +70,7 @@ public class MenuView implements IMenuView, ActionListener{
 		Container contentPane = janelaMenu.getContentPane();
 		contentPane.setBackground(new Color(200, 255, 200));
 		contentPane.setLayout(null);
-		ImageIcon imagemBotaoComecar = new ImageIcon(diretorio + "proximaFase.png");
+		ImageIcon imagemBotaoComecar = new ImageIcon(diretorio + imagem);
 		JButton botaoComecar = new JButton(imagemBotaoComecar);
 		botaoComecar.setActionCommand("Jogar");
 		botaoComecar.addActionListener(this);
@@ -81,9 +81,26 @@ public class MenuView implements IMenuView, ActionListener{
 	}
 	
 	public JFrame getJFramePerdeu() {
-		JFrame retorno = getJFrameNextLevel();
+		JFrame retorno = getJFrameNextLevel("TentarDenov.jpg");
 		retorno.getContentPane().setBackground(new Color(255, 200,200));
 		return retorno;
+	}
+	
+	public JFrame getJFrameFimDeJogo() {
+		String diretorio = MenuView.class.getResource(".").getPath();
+		janelaMenu = new JFrame();
+		janelaMenu.setSize(999,999);
+		janelaMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Container contentPane = janelaMenu.getContentPane();
+		contentPane.setBackground(new Color(200, 200, 200));
+		ImageIcon imagemBotaoFim = new ImageIcon(diretorio + "BotaoFim.jpg");
+		JButton botaoFim = new JButton(imagemBotaoFim);
+		botaoFim.setActionCommand("Fechar");
+		botaoFim.addActionListener(this);
+		botaoFim.setBounds(400, 666, 200, 100);
+		
+		janelaMenu.add(botaoFim);
+		return janelaMenu;
 	}
 }
 

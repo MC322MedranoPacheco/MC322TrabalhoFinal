@@ -64,6 +64,8 @@ public class KeyPorta extends Porta{
 		return false;
 	}
 	
-	
+	public int getForca() {
+		return 2;
+	}
 	
 }

@@ -244,5 +244,8 @@ public class LaserMaquina extends Actor implements Observer{
 		return false;
 	}
 	
+	public int getForca() {
+		return 2;
+	}
 	
 }

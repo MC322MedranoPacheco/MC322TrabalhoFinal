@@ -19,8 +19,15 @@ public class Computador extends Actor implements Subject{
 	private final Object MUTEX = new Object();
 	
 	public Computador(int x, int y, IAction iaction, String keycode) {
-		super(x, y, iaction);
+		this(x, y, iaction);
 		this.keycode = keycode;
+	
+	}
+	
+	
+	
+	public Computador(int x, int y, IAction iaction) {
+		super(x, y, iaction);
 		changed = false;
 		ativar = false;
 		observers = new ArrayList<>();
@@ -28,6 +35,7 @@ public class Computador extends Actor implements Subject{
 		resistencia = 10000;
 		
 	}
+	
 	
 	@Override
 	public boolean interact(ArrayList<Item> inventario) {
@@ -124,7 +132,7 @@ public class Computador extends Actor implements Subject{
 
 	@Override
 	public String toString() {
-		return null;
+		return Computador.class.getResource(".").getPath() + "platformIndustrial_046.png";
 	}
 
 	@Override
@@ -132,4 +140,7 @@ public class Computador extends Actor implements Subject{
 		return false;
 	}
 
+	public int getForca() {
+		return 2;
+	}
 }

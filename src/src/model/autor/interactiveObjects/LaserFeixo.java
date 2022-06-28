@@ -86,7 +86,4 @@ public class LaserFeixo extends Actor{
 		return false;
 	}
 
-	
-
-
 }

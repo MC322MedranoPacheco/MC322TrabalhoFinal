@@ -86,4 +86,8 @@ public class ObserverPorta extends Porta implements Observer{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public int getForca() {
+		return 2;
+	}
 }

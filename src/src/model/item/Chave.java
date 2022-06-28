@@ -8,6 +8,6 @@ public class Chave extends Item{
 	}
 
 	public String toString() {
-		return Chave.class.getResource(".").getPath() + "platformPack_item014.png";
+		return Chave.class.getResource(".").getPath() + "goldenKey.png";
 	}
 }

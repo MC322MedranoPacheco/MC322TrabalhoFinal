@@ -16,8 +16,6 @@ public class ToolKit {
    private BufferedReader moveStr, salaStr;
    private PrintWriter outputStr;
    
-   private boolean firstBoard = true;
-   
    public static ToolKit start(String nivelPath, String nomeArquivo) {
       tk = new ToolKit();
       String nivelFile = (nivelPath == null)

@@ -20,8 +20,6 @@ public class AppJogo {
 		
 		menuV.connect(teste);
 		
-		//NO CONTROL mainV.setContentPane(nivelV.getContentPane(), nivelV.getJFrame().getKeyListeners()[0]);
-		
 		teste.connect(menuV);
 		teste.connect(mainV);
 		teste.connect(nivelV);

@@ -60,4 +60,8 @@ public class Parede extends Actor{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public int getForca() {
+		return 2;
+	}
 }

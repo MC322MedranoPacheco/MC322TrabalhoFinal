@@ -62,7 +62,9 @@ public abstract class Porta extends Actor{
 		return false;
 	}
 
-	
+	public int getForca() {
+		return 2;
+	}
 
 
 	

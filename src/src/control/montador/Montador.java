@@ -4,6 +4,7 @@ import control.gameControl.SalaChanger;
 import exceptions.MontadorException;
 import model.autor.Actor;
 import model.autor.interactiveObjects.Caixa;
+import model.autor.interactiveObjects.Computador;
 import model.autor.interactiveObjects.ConnectionKeyPorta;
 import model.autor.interactiveObjects.KeyPorta;
 import model.autor.interactiveObjects.LaserMaquina;
@@ -11,6 +12,7 @@ import model.autor.interactiveObjects.ObserverPorta;
 import model.autor.interactiveObjects.Parede;
 import model.autor.personagens.Garoto;
 import model.item.Chave;
+import model.item.Gema;
 import model.item.Item;
 import model.nivel.IBuildNivel;
 import model.nivel.Nivel;
@@ -20,6 +22,7 @@ import model.terreno.Pedra;
 import model.terreno.PlacaDePressao;
 import model.terreno.Terra;
 import model.terreno.Terreno;
+import utilidades.Observer;
 import utilidades.Posicao;
 import utilidades.Subject;
 
@@ -104,9 +107,36 @@ public class Montador implements IMontador{
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator2);
 						break;
 					case "L":
-                        Actor ator3 = new LaserMaquina(posX - 1, posY - 1, Integer.parseInt(modelo[linha][3]), nivel);
-                        nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator3);
-                        break;
+				
+                       Actor ator3 = new LaserMaquina(posX - 1, posY - 1, Integer.parseInt(modelo[linha][3]), nivel);
+                       nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator3);
+                       int coluna = 5;            
+                       
+	                  if(  Integer.parseInt( modelo[linha][4] ) != 0) {
+							for(int j = 0; j < Integer.parseInt(modelo[linha][4]); j++) {
+								int posOX = Integer.parseInt(modelo[linha][coluna]);
+								 System.out.println(posOX);
+								coluna++;
+								int posOY = Integer.parseInt(modelo[linha][coluna]);
+								 System.out.println(posOY);
+								 coluna++;
+								 
+								try { 
+								if(nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).getTerreno().getObservavel()) {	
+										 ((LaserMaquina) ator3).getSubjects().add((Subject)nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).getTerreno());
+										 ((Subject)nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).getTerreno()).registrar((Observer) ator3);
+										 nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).setChanged();
+										 nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).notificarObservadores();
+									}
+								else {
+									throw new MontadorException(" terreno nao observavel");
+								}
+								}catch(MontadorException e) {
+									e.getMessage();
+								}
+								}
+							}
+                       break;
 					case "Porta":
 						Actor ator4 = new KeyPorta(posX - 1, posY - 1, nivel, modelo[linha][4], Integer.parseInt(modelo[linha][3]));
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator4);
@@ -119,14 +149,14 @@ public class Montador implements IMontador{
 						break;
 					case "PortaDePressao":
 						ObserverPorta porta = new ObserverPorta(posX - 1, posY - 1, nivel, Integer.parseInt(modelo[linha][3]));
-						int coluna = 5;
+						int coluna3 = 5;
 						for(int j = 0; j < Integer.parseInt(modelo[linha][4]); j++) {
-							int posOX = Integer.parseInt(modelo[linha][coluna]);
+							int posOX = Integer.parseInt(modelo[linha][coluna3]);
 							 System.out.println(posOX);
-							coluna++;
-							int posOY = Integer.parseInt(modelo[linha][coluna]);
+							coluna3++;
+							int posOY = Integer.parseInt(modelo[linha][coluna3]);
 							 System.out.println(posOY);
-							 coluna++;
+							 coluna3++;
 							 
 							try { 
 							if(nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).getTerreno().getObservavel()) {	
@@ -161,8 +191,42 @@ public class Montador implements IMontador{
 						nivel.salas[i].getCelula(new Posicao(posX-1,posY-1)).addItem(chaveSaida);
 						break;
 						
-					default:
-						// adiciona item
+						case "Computador":
+						
+							int temKey = Integer.parseInt(modelo[linha][3]);              ;
+							posX = Integer.parseInt(modelo[linha][0]);
+							posY = Integer.parseInt(modelo[linha][1]);
+							Computador ator7;
+							if(temKey == 0)
+								ator7 = new Computador(posX - 1, posY - 1,nivel, modelo[linha][4]);
+							else
+								ator7 = new Computador(posX - 1, posY - 1, nivel);
+							nivel.salas[i].adicionaActor(posX-1, posY-1, ator7);
+							int coluna1 = 6;
+							for(int j = 0; j < Integer.parseInt(modelo[linha][5]); j++) {
+								int posOX = Integer.parseInt(modelo[linha][coluna1]);
+								 System.out.println(posOX);
+								coluna1++;
+								int posOY = Integer.parseInt(modelo[linha][coluna1]);
+								 System.out.println(posOY);
+								 coluna1++;
+							try { 
+								ator7.registrar( ((Observer)nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).getActor()));
+								Subject[] sub = new Subject[1];
+								sub[0] = ator7;
+								((Observer)nivel.salas[i].getCelula(new Posicao(posOX-1, posOY-1)).getActor()).setSubejects(sub);
+							}
+							catch(Exception e) {
+								e.getStackTrace();
+							}
+							}	
+							break;
+						case "Gema":
+							Item gema = new Gema(posX - 1, posY - 1, "Gema");
+							nivel.salas[i].getCelula(new Posicao(posX-1,posY-1)).addItem(gema);
+							break;
+						default:
+						
 				}
 				linha++;
 			}
