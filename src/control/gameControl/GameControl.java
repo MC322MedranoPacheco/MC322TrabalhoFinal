@@ -25,7 +25,8 @@ public class GameControl implements IGameControl{
 	IMainView iMainView;
 	IMenuView iMenuView;
 	IRLocked iRLocked;
-	String objetivo = "goldenKey";
+	String objetivo = "";
+	private int tentativas =0;
 	
 	private static final GameControl instance = new GameControl();
 	
@@ -55,6 +56,7 @@ public class GameControl implements IGameControl{
 
 		boolean retorno = iCommand.acao(comando, iCommand);
 		if(!iCommand.getVivo()) {
+			tentativas++;
 			iMainView.setContentPane(iMenuView.getJFramePerdeu().getContentPane(), null);
 			return false;
 		}
@@ -77,19 +79,19 @@ public class GameControl implements IGameControl{
 	public void montarNiveis() {
 		for (int i = 0; i < 2; i++) {
 			System.out.println("aaaAAAaaa");
-			niveis[i] = iFazerNivel.constroiNivel(null, "Nivel" + i); // Dar o path depois
+			niveis[i] = iFazerNivel.constroiNivel(null, "Nivel" + i, this); // Dar o path depois
 			niveis[i].connect(this);
 		}
 	}
 	
 
 	public void start() {
-		if(nivelAtual == 0) {
+		if(nivelAtual == 0 && salaAtual == 0 && tentativas == 0) {
 			montarNiveis();
 		}
-		this.connect(niveis[nivelAtual].salas[salaAtual].getCelula(new Posicao(0,0)).getActor()); // Mudar isso depois
+		this.connect(niveis[nivelAtual].salas[salaAtual].getCelula(niveis[nivelAtual].salas[salaAtual].getPosPersonagem()).getActor()); // Mudar isso depois
 		niveis[nivelAtual].connect(this);
-		if(nivelAtual == 0) {
+		if(nivelAtual == 0 && salaAtual == 0 && tentativas == 0) {
 			iNivelView.geraJFrame(niveis[nivelAtual].salas[salaAtual].getTamanho(), niveis[nivelAtual].salas[salaAtual].getTamanho(), niveis[nivelAtual].salas[salaAtual], key);
 			iMainView.setContentPane(iNivelView.getContentPane(), iNivelView.getJFrame().getKeyListeners()[0]);
 		}
@@ -120,6 +122,12 @@ public class GameControl implements IGameControl{
 	
 	public void connect(IMenuView iMenuView) {
 		this.iMenuView = iMenuView;
+	}
+
+	@Override
+	public void trocarSala(int sala) {
+		salaAtual = sala;
+		start();
 	}
 
 }

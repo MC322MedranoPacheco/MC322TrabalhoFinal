@@ -4,6 +4,7 @@ import model.autor.Actor;
 import model.autor.ActorSubjectView;
 import model.autor.IActor;
 import model.autor.interactiveObjects.LaserFeixo;
+import model.autor.personagens.Garoto;
 import model.terreno.Terreno;
 import view.nivelView.INivelView;
 import utilidades.Posicao;
@@ -84,7 +85,7 @@ public class Sala {
 	public Posicao getPosPersonagem() {
 		for(int i = 0; i < layout.length; i++) 
 			for(int k = 0; k < layout[0].length; k++) {
-				if(layout[i][k].getActor().toString() == "nomePersonagem")
+				if(layout[i][k].getActor() != null && layout[i][k].getActor().toString().equals(Garoto.class.getResource(".").getPath() + "player_23.png"))
 					return new Posicao(k, i);
 			}
 		return null;

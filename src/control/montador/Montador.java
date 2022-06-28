@@ -1,9 +1,9 @@
 package control.montador;
 
-import java.awt.RenderingHints.Key;
-
+import control.gameControl.SalaChanger;
 import model.autor.Actor;
 import model.autor.interactiveObjects.Caixa;
+import model.autor.interactiveObjects.ConnectionKeyPorta;
 import model.autor.interactiveObjects.KeyPorta;
 import model.autor.interactiveObjects.LaserMaquina;
 import model.autor.interactiveObjects.ObserverPorta;
@@ -28,7 +28,7 @@ public class Montador implements IMontador{
 		this.buildnivel = connect;
 	}
 	
-	public Nivel constroiNivel(String path, String arquivo) {
+	public Nivel constroiNivel(String path, String arquivo, SalaChanger changer) {
 		Nivel nivel = new Nivel();
 		ToolKit tk = ToolKit.start(path,arquivo);
 		String modelo[][] = tk.retrieveNivel();
@@ -42,8 +42,8 @@ public class Montador implements IMontador{
 		int numSalas = Integer.parseInt(modelo[0][0]);
 		nivel.salas = new Sala[numSalas];
 		
+		linha++;
 		for(int i = 0; i < numSalas; i++) {
-			linha++;
 			int tamanhoX = Integer.parseInt(modelo[linha][0]);
 			int tamanhoY = Integer.parseInt(modelo[linha][1]);
 			nivel.salas[i] = new Sala(tamanhoX, tamanhoY);
@@ -135,12 +135,28 @@ public class Montador implements IMontador{
 							else {
 									//erro
 							}
+						
+						
 						}
 					
 						Actor ator5 = porta;
 						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator5);
 						linha++;
 						break;
+						
+						
+					case "PortaChaveSaida":
+						ConnectionKeyPorta ator6 = new ConnectionKeyPorta(posX - 1, posY - 1, nivel, modelo[linha][4],
+								Integer.parseInt(modelo[linha][3]),Integer.parseInt(modelo[linha][5]) , Integer.parseInt(modelo[linha][6]), changer);
+						nivel.salas[i].adicionaActor(posX - 1, posY - 1, ator6);
+						linha++;
+						posX = Integer.parseInt(modelo[linha][0]);
+						posY = Integer.parseInt(modelo[linha][1]);
+						String itemSaida  = modelo[linha][2];
+						Item chaveSaida = new Chave(posX-1,posY-1, itemSaida);
+						nivel.salas[i].getCelula(new Posicao(posX-1,posY-1)).addItem(chaveSaida);
+						break;
+						
 					default:
 						// Se nn passar, dar erro
 				}
