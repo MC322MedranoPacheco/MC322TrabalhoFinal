@@ -25,7 +25,7 @@ public class GameControl implements IGameControl{
 	IMainView iMainView;
 	IMenuView iMenuView;
 	IRLocked iRLocked;
-	String objetivo = "";
+	String objetivo = "goldenKey";
 	private int tentativas =0;
 	
 	private static final GameControl instance = new GameControl();
@@ -80,8 +80,8 @@ public class GameControl implements IGameControl{
 		this.key = key;
 	}
 
-	public void montarNiveis() {
-		for (int i = 0; i < 2; i++) {
+	public void montarNiveis(int inicio) {
+		for (int i = inicio; i < 2; i++) {
 			System.out.println("aaaAAAaaa");
 			niveis[i] = iFazerNivel.constroiNivel(null, "Nivel" + i, this); // Dar o path depois
 			niveis[i].connect(this);
@@ -90,9 +90,9 @@ public class GameControl implements IGameControl{
 	
 
 	public void start() {
-		if(nivelAtual == 0 && salaAtual == 0 && tentativas == 0) {
-			montarNiveis();
-		}
+		
+		montarNiveis(nivelAtual);
+		
 		this.connect(niveis[nivelAtual].salas[salaAtual].getCelula(niveis[nivelAtual].salas[salaAtual].getPosPersonagem()).getActor()); // Mudar isso depois
 		niveis[nivelAtual].connect(this);
 		if(nivelAtual == 0 && salaAtual == 0 && tentativas == 0) {
