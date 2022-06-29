@@ -4,12 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Vector;
 
 public class ToolKit {
+   public static String DIRETORIO = System.getProperty("user.dir") +
+		                            "/src/control/montador/";
    
    private static ToolKit tk;
    
@@ -18,11 +18,12 @@ public class ToolKit {
    
    public static ToolKit start(String nivelPath, String nomeArquivo) {
       tk = new ToolKit();
-      InputStream nivelFile = ToolKit.class.getResourceAsStream(nomeArquivo + ".csv");
+      String nivelFile = (nivelPath == null)
+            ? DIRETORIO + nomeArquivo  + ".csv": nivelPath;
       try {
          tk.salaStr = new BufferedReader(
-               new InputStreamReader(nivelFile));
-      } catch(Exception erro){
+               new FileReader(nivelFile));
+      } catch(IOException erro){
          erro.printStackTrace();
       }
       return tk;

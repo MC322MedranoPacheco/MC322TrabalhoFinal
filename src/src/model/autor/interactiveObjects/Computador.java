@@ -132,7 +132,7 @@ public class Computador extends Actor implements Subject{
 
 	@Override
 	public String toString() {
-		return "platformIndustrial_046.png";
+		return Computador.class.getResource(".").getPath() + "platformIndustrial_046.png";
 	}
 
 	@Override

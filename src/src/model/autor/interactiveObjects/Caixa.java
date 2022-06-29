@@ -32,7 +32,7 @@ public class Caixa extends Actor{
 	
 	
 	public String toString() {
-		return "crate_42.png";
+		return Caixa.class.getResource(".").getPath() + "crate_42.png";
 	}
 
 

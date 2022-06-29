@@ -34,7 +34,7 @@ public abstract class Porta extends Actor{
 			else
 				retorno = "portaAbertaVertical";
 		}
-		return retorno + ".png";
+		return (KeyPorta.class.getResource(".").getPath() + retorno + ".png");
 	}
 	
 	

@@ -40,7 +40,7 @@ public class Parede extends Actor{
 	
 	@Override
 	public String toString() {
-		return "block_04.png";
+		return Parede.class.getResource(".").getPath() + "block_04.png";
 	}
 
 	@Override

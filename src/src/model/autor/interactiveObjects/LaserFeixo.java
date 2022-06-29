@@ -46,9 +46,9 @@ public class LaserFeixo extends Actor{
 	public String toString() {
 		try {
 		if(direcao == 0 || direcao == 1)
-			return "laserRedVertical.png";
+			return LaserFeixo.class.getResource(".").getPath() + "laserRedVertical.png";
 		else if(direcao == 2 || direcao == 3)
-			return "laserRedHorizontal.png";
+			return LaserFeixo.class.getResource(".").getPath() + "laserRedHorizontal.png";
 		else {
 			throw new InvalidParameterException("direcao invalida");
 		}

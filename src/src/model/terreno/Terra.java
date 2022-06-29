@@ -15,7 +15,7 @@ public class Terra extends Terreno{
 	}
 
 	public String toString() {
-		return "ground_05.png";
+		return Terra.class.getResource(".").getPath() + "ground_05.png";
 	}
 	
 }

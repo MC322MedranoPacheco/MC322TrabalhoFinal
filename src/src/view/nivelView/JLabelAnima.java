@@ -70,7 +70,7 @@ public class JLabelAnima extends JLabel implements ActionListener, ObserverActor
 	            setIcon(imagemInexistente);
 	            return;
 			case "atualizar":
-				ImageIcon atualizada = new ImageIcon(sub.getClass().getResource(sub.toString()));
+				ImageIcon atualizada = new ImageIcon(sub.toString());
 				setIcon(atualizada);
 				locked = false;
 				return;
