@@ -10,7 +10,7 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 
 # Arquivo Executável do Jogo
 
-> Coloque aqui um link para download do arquivo `jar` ou equivalente para execução do seu jogo.
+* Link para executável: [Gem Collectors](GemCollectors.jar)
 
 # Slides do Projeto
 
