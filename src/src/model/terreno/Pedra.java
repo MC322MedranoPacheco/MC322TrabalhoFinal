@@ -14,7 +14,7 @@ public class Pedra extends Terreno{
 	}
 
 	public String toString() {
-		return Pedra.class.getResource(".").getPath() + "ground_06.png";
+		return "ground_06.png";
 	}
 	
 }

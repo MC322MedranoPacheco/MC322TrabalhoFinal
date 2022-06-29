@@ -8,7 +8,7 @@ public class Chave extends Item{
 	}
 
 	public String toString() {
-		return Gema.class.getResource(".").getPath() + "goldenKey.png";
+		return "goldenKey.png";
 	}
 }
 
