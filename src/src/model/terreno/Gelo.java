@@ -21,7 +21,7 @@ public class Gelo extends Terreno{
 	
 	
 	public String toString() {
-		return Terra.class.getResource(".").getPath() + "crate_44.png";
+		return "crate_44.png";
 	}
 
 }

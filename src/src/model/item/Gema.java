@@ -8,6 +8,6 @@ public class Gema extends Item{
 	}
 
 	public String toString() {
-		return Gema.class.getResource(".").getPath() + "gema.png";
+		return "gema.png";
 	}
 }

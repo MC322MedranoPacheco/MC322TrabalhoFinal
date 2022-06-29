@@ -214,14 +214,14 @@ public class LaserMaquina extends Actor implements Observer{
 		try {
 		switch(direcao) {
 		case 0:
-			return LaserMaquina.class.getResource(".").getPath() + "laserUp.png";
+			return "laserUp.png";
 		case 1:
-			return LaserMaquina.class.getResource(".").getPath() + "laserDown.png";
+			return "laserDown.png";
 		
 		case 2:
-			return LaserMaquina.class.getResource(".").getPath() + "laserLeft.png";
+			return "laserLeft.png";
 		case 3:
-			return LaserMaquina.class.getResource(".").getPath() + "laserRight.png";
+			return "laserRight.png";
 		
 		default:
 			throw new InvalidParameterException("direcao invalida");

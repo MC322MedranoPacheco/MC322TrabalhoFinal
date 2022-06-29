@@ -16,11 +16,11 @@ public class LaserFeixoDuplo extends LaserFeixo{
 	public String toString() {
 		
 		if(direcao >= 2 && segundaDirecao >=2) 
-			return LaserFeixoDuplo.class.getResource(".").getPath() + "laserRedHorizontal.png";
+			return "laserRedHorizontal.png";
 		else if(direcao <= 1 && segundaDirecao <= 1) 
-			return LaserFeixoDuplo.class.getResource(".").getPath() + "laserRedVertical.png";
+			return "laserRedVertical.png";
 		else {
-			return LaserFeixo.class.getResource(".").getPath() + "laserRedCruzado.png";
+			return "laserRedCruzado.png";
 		}
 	}
 	

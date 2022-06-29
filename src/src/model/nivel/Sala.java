@@ -85,7 +85,7 @@ public class Sala {
 	public Posicao getPosPersonagem() {
 		for(int i = 0; i < layout.length; i++) 
 			for(int k = 0; k < layout[0].length; k++) {
-				if(layout[i][k].getActor() != null && layout[i][k].getActor().toString().equals(Garoto.class.getResource(".").getPath() + "player_23.png"))
+				if(layout[i][k].getActor() != null && layout[i][k].getActor().toString().equals("player_23.png"))
 					return new Posicao(k, i);
 			}
 		return null;

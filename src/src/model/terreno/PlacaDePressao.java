@@ -89,7 +89,7 @@ public class PlacaDePressao extends Terreno implements Subject, Observer{
 	
 	@Override
 	public String toString() {
-		return PlacaDePressao.class.getResource(".").getPath() + "PlacaDePressao.png";
+		return "PlacaDePressao.png";
 	}
 
 }

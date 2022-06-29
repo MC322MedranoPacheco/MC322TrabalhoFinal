@@ -17,7 +17,7 @@ public class Garoto extends Personagem{
 	
 	
 	public String toString() {
-		return Garoto.class.getResource(".").getPath() + "player_23.png";
+		return "player_23.png";
 	}
 
 

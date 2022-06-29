@@ -26,7 +26,7 @@ public class NivelView implements INivelView{
 	}
 	
 	public JFrame geraJFrame(int x, int y, Sala sala, KeyListener key) {
-		String diretorio = NivelView.class.getResource(".").getPath();
+		
 		janelaJogo = new JFrame();
 		janelaJogo.setSize(999,999);
 		janelaJogo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,7 +45,7 @@ public class NivelView implements INivelView{
 			for(int k = 0; k < x; k++) {
 				Posicao pos = new Posicao(k, i);
 				if(sala.getCelula(pos).getActor() != null) {
-					ImageIcon imagemPerso = new ImageIcon(sala.getCelula(pos).getActor().toString());
+					ImageIcon imagemPerso = new ImageIcon(sala.getCelula(pos).getActor().getClass().getResource(sala.getCelula(pos).getActor().toString()));
 					JLabelAnima jlabelP = new JLabelAnima(imagemPerso, espacamento + k*66, espacamento + i*66, 1, 0);
 					jlabelP.setBounds(espacamento + k*66 , espacamento + i*66, 64, 64);
 					
@@ -56,18 +56,17 @@ public class NivelView implements INivelView{
 				}
 				
 				if(sala.getCelula(pos).getInventario().size() != 0) {
-					System.out.println("entrei aqui");
+					
 					for(int j = 0; j < sala.getCelula(pos).getInventario().size(); j++) {
-						ImageIcon imagemItem = new ImageIcon(sala.getCelula(pos).getInventario().get(j).toString());
+						ImageIcon imagemItem = new ImageIcon(sala.getCelula(pos).getInventario().get(j).getClass().getResource(sala.getCelula(pos).getInventario().get(j).toString()));
 						matrizItens[i][k] = new JLabel(imagemItem);
-						System.out.println(imagemItem);
 						matrizItens[i][k].setBounds(espacamento + k*66 , espacamento + i*66, 64, 64);
 						janelaJogo.add(matrizItens[i][k]);
 						contentPane.setComponentZOrder(matrizItens[i][k], 0);
 					}
 				}
 				//Adiciona os terrenos
-				ImageIcon imagemTerreno = new ImageIcon(sala.getCelula(pos).getTerreno().toString());
+				ImageIcon imagemTerreno = new ImageIcon(sala.getCelula(pos).getTerreno().getClass().getResource(sala.getCelula(pos).getTerreno().toString()));
 				matrizJLabel[i][k] = new JLabel(imagemTerreno);
 				matrizJLabel[i][k].setBounds(espacamento + k*66 , espacamento + i*66, 64, 64);
 				janelaJogo.add(matrizJLabel[i][k]);
@@ -88,10 +87,11 @@ public class NivelView implements INivelView{
 	public JLabelAnima getPersonagem() {
 		for(int i = 0; i < matrizJLabelAnima.length; i++) {
 			for(int k = 0; k < matrizJLabelAnima[0].length; k++) {
-			if(matrizJLabelAnima[i][k] != null && matrizJLabelAnima[i][k].getIcon().toString().equals(Garoto.class.getResource(".").getPath() + "player_23.png")){
-				
-				matrizJLabelAnima[i][k].setNivelView(this);
-				return matrizJLabelAnima[i][k];
+				Posicao pos = new Posicao(k, i);
+				if(matrizJLabelAnima[i][k] != null && matrizJLabelAnima[i][k].getIcon().toString().equals(Garoto.class.getResource("player_23.png").toString())){
+					
+					matrizJLabelAnima[i][k].setNivelView(this);
+					return matrizJLabelAnima[i][k];
 				}
 			}
 		}
@@ -108,7 +108,7 @@ public class NivelView implements INivelView{
 	
 	public void addImage(Sala sala, Posicao pos) {
 		int espacamento = CalculaEspacamento(sala.getTamanho());
-		ImageIcon imagemPerso = new ImageIcon(sala.getCelula(pos).getActor().toString());
+		ImageIcon imagemPerso = new ImageIcon(sala.getCelula(pos).getActor().getClass().getResource(sala.getCelula(pos).getActor().toString()));
 		JLabelAnima jlabelP = new JLabelAnima(imagemPerso, espacamento + pos.getX()*66, espacamento + pos.getY()*66, 1, 0);
 		jlabelP.setBounds(espacamento + pos.getX()*66 , espacamento + pos.getY()*66, 64, 64);
 		janelaJogo.getContentPane().add(jlabelP);

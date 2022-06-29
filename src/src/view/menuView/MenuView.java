@@ -16,7 +16,6 @@ public class MenuView implements IMenuView, ActionListener{
 	private IStart iStart;
 	
 	public MenuView() {
-		String diretorio = MenuView.class.getResource(".").getPath();
 		
 		janelaMenu = new JFrame();
 		janelaMenu.setSize(999,999);
@@ -24,14 +23,14 @@ public class MenuView implements IMenuView, ActionListener{
 		
 		Container contentPane = janelaMenu.getContentPane();
 		contentPane.setLayout(null);
-		ImageIcon imagemBotaoComecar = new ImageIcon(diretorio + "botaoComecar.png");
+		ImageIcon imagemBotaoComecar = new ImageIcon(this.getClass().getResource("botaoComecar.png"));
 		JButton botaoComecar = new JButton(imagemBotaoComecar);
 		botaoComecar.setActionCommand("Jogar");
 		botaoComecar.addActionListener(this);
 		botaoComecar.setBounds(150, 666, 200, 100);
 		janelaMenu.add(botaoComecar);
 		
-		ImageIcon imagemFechar = new ImageIcon(diretorio + "botaoFechar.png"); // Sei la se vai dar pra implementar isso
+		ImageIcon imagemFechar = new ImageIcon(this.getClass().getResource("botaoFechar.png")); // Sei la se vai dar pra implementar isso
 		JButton botaoFechar = new JButton(imagemFechar);
 		botaoFechar.setBounds(650, 666, 200, 100);
 		contentPane.setBackground(new Color(200, 240, 255));
@@ -62,7 +61,6 @@ public class MenuView implements IMenuView, ActionListener{
 	
 	public JFrame getJFrameNextLevel(String imagem) {
 	
-		String diretorio = MenuView.class.getResource(".").getPath();
 		janelaMenu = new JFrame();
 		janelaMenu.setSize(999,999);
 		janelaMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +68,7 @@ public class MenuView implements IMenuView, ActionListener{
 		Container contentPane = janelaMenu.getContentPane();
 		contentPane.setBackground(new Color(200, 255, 200));
 		contentPane.setLayout(null);
-		ImageIcon imagemBotaoComecar = new ImageIcon(diretorio + imagem);
+		ImageIcon imagemBotaoComecar = new ImageIcon(this.getClass().getResource(imagem));
 		JButton botaoComecar = new JButton(imagemBotaoComecar);
 		botaoComecar.setActionCommand("Jogar");
 		botaoComecar.addActionListener(this);
@@ -87,13 +85,12 @@ public class MenuView implements IMenuView, ActionListener{
 	}
 	
 	public JFrame getJFrameFimDeJogo() {
-		String diretorio = MenuView.class.getResource(".").getPath();
 		janelaMenu = new JFrame();
 		janelaMenu.setSize(999,999);
 		janelaMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container contentPane = janelaMenu.getContentPane();
 		contentPane.setBackground(new Color(200, 200, 200));
-		ImageIcon imagemBotaoFim = new ImageIcon(diretorio + "BotaoFim.jpg");
+		ImageIcon imagemBotaoFim = new ImageIcon(this.getClass().getResource("BotaoFim.jpg"));
 		JButton botaoFim = new JButton(imagemBotaoFim);
 		botaoFim.setActionCommand("Fechar");
 		botaoFim.addActionListener(this);
