@@ -89,3 +89,56 @@ Método | Objetivo
 -------| --------
 `acao` | `Comeca um determinado nivel.`
 
+### Interface IRPress
+
+Interface que permite que o leitor se comunique com o gameControl e mande os comandos do teclado para ele.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | `Conecta o leitor com o GameControl para enviar os movimentos.`
+
+### Interface IRLocked
+
+Interface que permite que o leitor se comunique com o NivelView para que ele saiba quando uma animção terminou e ele pode ler outro movimento do teclado.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | `Conecta o leitor com o NivelView para que o leitor possa saber quando liberar o movimento.`
+
+### Interface IFazerNivel
+
+Interface que possui o metodo responsavel pelo montador criar niveis.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`constroiNivel` | `Cria um nível a partir de um arquivo .csv.`
+
+### Interface ICommand
+
+Interface que permite a realização de acoes por parte do ator. Também permite acessar determinados atributos do ator que são necessários para determinar a validade de um movimento
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`acao` | `Realiza uma ação com base em um comando.`
+`getForca` | `retorna a forca do ator.`
+`getResistencia` | `retorna a resistência do ator.`
+`getInventario` | `retorna o inventário do ator.`
+`getPosicao` | `retorna a posição do ator.`
+`getPosicao` | `retorna a posição anterior do ator.`
+`interact` | `interage com um dos objetos.`
