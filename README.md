@@ -27,3 +27,17 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 ![image](https://user-images.githubusercontent.com/102121798/176239765-5a40f038-95b4-4631-be4a-3e8c2f87f133.png)
 
 *obs: imagens do jogo retiradas do: (https://www.kenney.nl/assets)
+## Detalhamento das Interfaces
+
+### Interface `IPress`
+
+`A interface serve para receber os movimentos do leitor e realizar as ações necessárias`
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`acao` | `Realiza uma ação com base em uma tecla.`
+`AddKeyListener | `Adiciona um observador do teclado.'`
