@@ -31,7 +31,7 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 
 ### Interface `IPress`
 
-`A interface serve para receber os movimentos do leitor e realizar as ações necessárias`
+A interface serve para receber os movimentos do leitor e realizar as ações necessárias.
 
 ~~~
 <Interface em Java.>
@@ -40,4 +40,52 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 Método | Objetivo
 -------| --------
 `acao` | `Realiza uma ação com base em uma tecla.`
-`AddKeyListener | `Adiciona um observador do teclado.'`
+`AddKeyListener` | `Adiciona um observador do teclado.'`
+
+### Interface IRCommand
+
+Interface que conecta o gameControl com um ator para que possam ser realizadas ações.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | `Conecta o controle com um ator para realizar ações.`
+
+### Interface IRFazerNivel
+
+Interface que conecta o gameControl com um montador para a montagem de salas.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | `Conecta o controle com um ator para realizar ações.`
+### Interface ISolicitarMovimento
+
+Interface que permite que o movimentos sejam solicitados ao controle.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`acao` | `Solicitar que o controle realize um comando para determinado ator.`
+
+### Interface IStart
+
+Interface que começa um determinado nivel.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`acao` | `Comeca um determinado nivel.`
+
