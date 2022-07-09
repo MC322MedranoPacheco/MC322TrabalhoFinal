@@ -58,7 +58,8 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 		
 		
 ![Porta mae](https://user-images.githubusercontent.com/102121798/178086803-b091b6d8-43e3-4e3b-8ac0-4182429a11a0.png)
-
+*<p>
+	
 # Diagramas
 
 ## Diagrama Geral da Arquitetura do Jogo
