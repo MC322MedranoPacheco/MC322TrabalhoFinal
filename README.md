@@ -223,3 +223,72 @@ Interface reponsavel por conectar o nivel com o GameControl.
 Método | Objetivo
 -------| --------
 `connect` | `Connecta o nivel com o GameControl para que o nivel possa solicitar movimentos.`
+
+### Interface IMainView
+
+Interface reponsavel pelo o que o usuario vai observar.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`setContentePane` | `Muda o contentePane do jFrame do MainView para o necessario.`
+
+### Interview IMenuView
+
+Interface reponsavel pelos menus do jogo.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`getJFrameNextLevel` | `Gera o jFrame que representa o menu de proxema fase.`
+`getJFramePerdeu` | `Gera o jFrame que representa o menu de perdeu.`
+`getJFrameFimDeJogo` | `Gera o jFrame que representa o menu de fim de jogo.`
+
+### Interview INivelView
+
+Interface reponsavel pelas imagens do nivel.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`getContentPane` | `Retorna o contentPane atual.`
+`getJFrame` | `Retorna o JFrame atual.`
+`addImage` | `Adiciona uma imagem na posição desejada.`
+`removeItem` | `Remove a imagem de um item da matriz de itens.`
+`getPersonagem` | `Retorna o JLabelAnima do personagem principal.`
+
+### Interview ObserverActor
+
+Interface implementada por quem observa os atores.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`update` | `Retorna o contentPane atual.`
+`setSubject` | `Atualiza o subject.`
+`setBounds` | `Atualiza as posições do jLabel.`
+
+### Interview ILocked
+
+Interface responsavel pela variavel locked
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`getLocked` | `Retorna a variável locked.`
+`setLocked` | `Atualiza a variável locked.`
