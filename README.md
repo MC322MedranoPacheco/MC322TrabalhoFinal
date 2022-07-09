@@ -24,8 +24,8 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 
 ## Diagrama Geral da Arquitetura do Jogo
 
-![image](![ARQUITETURA](https://user-images.githubusercontent.com/102121798/178085542-006f2a4e-9fe7-49e8-884f-6f1f2126d622.png)
-)
+(![ARQUITETURA](https://user-images.githubusercontent.com/102121798/178085542-006f2a4e-9fe7-49e8-884f-6f1f2126d622.png)
+
 
 *obs: imagens do jogo retiradas do: (https://www.kenney.nl/assets)
 ## Detalhamento das Interfaces
