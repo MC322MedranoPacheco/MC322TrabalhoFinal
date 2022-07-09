@@ -34,11 +34,10 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 A interface serve para receber os movimentos do leitor e realizar as ações necessárias.
 
 ~~~
-<public interface IPress{
+public interface IPress{
 	public boolean acao(String comando);
 	public void addKeyListener(KeyListener key);
 }
->
 ~~~
 
 Método | Objetivo
@@ -51,7 +50,9 @@ Método | Objetivo
 Interface que conecta o gameControl com um ator para que possam ser realizadas ações.
 
 ~~~
-<Interface em Java.>
+public interface IRComand {
+	public void connect(ICommand iCommand);
+}
 ~~~
 
 Método | Objetivo
@@ -63,7 +64,9 @@ Método | Objetivo
 Interface que conecta o gameControl com um montador para a montagem de salas.
 
 ~~~
-<Interface em Java.>
+public interface IRFazerNivel {
+	public void connect(IFazerNivel iFazerNivel);
+}
 ~~~
 
 Método | Objetivo
@@ -74,7 +77,10 @@ Método | Objetivo
 Interface que permite que o movimentos sejam solicitados ao controle.
 
 ~~~
-<Interface em Java.>
+public interface ISolicitarMovimento{
+
+	public boolean acao(ICommand actor, Posicao direcao, ICommand actorMaker);
+}
 ~~~
 
 Método | Objetivo
@@ -86,7 +92,9 @@ Método | Objetivo
 Interface que começa um determinado nivel.
 
 ~~~
-<Interface em Java.>
+public interface IStart {
+	public void start();
+}
 ~~~
 
 Método | Objetivo
@@ -98,7 +106,9 @@ Método | Objetivo
 Interface que permite que o leitor se comunique com o gameControl e mande os comandos do teclado para ele.
 
 ~~~
-<Interface em Java.>
+public interface IRPress {
+	public void connect(IPress ipress);
+}
 ~~~
 
 Método | Objetivo
@@ -110,7 +120,9 @@ Método | Objetivo
 Interface que permite que o leitor se comunique com o NivelView para que ele saiba quando uma animção terminou e ele pode ler outro movimento do teclado.
 
 ~~~
-<Interface em Java.>
+public interface IRLocked {
+	public void connect(ILocked iLocked);
+}
 ~~~
 
 Método | Objetivo
@@ -122,7 +134,9 @@ Método | Objetivo
 Interface que possui o metodo responsavel pelo montador criar niveis.
 
 ~~~
-<Interface em Java.>
+public interface IFazerNivel {
+	public Nivel constroiNivel(String path, String arquivo, SalaChanger changer);
+}
 ~~~
 
 Método | Objetivo
@@ -134,7 +148,17 @@ Método | Objetivo
 Interface que permite a realização de acoes por parte do ator. Também permite acessar determinados atributos do ator que são necessários para determinar a validade de um movimento
 
 ~~~
-<Interface em Java.>
+public interface ICommand extends IVivo{
+	
+	public boolean acao(String comando, IVivo vivo);
+	public boolean acao(Posicao destino, ICommand receiver, ICommand maker);
+	public int getForca();
+	public int getResistencia();
+	public ArrayList<Item> getInventario();
+	public Posicao getPosicao();
+	public Posicao getPosicaoAnterior();
+	boolean interact(ArrayList<Item> inventario);
+}
 ~~~
 
 Método | Objetivo
@@ -152,7 +176,9 @@ Método | Objetivo
 Interface que conecta o ator com o nivel para ele se mover no nivel.
 
 ~~~
-<Interface em Java.>
+public interface IRAction {
+	public void connect(IAction iaction);
+}
 ~~~
 
 Método | Objetivo
@@ -164,7 +190,10 @@ Método | Objetivo
 Interface responsável pelo controle da variavel vivo do ator, permitindo obte-la e modificala.
 
 ~~~
-<Interface em Java.>
+public interface IVivo {
+	public void setVivo(boolean vivo);
+	public boolean getVivo();
+}
 ~~~
 
 Método | Objetivo
@@ -177,7 +206,12 @@ Método | Objetivo
 Interface padrão de observer que é responsavel por avisar as imagens para elas se moverem na tela.
 
 ~~~
-<Interface em Java.>
+public interface ActorSubjectView {
+	public void registrarView(ObserverActor obj);
+	public void excluirRegistroView(ObserverActor obj);
+	public void notificarObservadoresView(String string);
+	public void setChanged(boolean changed);
+}
 ~~~
 
 Método | Objetivo
@@ -192,7 +226,9 @@ Método | Objetivo
 Interface que junta as outras interfaces do actor e possui um metodo para setar a posicao do ator.
 
 ~~~
-<Interface em Java.>
+public interface IActor extends ICommand, IRAction, IRVisualActor, IVivo, ActorSubjectView {
+	public void setPosicao(Posicao posicao);
+}
 ~~~
 
 Método | Objetivo
@@ -204,7 +240,21 @@ Método | Objetivo
 Interface reponsavel por controlar os movimentos do ator na sala e auxiliar o view.
 
 ~~~
-<Interface em Java.>
+public interface IAction {
+
+	public boolean mover(int sala, Posicao posicaoAtual, Posicao destino, int forca);
+
+	public Celula getCelula(Posicao posicao, int sala);
+
+	public void pegar(int sala, Posicao posicaoAtual, ArrayList<Item> inventario);
+	
+	void addImage(int sala, Posicao pos);
+	
+	void removerItem(int sala, Posicao pos);
+
+	public boolean interact(int sala, Posicao posicaoAtual, ArrayList<Item> inventario);
+	
+}
 ~~~
 
 Método | Objetivo
@@ -221,7 +271,9 @@ Método | Objetivo
 Interface reponsavel por conectar o nivel com o GameControl.
 
 ~~~
-<Interface em Java.>
+public interface IRSolicitarMovimento {
+	public void connect(ISolicitarMovimento connect);
+}
 ~~~
 
 Método | Objetivo
@@ -233,7 +285,10 @@ Método | Objetivo
 Interface reponsavel pelo o que o usuario vai observar.
 
 ~~~
-<Interface em Java.>
+public interface IMainView extends IRNivelShow{
+	public void setContentPane(Container contentPane, KeyListener key);
+}
+
 ~~~
 
 Método | Objetivo
@@ -245,7 +300,11 @@ Método | Objetivo
 Interface reponsavel pelos menus do jogo.
 
 ~~~
-<Interface em Java.>
+public interface IMenuView extends IRStart{
+	public JFrame getJFrameNextLevel(String string);
+	public JFrame getJFramePerdeu();
+	public JFrame getJFrameFimDeJogo();
+}
 ~~~
 
 Método | Objetivo
@@ -259,7 +318,14 @@ Método | Objetivo
 Interface reponsavel pelas imagens do nivel.
 
 ~~~
-<Interface em Java.>
+public interface INivelView {
+	public Container getContentPane();
+	public JFrame getJFrame();
+	public JFrame geraJFrame(int x, int y, Sala sala, KeyListener key);
+	public void addImage(Sala sala, Posicao pos);
+	public void removeItem(Sala sala, Posicao pos);
+	public JLabelAnima getPersonagem();
+}
 ~~~
 
 Método | Objetivo
@@ -275,7 +341,11 @@ Método | Objetivo
 Interface implementada por quem observa os atores.
 
 ~~~
-<Interface em Java.>
+public interface ObserverActor {
+	public void update(String direcao);
+	public void setSubject(ActorSubjectView sub);
+	public void setBounds(int i, int j, int k, int l);
+}
 ~~~
 
 Método | Objetivo
@@ -289,7 +359,10 @@ Método | Objetivo
 Interface responsavel pela variavel locked
 
 ~~~
-<Interface em Java.>
+public interface ILocked {
+	public boolean getLocked();
+	public void setLocked(boolean locked);
+}
 ~~~
 
 Método | Objetivo
