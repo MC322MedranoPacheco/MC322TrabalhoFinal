@@ -25,9 +25,19 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 	<p> Começamos então o projeto criando as interfaces que pensamos anteriormente e implementando um nível parecido com o presente no wumpus começando pela criação do montador e adaptação de um toolkit próprio para o nosso projeto. Inicialmente o plano era o jogador poder andar por diversas salas e somente na última sala trocar de nível, então todas as salas de um nível seriam criadas dentro do mesmo, infelizmente não pudemos implementar tal mecânica uma vez que focamos primeiro em ter um jogo completo para a entrega do projeto e o não conhecimento do java swing fez com que tivéssemos muita dificuldade de aplicar uma animação que funcionasse junto dos inputs do teclado e que ficasse em sincronia com as posições do modelo.
 	 <p> Ao longo do projeto separamos onde cada um trabalharia assim podiamos otimizar o tempo permitindo-nos focar mais em construir certa parte do programa como modelo e interface gráfica sem necessitar conversar e se informar a cada mudança feita no código assim poderíamos apenas nos atualizar de tempos em tempos e auxiliar um ao outro em caso de dúvidas uma vez que já sabíamos como o programa funcionaria no geral.
          <p> Foi nesse período que a maior parte do código surgiu bem como os maiores problemas, o funcionamento de certos atores ou lasers que precisava da aplicação de observers custou muito tempo até entendermos como aplicá-lo de maneira eficaz bem como problemas na adição e retirada de componentes do JFrame parecia muita confusa. Nessa parte percebemos que muitas interfaces que pensamos  no começo do programa na verdade não se encaixavam no contexto atual bem como métodos e até mesmo certos atores deveriam ser esquecidos para termos um jogo em mãos no final do período. Assim priorizamos refinar e resolver problemas com o que já tínhamos avançado que já estava em um ponto interessante do que limpar o código ou adicionar tudo que queríamos
-	<p> Chegando no final do prazo de entrega tentamos implementar um pequeno tratamento de exceções no montador e terminamos de colocar em funcionamento a troca de níveis e felizmente conseguimos construir níveis que mostrassem as mecânicas que colocamos no código de forma eficaz. 
+	<p> Chegando no final do prazo de entrega tentamos implementar um pequeno tratamento de exceções no montador e terminamos de colocar em funcionamento a troca de níveis e felizmente conseguimos construir níveis que mostrassem as mecânicas que colocamos no código de forma eficaz.
 
+# Destaques de Código
+ 
+### 
 
+# Destaques de Orientação a Objetos
+
+### ICommand
+ Interface utilizada para passar comandos a um ator nela se encontra especificamente o acao, que é usada para solicitar um comando a um ator genericamente que por sua vez podem ter respostas diferentes, um classico exemplo de polimorfismo presente em nosso código.
+	![Screenshot 2022-07-08 221603](https://user-images.githubusercontent.com/102121798/178086215-f0d29645-d935-49ce-a8ef-c603c9ba1403.png)
+
+		
 # Diagramas
 
 ## Diagrama Geral da Arquitetura do Jogo
@@ -36,6 +46,7 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 
 
 *obs: imagens do jogo retiradas do: (https://www.kenney.nl/assets)
+
 ## Detalhamento das Interfaces
 
 ### Interface `IPress`
