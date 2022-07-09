@@ -78,6 +78,27 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 	<p>
 	![Sliga](https://user-images.githubusercontent.com/102121798/178087214-7bd72a2d-ca94-4c4c-89e5-09ef33212327.png)
 
+### Porta Observadora
+	*Tipo específico de porta que implementa observer para abrir/fechar, nota-se que o observer é modificado para poder observar mais de um subject, tendo assim uma arrayList de subjects.
+ 
+![ObserverPorta](https://user-images.githubusercontent.com/102121798/178087307-1bee0a19-7696-4844-a254-7d3b71cb01b1.png)
+
+### Java swing adaptado oom Observer
+	*Pattern de observer implementado na imagem dos atores, quando ocorre um movimento, a imagem é notificada e realiza a animação para a posição desejada.
+	![Animacao](https://user-images.githubusercontent.com/102121798/178087357-acf2835b-52fe-4f51-8acd-991c83842206.png)
+
+### Game Control e Singleton
+	*Pattern de singleton, que permite somente a criação de um controle do jogo, para que não possam ser criados mais de um jogo ao mesmo tempo.
+	![Singleton](https://user-images.githubusercontent.com/102121798/178087457-91bfe34c-6442-415f-9f8e-d1511ec19058.png)
+### Terreno Adapter
+	*Pattern Adapter para que terrenos possam simular atores e receber comandos do Game Control
+	![Terreno Adapter](https://user-images.githubusercontent.com/102121798/178087526-0750ef7c-ea82-4d8a-b87a-fc41f0bda87d.png)
+	*<p>
+	Momento que é utilizado o terrenoAdapter no movimento dentro do nível:
+	
+	![Momento](https://user-images.githubusercontent.com/102121798/178087557-5e408cfa-9998-4a8d-982f-818904798892.png)
+
+
 
 # Diagramas
 
