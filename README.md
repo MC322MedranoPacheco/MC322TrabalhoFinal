@@ -106,6 +106,10 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 
 ## Componente gameControl
 
+*![GameControl](https://user-images.githubusercontent.com/102121798/178088205-b138762c-65e3-48ca-b949-edd260ebe69f.png)
+*![GameControl1](https://user-images.githubusercontent.com/102121798/178088216-e4519d55-59c6-4dda-89d7-ee38a1a4a161.png)
+
+
 ### Interface `IPress`
 
 A interface serve para receber os movimentos do leitor e realizar as ações necessárias.
