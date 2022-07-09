@@ -106,7 +106,7 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 
 ## Componente gameControl
 
-O gameControl é responsavel pelo controle geral do jogo, movimentando os atores.
+<* O gameControl é responsavel pelo controle geral do jogo, movimentando os atores.>
 *![GameControl](https://user-images.githubusercontent.com/102121798/178088205-b138762c-65e3-48ca-b949-edd260ebe69f.png)
 	
 #### Ficha Técnica
@@ -192,7 +192,7 @@ Método | Objetivo
 `acao` | `Comeca um determinado nivel.`
 ## Componente Leitor
 	
-O componente leitor é responsavel por ler os comandos do teclado e passalos para o game control
+<* O componente leitor é responsavel por ler os comandos do teclado e passalos para o game control>
 *![Leitor](https://user-images.githubusercontent.com/102121798/178088357-b092a137-e3d4-4615-8f89-801d09c4dce3.png)
 
 #### Ficha Técnica
@@ -234,7 +234,7 @@ Método | Objetivo
 
 ## Componente Montador
 
-O componente montador é responsavel por montar os niveis a partir do cs
+<* O componente montador é responsavel por montar os niveis a partir do csv>
 *![Montador](https://user-images.githubusercontent.com/102121798/178088400-fa80b898-a535-4585-ab20-3e919c3232f4.png)
 
 #### Ficha Técnica
@@ -262,7 +262,7 @@ Método | Objetivo
 `constroiNivel` | `Cria um nível a partir de um arquivo .csv.`
 
 ## Componente Autor
-	
+<* Componente autor representa os diferentes atores implementados e é responsavel por se comunicar com o view para a animação ocorrer>
 *![Actor](https://user-images.githubusercontent.com/102121798/178088483-de04c98e-8015-47ae-983e-e5f2e1bed42d.png)
 
 #### Ficha Técnica
@@ -371,7 +371,8 @@ Método | Objetivo
 `setPosicao` | `Muda a variavel posicao do ator.`
 
 ## Componente Nivel
-	
+
+<* O componente nivel representa o nivel e é responsavel por interpretar os comandos do controle e mover na sala.>
 *![Nivel](https://user-images.githubusercontent.com/102121798/178088588-c7296f56-25fb-4964-8761-b07d06ff7ac2.png)
 
 #### Ficha Técnica
@@ -431,6 +432,7 @@ Método | Objetivo
 `connect` | `Connecta o nivel com o GameControl para que o nivel possa solicitar movimentos.`
 
 ## Componente MainView
+<* O componente é responsavel pelo o que o jogador ve na tela>
 *![mainView](https://user-images.githubusercontent.com/102121798/178088627-9721d48e-3005-44af-9737-e519e6906a0c.png)
 
 #### Ficha Técnica	
@@ -458,7 +460,8 @@ Método | Objetivo
 -------| --------
 `setContentePane` | `Muda o contentePane do jFrame do MainView para o necessario.`
 ## Componente MenuView
-	
+
+<* O componente MenuView é responsavel por gerar as imagens do menu.>
 *![menuview](https://user-images.githubusercontent.com/102121798/178088669-21d5522f-609c-4e05-853a-10feb2bd6874.png)
 	
 #### Ficha Técnica
@@ -489,6 +492,7 @@ Método | Objetivo
 `getJFrameFimDeJogo` | `Gera o jFrame que representa o menu de fim de jogo.`
 
 ## Componente NivelView
+<* O componente é responsavel pela visualização da sala e suas imagens>
 *![nivelView1](https://user-images.githubusercontent.com/102121798/178088706-e01fe36d-0ba3-487f-96fa-2a174042a88f.png)
 
 #### Ficha Técnica
