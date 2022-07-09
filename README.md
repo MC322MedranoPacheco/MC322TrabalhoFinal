@@ -108,6 +108,7 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 
 *![GameControl](https://user-images.githubusercontent.com/102121798/178088205-b138762c-65e3-48ca-b949-edd260ebe69f.png)
 	
+#### Ficha Técnica
 item | detalhamento
 ----- | -----
 Classe | `src.control.GameControl`
@@ -191,7 +192,8 @@ Método | Objetivo
 ## Componente Leitor
 	
 *![Leitor](https://user-images.githubusercontent.com/102121798/178088357-b092a137-e3d4-4615-8f89-801d09c4dce3.png)
-	
+
+#### Ficha Técnica
 item | detalhamento
 ----- | -----
 Classe | `src.control.Leitor`
@@ -231,7 +233,8 @@ Método | Objetivo
 ## Componente Montador
 
 *![Montador](https://user-images.githubusercontent.com/102121798/178088400-fa80b898-a535-4585-ab20-3e919c3232f4.png)
-	
+
+#### Ficha Técnica
 item | detalhamento
 ----- | -----
 Classe | `src.control.Montador`
@@ -258,7 +261,8 @@ Método | Objetivo
 ## Componente Autor
 	
 *![Actor](https://user-images.githubusercontent.com/102121798/178088483-de04c98e-8015-47ae-983e-e5f2e1bed42d.png)
-	
+
+#### Ficha Técnica
 item | detalhamento
 ----- | -----
 Classe | `src.model.Autor
@@ -367,6 +371,7 @@ Método | Objetivo
 	
 *![Nivel](https://user-images.githubusercontent.com/102121798/178088588-c7296f56-25fb-4964-8761-b07d06ff7ac2.png)
 
+#### Ficha Técnica
 item | detalhamento
 ----- | -----
 Classe | `src.model.Nivel
@@ -424,7 +429,8 @@ Método | Objetivo
 
 ## Componente MainView
 *![mainView](https://user-images.githubusercontent.com/102121798/178088627-9721d48e-3005-44af-9737-e519e6906a0c.png)
-	
+
+#### Ficha Técnica	
 item | detalhamento
 ----- | -----
 Classe | `src.view.MainView
@@ -452,6 +458,7 @@ Método | Objetivo
 	
 *![menuview](https://user-images.githubusercontent.com/102121798/178088669-21d5522f-609c-4e05-853a-10feb2bd6874.png)
 	
+#### Ficha Técnica
 item | detalhamento
 ----- | -----
 Classe | `src.view.MenuView
@@ -480,7 +487,8 @@ Método | Objetivo
 
 ## Componente NivelView
 *![nivelView1](https://user-images.githubusercontent.com/102121798/178088706-e01fe36d-0ba3-487f-96fa-2a174042a88f.png)
-	
+
+#### Ficha Técnica
 item | detalhamento
 ----- | -----
 Classe | `src.view.NivelView
