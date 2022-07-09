@@ -432,7 +432,7 @@ Método | Objetivo
 `getJFramePerdeu` | `Gera o jFrame que representa o menu de perdeu.`
 `getJFrameFimDeJogo` | `Gera o jFrame que representa o menu de fim de jogo.`
 
-##Componente NivelView
+## Componente NivelView
 *![nivelView1](https://user-images.githubusercontent.com/102121798/178088706-e01fe36d-0ba3-487f-96fa-2a174042a88f.png)
 
 *![nivelView2](https://user-images.githubusercontent.com/102121798/178088710-8a57a780-6f9a-45e3-8ecc-210ece1ac496.png)
