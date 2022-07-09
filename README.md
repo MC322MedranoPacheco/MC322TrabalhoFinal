@@ -41,15 +41,15 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
  Ao tentar executr uma ação em um nivel este verifica se ha a necessidade de interagir com outro ator e nesse caso o nivel solicita para o gameContrl a
 		execução da acao do ator alvo fazendo assim uma cadeia de ações onde cada ação pode realizar coisas diferentes, segue abaixo o momento do nivel que a cadeia de ações ocorre e alguns exemplos de diferentes ações.
 		
-		![mover](https://user-images.githubusercontent.com/102121798/178086516-58949ceb-b179-4d26-862e-a77669bf9430.png)
+	![mover](https://user-images.githubusercontent.com/102121798/178086516-58949ceb-b179-4d26-862e-a77669bf9430.png)
 		
-		ação de uma caixa:
+	ação de uma caixa:
 		
-		![caixa](https://user-images.githubusercontent.com/102121798/178086574-1fbab7c8-cb79-4d46-aa1e-9104bdef3429.png)
+	![caixa](https://user-images.githubusercontent.com/102121798/178086574-1fbab7c8-cb79-4d46-aa1e-9104bdef3429.png)
 		
-		ação de um feixo de laser:
+	ação de um feixo de laser:
 		
-		![laseracao](https://user-images.githubusercontent.com/102121798/178086609-c35caccd-74e7-4f07-bcb6-9ad4847ab972.png)
+	![laseracao](https://user-images.githubusercontent.com/102121798/178086609-c35caccd-74e7-4f07-bcb6-9ad4847ab972.png)
 
 # Diagramas
 
