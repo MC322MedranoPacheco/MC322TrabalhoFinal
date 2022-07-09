@@ -177,12 +177,10 @@ public interface IStart {
 Método | Objetivo
 -------| --------
 `acao` | `Comeca um determinado nivel.`
-
+## Componente Leitor
 ### Interface IRPress
 
 *Interface que permite que o leitor se comunique com o gameControl e mande os comandos do teclado para ele.
-
-## Componente Leitor
 ~~~
 public interface IRPress {
 	public void connect(IPress ipress);
