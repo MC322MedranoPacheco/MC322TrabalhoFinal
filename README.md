@@ -28,7 +28,10 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 	<p> Chegando no final do prazo de entrega tentamos implementar um pequeno tratamento de exceções no montador e terminamos de colocar em funcionamento a troca de níveis e felizmente conseguimos construir níveis que mostrassem as mecânicas que colocamos no código de forma eficaz.
 
 # Destaques de Código
- 
+ *Para animarmos o objeto nos implementamos um metrônomo que está conectado à imagem e faz ela atualizar sua posição depois de um intervalo fixo de tempo. Além disso, quando o ator se move, a imagem recebe a informação através de um sistema de observers. Por fim, para sabermos que houve o fim da animação, colocamos um contador de quantos pixels foram percorridos que permite mudar o valor de locked, variável que é responsável por permitir que o leitor leia outro movimento.
+		![carbon](https://user-images.githubusercontent.com/102121798/178087059-0ff29bc0-345d-476c-90a2-e60dde75e65f.png)
+
+		
 ### 
 
 # Destaques de Orientação a Objetos
