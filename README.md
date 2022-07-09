@@ -106,6 +106,7 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 
 ## Componente gameControl
 
+O gameControl é responsavel pelo controle geral do jogo, movimentando os atores.
 *![GameControl](https://user-images.githubusercontent.com/102121798/178088205-b138762c-65e3-48ca-b949-edd260ebe69f.png)
 	
 #### Ficha Técnica
@@ -191,6 +192,7 @@ Método | Objetivo
 `acao` | `Comeca um determinado nivel.`
 ## Componente Leitor
 	
+O componente leitor é responsavel por ler os comandos do teclado e passalos para o game control
 *![Leitor](https://user-images.githubusercontent.com/102121798/178088357-b092a137-e3d4-4615-8f89-801d09c4dce3.png)
 
 #### Ficha Técnica
@@ -232,6 +234,7 @@ Método | Objetivo
 
 ## Componente Montador
 
+O componente montador é responsavel por montar os niveis a partir do cs
 *![Montador](https://user-images.githubusercontent.com/102121798/178088400-fa80b898-a535-4585-ab20-3e919c3232f4.png)
 
 #### Ficha Técnica
