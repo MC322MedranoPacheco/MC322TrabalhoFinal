@@ -182,6 +182,12 @@ Método | Objetivo
 -------| --------
 `acao` | `Comeca um determinado nivel.`
 ## Componente Leitor
+	
+*![Leitor](https://user-images.githubusercontent.com/102121798/178088357-b092a137-e3d4-4615-8f89-801d09c4dce3.png)
+
+*![Leitor2](https://user-images.githubusercontent.com/102121798/178088366-df2ce6e6-5573-4091-9315-289f03d4ac93.png)
+
+	
 ### Interface IRPress
 
 *Interface que permite que o leitor se comunique com o gameControl e mande os comandos do teclado para ele.
@@ -210,6 +216,11 @@ Método | Objetivo
 `connect` | `Conecta o leitor com o NivelView para que o leitor possa saber quando liberar o movimento.`
 
 ## Componente Montador
+
+*![Montador](https://user-images.githubusercontent.com/102121798/178088400-fa80b898-a535-4585-ab20-3e919c3232f4.png)
+
+*![Montador1](https://user-images.githubusercontent.com/102121798/178088404-3bd2fd3b-e887-43b6-98f5-914f56ac4647.png)
+
 	
 ### Interface IFazerNivel
 
@@ -227,6 +238,13 @@ Método | Objetivo
 
 ## Componente Autor
 	
+*![Actor](https://user-images.githubusercontent.com/102121798/178088483-de04c98e-8015-47ae-983e-e5f2e1bed42d.png)
+
+*![Actor1](https://user-images.githubusercontent.com/102121798/178088484-91081ba0-0309-4021-b8f2-d7e4fba4edcf.png)
+
+*![Actor 2](https://user-images.githubusercontent.com/102121798/178088487-095c0147-9f1c-43cb-ad93-ad96412d80e0.png)
+
+
 ### Interface ICommand
 
 Interface que permite a realização de acoes por parte do ator. Também permite acessar determinados atributos do ator que são necessários para determinar a validade de um movimento
