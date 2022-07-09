@@ -95,9 +95,7 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 	![Terreno Adapter](https://user-images.githubusercontent.com/102121798/178087526-0750ef7c-ea82-4d8a-b87a-fc41f0bda87d.png)
 *<p>
 	Momento que é utilizado o terrenoAdapter no movimento dentro do nível:
-*<p>
-![Momento](https://user-images.githubusercontent.com/102121798/178087557-5e408cfa-9998-4a8d-982f-818904798892.png)
-*<p>
+*<p> ![Momento](https://user-images.githubusercontent.com/102121798/178087557-5e408cfa-9998-4a8d-982f-818904798892.png)
 	
 #Diagrama Geral da Arquitetura do Jogo
 
