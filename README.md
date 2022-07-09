@@ -389,7 +389,7 @@ Método | Objetivo
 -------| --------
 `connect` | `Connecta o nivel com o GameControl para que o nivel possa solicitar movimentos.`
 
-##Componente MainView
+## Componente MainView
 *![mainView](https://user-images.githubusercontent.com/102121798/178088627-9721d48e-3005-44af-9737-e519e6906a0c.png)
 
 *![mainView2](https://user-images.githubusercontent.com/102121798/178088630-a403ee4c-001c-4d44-9b5a-d12613bb5462.png)
