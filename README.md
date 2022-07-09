@@ -75,6 +75,7 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 ![Update](https://user-images.githubusercontent.com/102121798/178087167-94941e8a-69d1-43d5-bd4d-720d652ed15e.png)
 
 *Laser definindo quem observar:
+	<p>
 	![Sliga](https://user-images.githubusercontent.com/102121798/178087214-7bd72a2d-ca94-4c4c-89e5-09ef33212327.png)
 
 
