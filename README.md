@@ -51,7 +51,9 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 	*<p>
 	![laseracao](https://user-images.githubusercontent.com/102121798/178086609-c35caccd-74e7-4f07-bcb6-9ad4847ab972.png)
 ### Portas e Hierarquia
-		Nosso código também utiliza a hierarquia para evitar repetição de código e facilitar futuras atualizações como por exemplo a Porta que possui diferentes tipos completamente diferentes, uma aplicando observer outra verificando inventários. Porém ambas possuem uma classe mãe que contêm elementos indispensáveis em ambos como um toString semelhante e uma ação igual como na imagem abaixo:
+		Nosso código também utiliza a hierarquia para evitar repetição de código e facilitar futuras atualizações como por exemplo a Porta que possui diferentes tipos completamente diferentes, 
+		uma aplicando observer outra verificando inventários. Porém ambas possuem uma classe mãe que contêm elementos 
+		indispensáveis em ambos como um toString semelhante e uma ação igual como na imagem abaixo:
 		
 		
 ![Porta mae](https://user-images.githubusercontent.com/102121798/178086803-b091b6d8-43e3-4e3b-8ac0-4182429a11a0.png)
