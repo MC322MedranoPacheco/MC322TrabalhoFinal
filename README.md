@@ -258,6 +258,13 @@ Método | Objetivo
 ## Componente Autor
 	
 *![Actor](https://user-images.githubusercontent.com/102121798/178088483-de04c98e-8015-47ae-983e-e5f2e1bed42d.png)
+	
+item | detalhamento
+----- | -----
+Classe | `src.model.Autor
+Autores | `Henrique Pacheco Manoel`
+Interfaces | `ICommand, IRAction, IVivo, ActorSubjectView, IActor.`
+
 
 *![Actor1](https://user-images.githubusercontent.com/102121798/178088484-91081ba0-0309-4021-b8f2-d7e4fba4edcf.png)
 
@@ -360,6 +367,13 @@ Método | Objetivo
 	
 *![Nivel](https://user-images.githubusercontent.com/102121798/178088588-c7296f56-25fb-4964-8761-b07d06ff7ac2.png)
 
+item | detalhamento
+----- | -----
+Classe | `src.model.Nivel
+Autores | `Henrique Pacheco Manoel`
+Interfaces | `IAction, IRSolicitarMovimento, INivel.`
+
+
 *![nivel](https://user-images.githubusercontent.com/102121798/178088601-8df273c9-9ef3-4aa3-a3ba-76ec1bacd0b7.png)
 
 	
@@ -410,6 +424,13 @@ Método | Objetivo
 
 ## Componente MainView
 *![mainView](https://user-images.githubusercontent.com/102121798/178088627-9721d48e-3005-44af-9737-e519e6906a0c.png)
+	
+item | detalhamento
+----- | -----
+Classe | `src.view.MainView
+Autores | `Gabriel Medrano Silva`
+Interfaces | `IMainView.`
+
 
 *![mainView2](https://user-images.githubusercontent.com/102121798/178088630-a403ee4c-001c-4d44-9b5a-d12613bb5462.png)
 
@@ -430,6 +451,12 @@ Método | Objetivo
 ## Componente MenuView
 	
 *![menuview](https://user-images.githubusercontent.com/102121798/178088669-21d5522f-609c-4e05-853a-10feb2bd6874.png)
+	
+item | detalhamento
+----- | -----
+Classe | `src.view.MenuView
+Autores | `Gabriel Medrano Silva`
+Interfaces | `IRStart, IMenuView.`
 
 *![menuview1](https://user-images.githubusercontent.com/102121798/178088673-8d5496dd-2ad1-4441-9039-a6bacca1bddd.png)
 
@@ -453,6 +480,12 @@ Método | Objetivo
 
 ## Componente NivelView
 *![nivelView1](https://user-images.githubusercontent.com/102121798/178088706-e01fe36d-0ba3-487f-96fa-2a174042a88f.png)
+	
+item | detalhamento
+----- | -----
+Classe | `src.view.NivelView
+Autores | `Gabriel Medrano Silva`
+Interfaces | `INivelView, ObserverActor, ILocked.`
 
 *![nivelView2](https://user-images.githubusercontent.com/102121798/178088710-8a57a780-6f9a-45e3-8ecc-210ece1ac496.png)
 	
