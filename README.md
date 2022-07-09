@@ -104,7 +104,7 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 *obs: imagens do jogo retiradas do: (https://www.kenney.nl/assets)
 	
 
-##Componente gameControl
+## Componente gameControl
 
 ### Interface `IPress`
 
@@ -182,7 +182,7 @@ Método | Objetivo
 
 *Interface que permite que o leitor se comunique com o gameControl e mande os comandos do teclado para ele.
 
-##Componente Leitor
+## Componente Leitor
 ~~~
 public interface IRPress {
 	public void connect(IPress ipress);
@@ -207,7 +207,7 @@ Método | Objetivo
 -------| --------
 `connect` | `Conecta o leitor com o NivelView para que o leitor possa saber quando liberar o movimento.`
 
-##Componente Montador
+## Componente Montador
 	
 ### Interface IFazerNivel
 
@@ -223,7 +223,7 @@ Método | Objetivo
 -------| --------
 `constroiNivel` | `Cria um nível a partir de um arquivo .csv.`
 
-##Componente Autor
+## Componente Autor
 	
 ### Interface ICommand
 
@@ -317,7 +317,7 @@ Método | Objetivo
 -------| --------
 `setPosicao` | `Muda a variavel posicao do ator.`
 
-##Componente Nivel
+## Componente Nivel
 	
 ### Interface IAction
 
