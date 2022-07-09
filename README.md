@@ -109,7 +109,7 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 *obs: imagens do jogo retiradas do: (https://www.kenney.nl/assets)
 	
 
-## Detalhamento das Interfaces
+#Componente gameControl
 
 ### Interface `IPress`
 
@@ -187,6 +187,7 @@ Método | Objetivo
 
 Interface que permite que o leitor se comunique com o gameControl e mande os comandos do teclado para ele.
 
+#Componente Leitor
 ~~~
 public interface IRPress {
 	public void connect(IPress ipress);
@@ -211,6 +212,8 @@ Método | Objetivo
 -------| --------
 `connect` | `Conecta o leitor com o NivelView para que o leitor possa saber quando liberar o movimento.`
 
+#Componente Montador
+	
 ### Interface IFazerNivel
 
 Interface que possui o metodo responsavel pelo montador criar niveis.
@@ -225,6 +228,7 @@ Método | Objetivo
 -------| --------
 `constroiNivel` | `Cria um nível a partir de um arquivo .csv.`
 
+#Componente Autor
 ### Interface ICommand
 
 Interface que permite a realização de acoes por parte do ator. Também permite acessar determinados atributos do ator que são necessários para determinar a validade de um movimento
@@ -317,6 +321,7 @@ Método | Objetivo
 -------| --------
 `setPosicao` | `Muda a variavel posicao do ator.`
 
+#Componente Nivel
 ### Interface IAction
 
 Interface reponsavel por controlar os movimentos do ator na sala e auxiliar o view.
@@ -362,6 +367,7 @@ Método | Objetivo
 -------| --------
 `connect` | `Connecta o nivel com o GameControl para que o nivel possa solicitar movimentos.`
 
+#Componente MainView
 ### Interface IMainView
 
 Interface reponsavel pelo o que o usuario vai observar.
@@ -376,8 +382,8 @@ public interface IMainView extends IRNivelShow{
 Método | Objetivo
 -------| --------
 `setContentePane` | `Muda o contentePane do jFrame do MainView para o necessario.`
-
-### Interview IMenuView
+#Componente MenuView
+### Interface IMenuView
 
 Interface reponsavel pelos menus do jogo.
 
@@ -395,7 +401,8 @@ Método | Objetivo
 `getJFramePerdeu` | `Gera o jFrame que representa o menu de perdeu.`
 `getJFrameFimDeJogo` | `Gera o jFrame que representa o menu de fim de jogo.`
 
-### Interview INivelView
+#Componente NivelView	
+### Interface INivelView
 
 Interface reponsavel pelas imagens do nivel.
 
