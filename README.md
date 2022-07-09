@@ -142,3 +142,84 @@ Método | Objetivo
 `getPosicao` | `retorna a posição do ator.`
 `getPosicao` | `retorna a posição anterior do ator.`
 `interact` | `interage com um dos objetos.`
+
+### Interface IRAction
+
+Interface que conecta o ator com o nivel para ele se mover no nivel.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | `Conecta o autor com o Nível para que o autor possa se mover.`
+
+### Interface IVivo
+
+Interface responsável pelo controle da variavel vivo do ator, permitindo obte-la e modificala.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`setVivo` | `Muda a variável vivo do ator.`
+`getVivo` | `Retorna a variável vivo do ator.`
+
+### Interface ActorSubjectView
+
+Interface padrão de observer que é responsavel por avisar as imagens para elas se moverem na tela.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`registrarView` | `Registra um observador do ator.`
+`excluirRegistroView` | `Exclui um observador do ator.`
+`setChanged` | `muda a variavel Changed.`
+`notificarObservadoresView` | `Notifica os observadores do ator`
+
+### Interface IActor
+
+Interface que junta as outras interfaces do actor e possui um metodo para setar a posicao do ator.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`setPosicao` | `Muda a variavel posicao do ator.`
+
+### Interface IAction
+
+Interface reponsavel por controlar os movimentos do ator na sala e auxiliar o view.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`getCelula` | `Retorna determinada celula.`
+`pegar` | `Pega o item da celula.`
+`addImage` | `Pede para adicionar uma imagem no View.`
+`removerItem` | `Remove o item da posicao de uma sala.`
+`mover` | `Tenta movimentar o ator fazendo as verificações necessárias`
+`interact` | `Interage com um objeto do nivel.`
+
+### Interface IRSolicitarMovimento
+
+Interface reponsavel por conectar o nivel com o GameControl.
+
+~~~
+<Interface em Java.>
+~~~
+
+Método | Objetivo
+-------| --------
+`connect` | `Connecta o nivel com o GameControl para que o nivel possa solicitar movimentos.`
