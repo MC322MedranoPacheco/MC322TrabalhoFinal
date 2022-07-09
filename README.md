@@ -554,5 +554,9 @@ Método | Objetivo
 `getLocked` | `Retorna a variável locked.`
 `setLocked` | `Atualiza a variável locked.`
 
+# Plano de Exceções
+*![Excecoes](https://user-images.githubusercontent.com/102121798/178088947-0ba11b58-483a-4ff0-8153-50baf8b0a736.png)
+
+
 # Conclusões e trabalhos futuros:
 * Após o término do nosso jogo, concluímos que algumas decisões poderiam ter sido tomadas para melhorar e facilitar o desenvolvimento do jogo. Primeiramente, devido a grande dificuldade que tivemos com o uso do java Swing para a geração e controle das imagens, entendemos que teria sido melhor o uso de uma biblioteca especializada em desenvolvimento de jogos, como a LibGDX. Poderíamos também utilizar o design pattern de factory para criarmos os objetos na sala de maneira mais padronizada. Assim como implementar atores que não pudemos como o Computador, mecânica de Observer para desligar/ligar o laser por interação, interação por input no teclado e mecânicas de entrar/sair de diferentes salas em um mesmo nível. Gostaríamos também de limpar resquícios de código no nosso programa e implementar um plano de exceções mais complexo.
