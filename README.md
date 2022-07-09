@@ -34,7 +34,11 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 A interface serve para receber os movimentos do leitor e realizar as ações necessárias.
 
 ~~~
-<Interface em Java.>
+<public interface IPress{
+	public boolean acao(String comando);
+	public void addKeyListener(KeyListener key);
+}
+>
 ~~~
 
 Método | Objetivo
