@@ -107,6 +107,13 @@ O jogo consiste em 1 garoto que coleciona gemas. Ele deve percorrer diferentes n
 ## Componente gameControl
 
 *![GameControl](https://user-images.githubusercontent.com/102121798/178088205-b138762c-65e3-48ca-b949-edd260ebe69f.png)
+	
+item | detalhamento
+----- | -----
+Classe | `src.control.GameControl`
+Autores | `Gabriel Medrano Silva e  Henrique Pacheco Manoel`
+Interfaces | `IPress, IRComand, IRFazerNivel, ISolicitarMovimento, IStart, IGameControl.`
+	
 *![GameControl1](https://user-images.githubusercontent.com/102121798/178088216-e4519d55-59c6-4dda-89d7-ee38a1a4a161.png)
 
 
@@ -184,6 +191,12 @@ Método | Objetivo
 ## Componente Leitor
 	
 *![Leitor](https://user-images.githubusercontent.com/102121798/178088357-b092a137-e3d4-4615-8f89-801d09c4dce3.png)
+	
+item | detalhamento
+----- | -----
+Classe | `src.control.Leitor`
+Autores | `Gabriel Medrano Silva`
+Interfaces | `IRPress, IRLocked, ILeitor.`
 
 *![Leitor2](https://user-images.githubusercontent.com/102121798/178088366-df2ce6e6-5573-4091-9315-289f03d4ac93.png)
 
@@ -218,6 +231,12 @@ Método | Objetivo
 ## Componente Montador
 
 *![Montador](https://user-images.githubusercontent.com/102121798/178088400-fa80b898-a535-4585-ab20-3e919c3232f4.png)
+	
+item | detalhamento
+----- | -----
+Classe | `src.control.Montador`
+Autores | `Gabriel Medrano Silva e  Henrique Pacheco Manoel`
+Interfaces | `IFazerNivel, IMontador.`
 
 *![Montador1](https://user-images.githubusercontent.com/102121798/178088404-3bd2fd3b-e887-43b6-98f5-914f56ac4647.png)
 
